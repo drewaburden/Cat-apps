@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
-
+
     <ImageButton
         android:id="@+id/ImageButton1"
         android:layout_width="wrap_content"
@@ -16,7 +16,7 @@
         android:onClick="onCatButtonClick"
         android:scaleType="center"
         android:src="@drawable/ic_cat" />
-
+
     <TextView
         android:id="@+id/textView1"
         android:layout_width="wrap_content"

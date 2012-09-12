@@ -1,7 +1,19 @@
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:id="@+id/menu_settings"
-        android:title="@string/menu_settings"
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <item
+        android:id="@+id/menu_settings"
+        android:onClick="onOptionsItemSelect"
         android:orderInCategory="100"
-        android:showAsAction="never" android:onClick="onOptionsItemSelect" android:visible="true"/>
-    <item android:id="@+id/menu_item1" android:onClick="onOptionsItemSelect" android:showAsAction="never" android:visible="true" android:orderInCategory="100" android:title="@string/menu_item1"></item>
+        android:showAsAction="never"
+        android:title="@string/menu_settings"
+        android:visible="true"/>
+    <item
+        android:id="@+id/menu_item1"
+        android:onClick="onOptionsItemSelect"
+        android:orderInCategory="100"
+        android:showAsAction="never"
+        android:title="@string/menu_item1"
+        android:visible="true">
+    </item>
+
 </menu>
