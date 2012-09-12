@@ -5,6 +5,8 @@ import android.app.Activity;
 import android.content.Intent;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
 
 public class MainActivity extends Activity {
 
@@ -20,15 +22,48 @@ public class MainActivity extends Activity {
         return true;
     }
     
-    public boolean onOptionsItemSelect(MenuItem item) {
+    public void onOptionsItemSelect(MenuItem item) {
     	// Handle item selection
         switch (item.getItemId()) {
+        	// Settings option
 	        case R.id.menu_settings:
+	        	// Start the settings activity
 	        	Intent myIntent = new Intent(this, SettingsActivity.class);
 	            startActivity(myIntent);
-	            return true;
+	            break;
+	            
 	        default:
-	            return super.onOptionsItemSelected(item);
-        }        
+	           break;
+        }
+    }
+    
+    public void onCatButtonClick(View view) {
+    	// Find the TextView so we can manipulate it
+    	final TextView text = (TextView) findViewById(R.id.textView1);
+    	
+    	// Only if the TextView is invisible
+    	if (text.getVisibility() != View.VISIBLE) {
+    		// Make it visible
+    		text.setVisibility(View.VISIBLE);
+
+    		// Wait for 2 seconds (using threads so we don't freeze the UI)
+    		// and then make the text invisible again.
+    		// Todo: implement a better sleep system using a class?
+    		new Thread(new Runnable() {
+    		    public void run() {
+    		        try {
+    		            Thread.sleep(2000);
+    		        } catch (InterruptedException e) {
+    		            e.printStackTrace();
+    		        }
+    		        runOnUiThread(new Runnable() {
+    		            public void run() {
+    		        		text.setVisibility(View.INVISIBLE);
+    		            }
+    		        });
+    		    }
+    		}).start();
+    		
+    	}
     }
 }

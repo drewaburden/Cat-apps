@@ -1,7 +1,7 @@
 <resources>
 
     <string name="app_name">CatApps</string>
-    <string name="hello_world">Hello world!</string>
+    <string name="hello_world">Meow!</string>
     <string name="menu_settings">Settings</string>
     <string name="title_activity_main">Cat Apps</string>
     <string name="title_activity_settings">Settings</string>
