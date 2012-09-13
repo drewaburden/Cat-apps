@@ -1,5 +1,7 @@
 package com.hogg.catapps;
 
+import com.hogg.catapps.background.BackgroundSleepThread;
+
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
@@ -46,23 +48,14 @@ public class MainActivity extends Activity {
 			// Make it visible
 			text.setVisibility(View.VISIBLE);
 
-			// Wait for 2 seconds (using threads so we don't freeze the UI)
+			// Wait for .5 seconds (using threads so we don't freeze the UI)
 			// and then make the text invisible again.
-			// Todo: implement a better sleep system using a class?
-			new Thread(new Runnable() {
+			Runnable makeTextInvisible = new Runnable() {
 				public void run() {
-					try {
-						Thread.sleep(2000);
-					} catch (InterruptedException e) {
-						e.printStackTrace();
-					}
-					runOnUiThread(new Runnable() {
-						public void run() {
-							text.setVisibility(View.INVISIBLE);
-						}
-					});
+					text.setVisibility(View.INVISIBLE);
 				}
-			}).start();
+			};
+			new BackgroundSleepThread(this, makeTextInvisible, 500);
 
 		}
 	}
