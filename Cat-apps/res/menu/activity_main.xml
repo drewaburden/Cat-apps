@@ -7,13 +7,5 @@
         android:showAsAction="never"
         android:title="@string/menu_settings"
         android:visible="true"/>
-    <item
-        android:id="@+id/menu_item1"
-        android:onClick="onOptionsItemSelect"
-        android:orderInCategory="100"
-        android:showAsAction="never"
-        android:title="@string/menu_item1"
-        android:visible="true">
-    </item>
 
 </menu>

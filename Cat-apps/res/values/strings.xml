@@ -1,10 +1,10 @@
 <resources>
 
     <string name="app_name">CatApps</string>
-    <string name="hello_world">Meow!</string>
+    <string name="textViewMeow">Meow!</string>
     <string name="menu_settings">Settings</string>
     <string name="title_activity_main">Cat Apps</string>
     <string name="title_activity_settings">Settings</string>
-    <string name="menu_item1">Item 1</string>
+    <string name="catName">Tomo</string>
 
 </resources>

@@ -9,10 +9,12 @@ public class BackgroundSleepThread {
 		new Thread(new Runnable() {
 			public void run() {
 				try {
+					// Wait for the specified amount of time
 					Thread.sleep(sleepTime);
 				} catch (InterruptedException e) {
 					e.printStackTrace();
 				}
+				// Run the specified method in activity's thread
 				activity.runOnUiThread(method);
 			}
 		}).start();
