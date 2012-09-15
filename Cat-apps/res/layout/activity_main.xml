@@ -65,5 +65,27 @@
         android:layout_marginRight="12pt"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:visibility="visible" />
+
+    <ImageView
+        android:id="@+id/imageViewSex"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="4pt"
+        android:layout_marginTop="4pt"
+        android:contentDescription="@null" />
+
+    <TextView
+        android:id="@+id/textViewName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/imageViewSex"
+        android:layout_marginLeft="4pt"
+        android:layout_toRightOf="@+id/imageViewSex"
+        android:text="@string/catName"
+        android:textColor="#ffffff"
+        android:textSize="7pt"
+        android:typeface="normal" />
 
 </RelativeLayout>

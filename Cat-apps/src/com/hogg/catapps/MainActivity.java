@@ -1,7 +1,10 @@
 package com.hogg.catapps;
 
+import java.util.Random;
+
 import com.hogg.catapps.background.BackgroundSleepThread;
 import com.hogg.catapps.cat.Cat;
+import com.hogg.catapps.cat.Sex;
 
 import android.os.Bundle;
 import android.app.Activity;
@@ -9,6 +12,7 @@ import android.content.Intent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 public class MainActivity extends Activity {
@@ -21,9 +25,27 @@ public class MainActivity extends Activity {
 		setContentView(R.layout.activity_main);
 		
 		// Set up our cat and start tracking and updating its meters
-		cat = new Cat(getString(R.string.catName), 0);
+		// Give the cat a random sex (this is just temporary).
+		Random rand = new Random();
+		Sex s;
+		if (rand.nextBoolean()) {
+			s = Sex.MALE;
+		}
+		else {
+			s = Sex.FEMALE;
+		}
+		cat = new Cat(getString(R.string.catName), 0, s);
 		cat.hearts.startTracking(this);
 		cat.hearts.update();
+		
+		// Display the correct sex icon depending on what sex the cat is.
+		ImageView imageViewSex = (ImageView) findViewById(R.id.imageViewSex);
+		if (cat.getSex() == Sex.MALE) {
+			imageViewSex.setImageResource(R.drawable.ic_male);
+		}
+		else {
+			imageViewSex.setImageResource(R.drawable.ic_female);
+		}
 	}
 
 	// Create the menu for the activity

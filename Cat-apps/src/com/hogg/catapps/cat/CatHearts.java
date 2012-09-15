@@ -19,11 +19,7 @@ public class CatHearts extends Meter {
 		// Update the progressBar's display
 		progressBarHearts.setProgress(value);
 		// Update the progressBar's percentage display
-		textViewHeartsPercentage.setText(Integer.toString(getHearts()) + "%");
-	}
-	
-	public int getHearts() {
-		return value;
+		textViewHeartsPercentage.setText(Integer.toString(getValue()) + "%");
 	}
 	
 	// Start the looping thread to periodically change the value of the meter 
@@ -39,7 +35,7 @@ public class CatHearts extends Meter {
 			public void run() {
 				while(tracking) {
 					try {
-						Thread.sleep(500);
+						Thread.sleep(updateWaitTime);
 						
 						// If tracking had been stopped while the sleep method
 						// was waiting, we don't want to run the commands.
