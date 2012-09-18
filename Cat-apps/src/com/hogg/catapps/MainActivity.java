@@ -35,8 +35,8 @@ public class MainActivity extends Activity {
 			s = Sex.FEMALE;
 		}
 		cat = new Cat(getString(R.string.catName), 0, s);
-		cat.hearts.startTracking(this);
-		cat.hearts.update();
+		cat.start(this);
+		cat.update();
 		
 		// Display the correct sex icon depending on what sex the cat is.
 		ImageView imageViewSex = (ImageView) findViewById(R.id.imageViewSex);

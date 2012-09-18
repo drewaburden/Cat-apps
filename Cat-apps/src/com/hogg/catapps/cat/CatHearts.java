@@ -13,15 +13,15 @@ public class CatHearts extends Meter {
 	public CatHearts(int initHearts, int _incrementAmount) {
 		value = initHearts;
 		incrementAmount = _incrementAmount;
-	}
+	}	
 	
 	public void update() {
 		// Update the progressBar's display
-		progressBarHearts.setProgress(value);
+		progressBarHearts.setProgress(getValue());
 		// Update the progressBar's percentage display
-		textViewHeartsPercentage.setText(Integer.toString(getValue()) + "%");
+		textViewHeartsPercentage.setText(this + "%");
 	}
-	
+
 	// Start the looping thread to periodically change the value of the meter 
 	public void startTracking(Activity _activity) {
 		activity = _activity; // What activity the UI components are in

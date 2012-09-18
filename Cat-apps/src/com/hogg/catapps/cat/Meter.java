@@ -29,7 +29,14 @@ public abstract class Meter {
 		updateWaitTime = _updateWaitTime;
 	}
 	
+	// Get and set value
+	public void setValue(int _value) {
+		value = _value;
+	}
 	public int getValue() {
 		return value;
+	}
+	public String toString() {
+		return Integer.toString(value);
 	}
 }

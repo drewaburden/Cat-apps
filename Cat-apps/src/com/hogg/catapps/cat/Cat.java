@@ -23,10 +23,45 @@ public class Cat {
 		hearts.startTracking(activity); // Hearts meter
 	}
 	
+	// Update all meters
+	public void update() {
+		updateHearts();
+		//updateHunger();
+		//updateThirst();
+		//updateMood();
+	}
+	// Update hearts meter
+	public void updateHearts() {
+		hearts.update();
+	}	
+	/*// Update hunger meter
+	public void updateHunger() {
+		hunger.update();
+	}	
+	// Update thirst meter
+	public void updateThirst() {
+		thirst.update();
+	}
+	// Update mood meter
+	public void updateMood() {
+		mood.update();
+	}*/
+	
+	// Get and set name
+	public void setName(String _name) {
+		name = _name;
+	}
 	public String getName() {
 		return name;
 	}
+	public String toString() {
+		return name;
+	}
 	
+	// Get and set sex
+	public void setSex(Sex _sex) {
+		sex = _sex;
+	}
 	public Sex getSex() {
 		return sex;
 	}
