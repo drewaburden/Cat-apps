@@ -1,0 +1,25 @@
+/*******************************
+* Title.ext                    *
+* Description:                 *
+*                              *
+* Authors:                     *
+*           James Garner       *
+*           Drew Burden        *
+*           Daniel Thomas      *
+*           Brandon Brethen    *
+* Delete this line along with lines containing the names of the people who did NOT work on the particular document. *
+* Copyright Hogg Studios       *
+*           James Garner       *
+*           Drew Burden        *
+*           Daniel Thomas      *
+*           Brandon Brethen    *
+*                              *
+********************************/
+
+
+
+
+Copy and paste the above commented section into the top of each document. There are 32 *s on the top and bottom line.
+I figured a power of two would fit well, but maybe we should make it 64 for the sake of space in the description area, so we dont have to use as many lines.
+Do NOT add it to any files until we agree upon a good format, as this is simply a rough outline based on the specifications laid out in the issue on github.
+-Matt

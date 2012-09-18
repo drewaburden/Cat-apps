@@ -11,6 +11,10 @@ public class CatHygiene extends Meter {
 	ProgressBar progressBarHygiene;
 	TextView textViewHygienePercentage;
 	
+	// Upon decrementing or incrementing the cat's mood will go up or down by: 10% of the incrementAmount
+	double moodPercentageVariable = 0.10; 
+		
+	
 	public CatHygiene(int initHygiene, int incAmount) {
 		value = initHygiene;
 		incrementAmount = incAmount;

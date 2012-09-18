@@ -10,6 +10,10 @@ public class CatThirst extends Meter{
 	ProgressBar progressBarThirst;
 	TextView textViewThirstPercentage;
 	
+	// Upon decrementing or incrementing the cat's mood will go up or down by: 10% of the incrementAmount
+	double moodPercentageVariable = 0.10; 
+		
+	
 	CatThirst(int initThirst, int incAmount) {
 		value = initThirst;
 		incrementAmount = incAmount;

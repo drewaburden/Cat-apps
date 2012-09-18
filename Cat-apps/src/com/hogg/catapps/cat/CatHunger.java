@@ -11,6 +11,9 @@ public class CatHunger extends Meter {
 	ProgressBar progressBarHunger;
 	TextView textViewHungerPercentage;
 	
+	// Upon decrementing or incrementing the cat's mood will go up or down by: 10% of the incrementAmount
+	double moodPercentageVariable = 0.10; 
+	
 	public CatHunger(int initHunger, int incAmount) {
 		value = initHunger;
 		incrementAmount = incAmount;
@@ -18,7 +21,7 @@ public class CatHunger extends Meter {
 
 	@Override
 	protected void update() {
-		//Need to update, first, the progress bar, then the text view.
+		//Need to update the progress bar and the text view.
 		progressBarHunger.setProgress(getValue());
 		textViewHungerPercentage.setText(Integer.toString(getValue()) + "%");
 	}
