@@ -1,3 +1,11 @@
+<!--
+  Project: CatApps
+  File: res/values/styles.xml
+  
+  Copyright © 2012 Hogg Studios
+  All rights reserved.
+-->
+
 <resources>
 
     <style name="AppTheme" parent="android:Theme.Holo" />

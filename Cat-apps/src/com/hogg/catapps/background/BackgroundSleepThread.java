@@ -1,3 +1,19 @@
+/*******************************************************************************
+ * Project: CatApps
+ * File: src/com/hogg/catapps/background/BackgroundSleepThread.java
+ * 
+ * Description: 
+ * 		Implements the BackgroundSleepThread class. This is used to sleep in
+ * 		a background thread for a specified number of milliseconds before
+ * 		executing a specified method.
+ * 
+ * Contributors:
+ * 		Drew Burden
+ * 
+ * Copyright © 2012 Hogg Studios
+ * All rights reserved.
+ ******************************************************************************/
+
 package com.hogg.catapps.background;
 
 import android.app.Activity;

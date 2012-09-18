@@ -1,3 +1,17 @@
+/*******************************************************************************
+ * Project: CatApps
+ * File: src/com/hogg/catapps/SettingsActivity.java
+ * 
+ * Description: 
+ * 		Implements the settings activity.
+ * 
+ * Contributors:
+ * 		Drew Burden
+ * 
+ * Copyright © 2012 Hogg Studios
+ * All rights reserved.
+ ******************************************************************************/
+
 package com.hogg.catapps;
 
 import android.os.Bundle;

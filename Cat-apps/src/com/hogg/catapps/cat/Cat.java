@@ -1,3 +1,18 @@
+/*******************************************************************************
+ * Project: CatApps
+ * File: src/com/hogg/catapps/cat/Cat.java
+ * 
+ * Description: 
+ * 		Implements the Cat class. Each of the player's cats will be defined as
+ * 		a Cat class variable.
+ * 
+ * Contributors:
+ * 		Drew Burden
+ * 
+ * Copyright © 2012 Hogg Studios
+ * All rights reserved.
+ ******************************************************************************/
+
 package com.hogg.catapps.cat;
 
 import android.app.Activity;
@@ -6,10 +21,9 @@ public class Cat {
 	String name;
 	Sex sex;
 	public CatHearts hearts;
-	// Todo:
-	//public CatHunger hunger;
-	//public CatThirst thirst;
-	//public CatMood mood;
+	public CatHunger hunger;
+	public CatThirst thirst;
+	public CatMood mood;
 	
 	public Cat(String _name, int initHearts, Sex _sex) {
 		// Initialize hearts with a specified initial value and an increment/decrement value of 5
@@ -34,7 +48,7 @@ public class Cat {
 	public void updateHearts() {
 		hearts.update();
 	}	
-	/*// Update hunger meter
+	// Update hunger meter
 	public void updateHunger() {
 		hunger.update();
 	}	
@@ -45,7 +59,7 @@ public class Cat {
 	// Update mood meter
 	public void updateMood() {
 		mood.update();
-	}*/
+	}
 	
 	// Get and set name
 	public void setName(String _name) {

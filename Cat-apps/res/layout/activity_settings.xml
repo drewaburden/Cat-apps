@@ -1,3 +1,11 @@
+<!--
+  Project: CatApps
+  File: res/layout/activity_settings.xml
+  
+  Copyright © 2012 Hogg Studios
+  All rights reserved.
+-->
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/LinearLayout1"

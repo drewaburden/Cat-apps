@@ -1,10 +1,18 @@
+<!--
+  Project: CatApps
+  File: AndroidManifest.xml
+  
+  Copyright © 2012 Hogg Studios
+  All rights reserved.
+-->
+
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.hogg.catapps"
     android:versionCode="1"
     android:versionName="1.0" >
 
     <uses-sdk
-        android:minSdkVersion="8"
+        android:minSdkVersion="11"
         android:targetSdkVersion="15" />
 
     <application

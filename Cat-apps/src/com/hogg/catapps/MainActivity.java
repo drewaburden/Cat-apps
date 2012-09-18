@@ -1,3 +1,17 @@
+/*******************************************************************************
+ * Project: CatApps
+ * File: src/com/hogg/catapps/MainActivity.java
+ * 
+ * Description: 
+ * 		Implements the main activity.
+ * 
+ * Contributors:
+ * 		Drew Burden
+ * 
+ * Copyright © 2012 Hogg Studios
+ * All rights reserved.
+ ******************************************************************************/
+
 package com.hogg.catapps;
 
 import java.util.Random;

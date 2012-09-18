@@ -1,3 +1,18 @@
+/*******************************************************************************
+ * Project: CatApps
+ * File: src/com/hogg/catapps/cat/CatMood.java
+ * 
+ * Description: 
+ * 		Implements the CatMood class. This hold the information about the
+ * 		cat's current mood level and manages the progress bar for it.
+ * 
+ * Contributors:
+ * 		James Garner
+ * 
+ * Copyright © 2012 Hogg Studios
+ * All rights reserved.
+ ******************************************************************************/
+
 package com.hogg.catapps.cat;
 
 import com.hogg.catapps.R;

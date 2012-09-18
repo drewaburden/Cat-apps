@@ -1,3 +1,20 @@
+/*******************************************************************************
+ * Project: CatApps
+ * File: src/com/hogg/catapps/cat/Meter.java
+ * 
+ * Description: 
+ * 		Implements the abstract class Meter. This is a base class to be used to
+ * 		to implement the hearts, mood, thirst, hunger, and hygiene meters, and
+ * 		any other meters we might need.
+ * 
+ * Contributors:
+ * 		Drew Burden
+ * 		James Garner
+ * 
+ * Copyright © 2012 Hogg Studios
+ * All rights reserved.
+ ******************************************************************************/
+
 package com.hogg.catapps.cat;
 
 import android.app.Activity;

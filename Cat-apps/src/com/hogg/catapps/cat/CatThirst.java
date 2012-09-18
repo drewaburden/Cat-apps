@@ -1,3 +1,18 @@
+/*******************************************************************************
+ * Project: CatApps
+ * File: src/com/hogg/catapps/cat/CatThirst.java
+ * 
+ * Description: 
+ * 		Implements the CatThirst class. This hold the information about the
+ * 		cat's current thirst level and manages the progress bar for it.
+ * 
+ * Contributors:
+ * 		James Garner
+ * 
+ * Copyright © 2012 Hogg Studios
+ * All rights reserved.
+ ******************************************************************************/
+
 package com.hogg.catapps.cat;
 
 import com.hogg.catapps.R;

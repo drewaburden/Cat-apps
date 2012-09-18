@@ -1,3 +1,18 @@
+/*******************************************************************************
+ * Project: CatApps
+ * File: src/com/hogg/catapps/player/Player.java
+ * 
+ * Description: 
+ * 		Implements the Player class. All of the player's information will be
+ * 		held here, including all of the player's cats.
+ * 
+ * Contributors:
+ * 		Drew Burden
+ * 
+ * Copyright © 2012 Hogg Studios
+ * All rights reserved.
+ ******************************************************************************/
+
 package com.hogg.catapps.player;
 
 import java.util.ArrayList;

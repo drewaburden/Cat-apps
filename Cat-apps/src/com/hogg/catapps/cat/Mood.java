@@ -1,3 +1,18 @@
+/*******************************************************************************
+ * Project: CatApps
+ * File: src/com/hogg/catapps/cat/Mood.java
+ * 
+ * Description: 
+ * 		Defines the Mood enum. This defines all the possible states of the
+ * 		cats' moods. 
+ * 
+ * Contributors:
+ * 		Drew Burden
+ * 
+ * Copyright © 2012 Hogg Studios
+ * All rights reserved.
+ ******************************************************************************/
+
 package com.hogg.catapps.cat;
 
 public enum Mood {
