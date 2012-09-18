@@ -16,21 +16,19 @@ public class CatMood extends Meter {
 		incrementAmount = incAmount;
 	}
 
-	@Override
 	protected void update() {
 		//Need to update, first, the progress bar, then the text view.
 		progressBarMood.setProgress(getValue());
 		textViewMoodPercentage.setText(Integer.toString(getValue()) + "%");
 	}
 
-	@Override
 	public void startTracking(Activity _activity) {
 		//This will track the value of the meter as it changes.
 		activity = _activity;
 		
 		//Must find the UI components in order to change them
-		textViewMoodPercentage = (TextView) activity.findViewById(R.id.textViewMoodPercentage);
-		progressBarMood = (ProgressBar) activity.findViewById(R.id.progressBarMood);
+		//textViewMoodPercentage = (TextView) activity.findViewById(R.id.textViewMoodPercentage);
+		//progressBarMood = (ProgressBar) activity.findViewById(R.id.progressBarMood);
 		
 		tracking = true;
 		//Create a new thread in order to actually run the cat's Mood simulation
@@ -60,7 +58,6 @@ public class CatMood extends Meter {
 		
 	}
 
-	@Override
 	public void stopTracking() {
 		tracking = false;
 	}

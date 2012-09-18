@@ -19,20 +19,18 @@ public class CatThirst extends Meter{
 		incrementAmount = incAmount;
 	}
 
-	@Override
 	protected void update() {
 		progressBarThirst.setProgress(getValue());
 		textViewThirstPercentage.setText(Integer.toString(getValue()) + "%");
 	}
 
-	@Override
 	public void startTracking(Activity _activity) {
 		//This will track the value of the meter as it changes.
 		activity = _activity;
 		
 		//Must find the UI components in order to change them
-		textViewThirstPercentage = (TextView) activity.findViewById(R.id.textViewThirstPercentage);
-		progressBarThirst = (ProgressBar) activity.findViewById(R.id.progressBarThirst);
+		//textViewThirstPercentage = (TextView) activity.findViewById(R.id.textViewThirstPercentage);
+		//progressBarThirst = (ProgressBar) activity.findViewById(R.id.progressBarThirst);
 		
 		tracking = true;
 		//Create a new thread in order to actually run the cat's Thirst simulation
@@ -60,8 +58,7 @@ public class CatThirst extends Meter{
 			}
 		}).start();
 	}
-
-	@Override
+	
 	public void stopTracking() {
 		tracking = false;
 	}

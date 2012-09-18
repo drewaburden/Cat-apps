@@ -19,21 +19,19 @@ public class CatHunger extends Meter {
 		incrementAmount = incAmount;
 	}
 
-	@Override
 	protected void update() {
 		//Need to update the progress bar and the text view.
 		progressBarHunger.setProgress(getValue());
 		textViewHungerPercentage.setText(Integer.toString(getValue()) + "%");
 	}
 
-	@Override
 	public void startTracking(Activity _activity) {
 		//This will track the value of the meter as it changes.
 		activity = _activity;
 		
 		//Must find the UI components in order to change them
-		textViewHungerPercentage = (TextView) activity.findViewById(R.id.textViewHungerPercentage);
-		progressBarHunger = (ProgressBar) activity.findViewById(R.id.progressBarHunger);
+		//textViewHungerPercentage = (TextView) activity.findViewById(R.id.textViewHungerPercentage);
+		//progressBarHunger = (ProgressBar) activity.findViewById(R.id.progressBarHunger);
 		
 		tracking = true;
 		//Create a new thread in order to actually run the cat's Hunger simulation
@@ -62,8 +60,7 @@ public class CatHunger extends Meter {
 		}).start();
 		
 	}
-
-	@Override
+	
 	public void stopTracking() {
 		tracking = false;
 	}

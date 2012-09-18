@@ -60,35 +60,5 @@ public class CatHearts extends Meter {
 	public void stopTracking() {
 		tracking = false;
 	}
-	
-	// Incrementing methods (with polymorphism)
-	public void increment() {
-		if (value < maxValue) {
-			value += incrementAmount;
-		}
-	}
-	public void increment(int i) {
-		if (value + i <= maxValue) {
-			value += i;
-		}
-		else {
-			value = maxValue;
-		}
-	}
-	
-	// Decrementing methods (with polymorphism)
-	public void decrement() {
-		if (value > minValue) {
-			value -= incrementAmount;
-		}
-	}
-	public void decrement(int i) {
-		if (value >= i) {
-			value -= i;
-		}
-		else {
-			value = minValue;
-		}
-	}
 
 }
