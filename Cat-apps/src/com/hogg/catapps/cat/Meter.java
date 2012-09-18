@@ -36,7 +36,46 @@ public abstract class Meter {
 	public int getValue() {
 		return value;
 	}
+<<<<<<< catsim
 	public String toString() {
 		return Integer.toString(value);
+=======
+<<<<<<< HEAD
+	
+	
+	// Incrementing methods (with polymorphism)
+	public void increment() {
+		//Make sure the value does not exceed the max value
+		if ((value + incrementAmount) <= maxValue ) {
+			value += incrementAmount;
+		}
+	}
+	
+	public void increment(int i) {
+		if (value + i <= maxValue) {
+			value += i;
+		} else {
+			value = maxValue;
+		}
+	}
+
+	// Decrementing methods (with polymorphism)
+	public void decrement() {
+		//Make sure the value does not equal less than the min value
+		if ((value - incrementAmount) >= minValue )
+			value -= incrementAmount;
+	}
+	
+	public void decrement(int i) {
+		if (value - i >= minValue) {
+			value -= i;
+		} else {
+			value = minValue;
+		}
+=======
+	public String toString() {
+		return Integer.toString(value);
+>>>>>>> Added some functionality and initial Player class
+>>>>>>> local
 	}
 }
