@@ -21,7 +21,7 @@ import android.app.Activity;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-public class CatThirst extends Meter{
+public class CatThirst extends Meter {
 	ProgressBar progressBarThirst;
 	TextView textViewThirstPercentage;
 	
@@ -29,14 +29,14 @@ public class CatThirst extends Meter{
 	double moodPercentageVariable = 0.10; 
 		
 	
-	CatThirst(int initThirst, int incAmount) {
+	public CatThirst(int initThirst, int incAmount) {
 		value = initThirst;
 		incrementAmount = incAmount;
 	}
 
 	protected void update() {
 		progressBarThirst.setProgress(getValue());
-		textViewThirstPercentage.setText(Integer.toString(getValue()) + "%");
+		textViewThirstPercentage.setText(this + "%");
 	}
 
 	public void startTracking(Activity _activity) {
@@ -44,8 +44,8 @@ public class CatThirst extends Meter{
 		activity = _activity;
 		
 		//Must find the UI components in order to change them
-		//textViewThirstPercentage = (TextView) activity.findViewById(R.id.textViewThirstPercentage);
-		//progressBarThirst = (ProgressBar) activity.findViewById(R.id.progressBarThirst);
+		textViewThirstPercentage = (TextView) activity.findViewById(R.id.textViewThirstPercentage);
+		progressBarThirst = (ProgressBar) activity.findViewById(R.id.progressBarThirst);
 		
 		tracking = true;
 		//Create a new thread in order to actually run the cat's Thirst simulation

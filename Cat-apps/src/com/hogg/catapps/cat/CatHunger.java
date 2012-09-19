@@ -22,7 +22,6 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 public class CatHunger extends Meter {
-	
 	ProgressBar progressBarHunger;
 	TextView textViewHungerPercentage;
 	
@@ -37,7 +36,7 @@ public class CatHunger extends Meter {
 	protected void update() {
 		//Need to update the progress bar and the text view.
 		progressBarHunger.setProgress(getValue());
-		textViewHungerPercentage.setText(Integer.toString(getValue()) + "%");
+		textViewHungerPercentage.setText(this + "%");
 	}
 
 	public void startTracking(Activity _activity) {
@@ -45,8 +44,8 @@ public class CatHunger extends Meter {
 		activity = _activity;
 		
 		//Must find the UI components in order to change them
-		//textViewHungerPercentage = (TextView) activity.findViewById(R.id.textViewHungerPercentage);
-		//progressBarHunger = (ProgressBar) activity.findViewById(R.id.progressBarHunger);
+		textViewHungerPercentage = (TextView) activity.findViewById(R.id.textViewHungerPercentage);
+		progressBarHunger = (ProgressBar) activity.findViewById(R.id.progressBarHunger);
 		
 		tracking = true;
 		//Create a new thread in order to actually run the cat's Hunger simulation

@@ -38,7 +38,7 @@ public class CatHygiene extends Meter {
 	protected void update() {
 		//Need to update, first, the progress bar, then the text view.
 		progressBarHygiene.setProgress(getValue());
-		textViewHygienePercentage.setText(Integer.toString(getValue()) + "%");
+		textViewHygienePercentage.setText(this + "%");
 	}
 
 	public void startTracking(Activity _activity) {

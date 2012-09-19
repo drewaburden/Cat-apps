@@ -28,6 +28,9 @@ public class Cat {
 	public Cat(String _name, int initHearts, Sex _sex) {
 		// Initialize hearts with a specified initial value and an increment/decrement value of 5
 		hearts = new CatHearts(initHearts, 5);
+		hunger = new CatHunger(100, 1);
+		thirst = new CatThirst(100, 1);
+		mood = new CatMood(100, 1);
 		
 		sex = _sex;
 	}
@@ -35,14 +38,24 @@ public class Cat {
 	// Start tracking any meters
 	public void start(Activity activity) {
 		hearts.startTracking(activity); // Hearts meter
+		hunger.startTracking(activity); // Hunger meter
+		thirst.startTracking(activity); // Thirst meter
+		mood.startTracking(activity); // Mood meter
+	}
+	
+	public void stop() {
+		hearts.stopTracking(); // Hearts meter
+		hunger.stopTracking(); // Hunger meter
+		thirst.stopTracking(); // Thirst meter
+		mood.stopTracking(); // Mood meter		
 	}
 	
 	// Update all meters
 	public void update() {
 		updateHearts();
-		//updateHunger();
-		//updateThirst();
-		//updateMood();
+		updateHunger();
+		updateThirst();
+		updateMood();
 	}
 	// Update hearts meter
 	public void updateHearts() {

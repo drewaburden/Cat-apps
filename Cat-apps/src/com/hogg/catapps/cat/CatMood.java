@@ -24,7 +24,7 @@ import android.widget.TextView;
 public class CatMood extends Meter {
 	
 	ProgressBar progressBarMood;
-	TextView textViewMoodPercentage;
+	TextView textViewMoodStatus;
 	
 	public CatMood(int initMood, int incAmount) {
 		value = initMood;
@@ -34,7 +34,7 @@ public class CatMood extends Meter {
 	protected void update() {
 		//Need to update, first, the progress bar, then the text view.
 		progressBarMood.setProgress(getValue());
-		textViewMoodPercentage.setText(Integer.toString(getValue()) + "%");
+		textViewMoodStatus.setText(Mood.HAPPY.toString());
 	}
 
 	public void startTracking(Activity _activity) {
@@ -42,8 +42,8 @@ public class CatMood extends Meter {
 		activity = _activity;
 		
 		//Must find the UI components in order to change them
-		//textViewMoodPercentage = (TextView) activity.findViewById(R.id.textViewMoodPercentage);
-		//progressBarMood = (ProgressBar) activity.findViewById(R.id.progressBarMood);
+		textViewMoodStatus = (TextView) activity.findViewById(R.id.textViewMoodStatus);
+		progressBarMood = (ProgressBar) activity.findViewById(R.id.progressBarMood);
 		
 		tracking = true;
 		//Create a new thread in order to actually run the cat's Mood simulation
