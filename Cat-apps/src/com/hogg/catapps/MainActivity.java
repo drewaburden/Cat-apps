@@ -14,10 +14,7 @@
 
 package com.hogg.catapps;
 
-import java.util.Random;
-
 import com.hogg.catapps.background.BackgroundSleepThread;
-import com.hogg.catapps.cat.Cat;
 import com.hogg.catapps.cat.Sex;
 
 import android.os.Bundle;
@@ -30,36 +27,39 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 public class MainActivity extends Activity {
-	Cat cat; // This holds all the data for our cat
-
-	// Initialize the activity
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		
-		// Set up our cat and start tracking and updating its meters
-		// Give the cat a random sex (this is just temporary).
-		Random rand = new Random();
-		Sex s;
-		if (rand.nextBoolean()) {
-			s = Sex.MALE;
-		}
-		else {
-			s = Sex.FEMALE;
-		}
-		cat = new Cat(getString(R.string.catName), 0, s);
-		cat.start(this);
-		cat.update();
-		
 		// Display the correct sex icon depending on what sex the cat is.
 		ImageView imageViewSex = (ImageView) findViewById(R.id.imageViewSex);
-		if (cat.getSex() == Sex.MALE) {
+		if (Init.cat.getSex() == Sex.MALE) {
 			imageViewSex.setImageResource(R.drawable.ic_male);
 		}
 		else {
 			imageViewSex.setImageResource(R.drawable.ic_female);
 		}
+	}
+	
+	@Override
+	public void onPause() {
+		super.onPause();
+		
+		// Stop tracking all meters.
+		Init.cat.stopTracking();
+	}
+	
+	@Override
+	public void onResume() {
+		super.onResume();
+		
+		// Start tracking all the meters and update their displays.
+		Init.cat.startHearts(this, R.id.progressBarHearts, R.id.textViewHeartsPercentage);
+		Init.cat.startMood(this, R.id.progressBarMood, R.id.textViewMoodStatus);
+		Init.cat.startHunger(this, R.id.progressBarHunger, R.id.textViewHungerPercentage);
+		Init.cat.startThirst(this, R.id.progressBarThirst, R.id.textViewThirstPercentage);
+		Init.cat.update();
 	}
 
 	// Create the menu for the activity
@@ -88,8 +88,8 @@ public class MainActivity extends Activity {
 		final TextView textViewMeow = (TextView) findViewById(R.id.textViewMeow);
 		
 		// Increase the amount of hearts and update the display
-		cat.hearts.increment();
-		cat.hearts.update();
+		Init.cat.hearts.increment();
+		Init.cat.updateHearts();
 
 		// Only if the TextView is invisible
 		if (textViewMeow.getVisibility() != View.VISIBLE) {

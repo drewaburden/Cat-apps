@@ -25,25 +25,34 @@ public class Cat {
 	public CatThirst thirst;
 	public CatMood mood;
 	
-	public Cat(String _name, int initHearts, Sex _sex) {
-		// Initialize hearts with a specified initial value and an increment/decrement value of 5
-		hearts = new CatHearts(initHearts, 5);
-		hunger = new CatHunger(100, 1);
-		thirst = new CatThirst(100, 1);
-		mood = new CatMood(100, 1);
-		
+	public Cat(String _name, Sex _sex, int initHearts, int initMood, int initHunger, int initThirst) {
+		name = _name;
 		sex = _sex;
+		
+		// Initialize meters with specified initial values and an increment/decrement values
+		hearts = new CatHearts(initHearts, 5);
+		mood = new CatMood(initMood, 1);
+		hunger = new CatHunger(initHunger, 1);
+		thirst = new CatThirst(initThirst, 1);
 	}
 	
-	// Start tracking any meters
-	public void start(Activity activity) {
-		hearts.startTracking(activity); // Hearts meter
-		hunger.startTracking(activity); // Hunger meter
-		thirst.startTracking(activity); // Thirst meter
-		mood.startTracking(activity); // Mood meter
+	public void startHearts(Activity activity, int progressBar, int textView) {
+		hearts.startTracking(activity, progressBar, textView);
 	}
 	
-	public void stop() {
+	public void startMood(Activity activity, int progressBar, int textView) {
+		mood.startTracking(activity, progressBar, textView);
+	}
+	
+	public void startHunger(Activity activity, int progressBar, int textView) {
+		hunger.startTracking(activity, progressBar, textView);
+	}
+	
+	public void startThirst(Activity activity, int progressBar, int textView) {
+		thirst.startTracking(activity, progressBar, textView);
+	}
+	
+	public void stopTracking() {
 		hearts.stopTracking(); // Hearts meter
 		hunger.stopTracking(); // Hunger meter
 		thirst.stopTracking(); // Thirst meter

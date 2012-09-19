@@ -18,29 +18,76 @@
 package com.hogg.catapps.cat;
 
 import android.app.Activity;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 
 // This is used as a base class for any type of meter that needs to be shown to the user
-public abstract class Meter {
+public class Meter {
 	Activity activity; // What activity the UI components are in
+	ProgressBar progressBar; // ProgressBar
+	TextView textView; // ProgressBar's percentage display
 	int minValue = 0;
 	int maxValue = 100;
 	int incrementAmount = 1;
-	int updateWaitTime = 500; // Milliseconds to wait before updating in the tracking thread
+	int updateWaitTime = 1000; // Milliseconds to wait before updating in the tracking thread
+	Thread thread;	// Since most meters' values will be constantly changing, this variable will hold the thread that will be updating the values in the background.
+	volatile boolean tracking = false; // This variable will be set to false when not tracking
+	int value = 0;	// This variable holds the core value of the meter, whatever that may be implemented to represent.
 	
-	// Since most meters' values will be constantly changing, this variable will
-	// determine whether or not the background meter updating should be running.
-	boolean tracking = false;
-	
-	// This variable holds the core value of the meter,
-	// whatever that may be implemented to represent.
-	int value = 0;
+	public Meter(int initValue, int incAmount) {
+		value = initValue;
+		incrementAmount = incAmount;
+	}	
 	
 	// Update the display of the meter
-	protected abstract void update();
+	public void update() {
+		// Update the progressBar's display
+		progressBar.setProgress(getValue());
+		// Update the progressBar's percentage display
+		textView.setText(this + "%");
+	}
 	
-	// Start the looping thread to periodically change the value of the meter 
-	public abstract void startTracking(Activity activity);
-	public abstract void stopTracking();
+	// Start the looping thread to periodically change the value of the meter  
+	public void startTracking(Activity _activity, int _progressBar, int _textView) {
+		activity = _activity; // What activity the UI components are in
+		
+		// Find our UI components in the activity so we can manipulate them
+		textView = (TextView) activity.findViewById(_textView);
+		progressBar = (ProgressBar) activity.findViewById(_progressBar);
+		tracking = true;
+		Runnable r = new Runnable() {
+			public void run() {
+				while(tracking) {
+					try {
+						Thread.sleep(updateWaitTime);
+					}
+					// If tracking had been stopped while the sleep method
+					// was waiting, we don't want to run the commands.
+					catch (InterruptedException e) {
+						break;
+					}
+					activity.runOnUiThread(new Runnable() {
+						public void run() {
+							// After waiting, decrement the meter and update its display
+							decrement();
+							update();
+						}
+					});
+				}
+			}
+		};
+		thread = new Thread(r);
+		thread.start();
+	}
+	
+	public void stopTracking() {
+		tracking = false;
+		// Interrupt the thread because there is a chance that the tracking variable
+		// won't work immediately. If this happens, another thread might be spawned
+		// on top of the previously running thread, causing the sleep to happen twice
+		// as often.
+		thread.interrupt();
+	}
 	
 	public void setUpdateWaitTime(int _updateWaitTime) {
 		updateWaitTime = _updateWaitTime;

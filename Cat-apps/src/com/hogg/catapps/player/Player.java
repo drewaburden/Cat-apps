@@ -22,7 +22,7 @@ import com.hogg.catapps.cat.Cat;
 public class Player {
 	String name = "";
 	int money = 0;
-	public ArrayList<Cat> cats; // Holds all of the players cats
+	public static ArrayList<Cat> cats; // Holds all of the players cats
 
 	public Player(String _name) {
 		name = _name;
