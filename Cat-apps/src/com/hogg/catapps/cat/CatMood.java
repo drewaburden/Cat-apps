@@ -27,6 +27,6 @@ public class CatMood extends Meter {
 		// Update the progressBar's display
 		progressBar.setProgress(getValue());
 		// Update the progressBar's percentage display
-		textView.setText(Mood.HAPPY.toString());
+		textView.setText(Mood.CONTENT.toString());
 	}
 }

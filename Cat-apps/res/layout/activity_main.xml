@@ -22,7 +22,7 @@
         android:onClick="onCatButtonClick"
         android:scaleType="center"
         android:src="@drawable/ic_cat" />
-
+
     <TextView
         android:id="@+id/textViewMeow"
         android:layout_width="wrap_content"
@@ -30,171 +30,178 @@
         android:layout_centerHorizontal="true"
         android:layout_centerInParent="true"
         android:layout_centerVertical="true"
-        android:layout_marginTop="8pt"
+        android:layout_marginTop="18dp"
         android:text="@string/textViewMeow"
         android:textColor="#f4a2cd"
         android:textColorHint="@android:color/primary_text_light"
         android:textSize="@dimen/size_meow"
         android:visibility="invisible"
         tools:context=".MainActivity" />
-
+
     <ImageView
         android:id="@+id/imageViewHearts"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@+id/imageViewMood"
-        android:layout_marginBottom="4pt"
-        android:layout_marginLeft="12pt"
+        android:layout_marginBottom="@dimen/size_meter_spacing"
+        android:layout_marginLeft="@dimen/size_margin_left"
         android:contentDescription="@null"
         android:src="@drawable/ic_hearts" />
-
+
     <ProgressBar
         android:id="@+id/progressBarHearts"
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@id/imageViewHearts"
-        android:layout_marginBottom="1pt"
-        android:layout_marginLeft="8pt"
-        android:layout_marginRight="8pt"
+        android:layout_alignBottom="@+id/imageViewHearts"
+        android:layout_marginBottom="@dimen/size_meter_bar_vert_spacing"
+        android:layout_marginLeft="@dimen/size_meter_bar_horiz_spacing"
+        android:layout_marginRight="@dimen/size_meter_bar_horiz_spacing"
         android:layout_toLeftOf="@+id/textViewHeartsPercentage"
         android:layout_toRightOf="@+id/imageViewHearts"
-        android:max="100" />
-
-    <TextView
+        android:max="100" /><TextView
         android:id="@+id/textViewHeartsPercentage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/imageViewHearts"
         android:layout_alignParentRight="true"
-        android:layout_marginRight="12pt"
+        android:layout_marginRight="@dimen/size_margin_right"
         android:gravity="right"
-        android:minWidth="22pt"
+        android:minWidth="@dimen/size_meter_text_minwidth"
         android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textSize="@dimen/size_meter_text"
         android:visibility="visible" />
-
+
     <ImageView
         android:id="@+id/imageViewSex"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:layout_marginLeft="4pt"
-        android:layout_marginTop="4pt"
+        android:layout_marginLeft="@dimen/size_margin_left"
+        android:layout_marginTop="@dimen/size_margin_top"
         android:contentDescription="@null" />
-
+
     <TextView
         android:id="@+id/textViewName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignTop="@+id/imageViewSex"
-        android:layout_marginLeft="4pt"
+        android:layout_marginLeft="@dimen/size_sex_text_spacing"
         android:layout_toRightOf="@+id/imageViewSex"
         android:text="@string/catName"
         android:textColor="#ffffff"
-        android:textSize="7pt"
+        android:textSize="@dimen/size_sex_text"
         android:typeface="normal" />
-
+
     <ImageView
         android:id="@+id/imageViewThirst"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
-        android:layout_marginBottom="12pt"
-        android:layout_marginLeft="12pt"
+        android:layout_marginBottom="@dimen/size_margin_bottom"
+        android:layout_marginLeft="@dimen/size_margin_left"
         android:contentDescription="@null"
         android:src="@drawable/ic_thirst" />
-
+
     <ProgressBar
         android:id="@+id/progressBarThirst"
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@id/imageViewThirst"
-        android:layout_marginBottom="1pt"
-        android:layout_marginLeft="8pt"
-        android:layout_marginRight="8pt"
+        android:layout_marginBottom="@dimen/size_meter_bar_vert_spacing"
+        android:layout_marginLeft="@dimen/size_meter_bar_horiz_spacing"
+        android:layout_marginRight="@dimen/size_meter_bar_horiz_spacing"
         android:layout_toLeftOf="@+id/textViewThirstPercentage"
         android:layout_toRightOf="@+id/imageViewThirst"
         android:max="100" />
-
+
     <TextView
         android:id="@+id/textViewThirstPercentage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/imageViewThirst"
         android:layout_alignParentRight="true"
-        android:layout_marginRight="12pt"
+        android:layout_marginRight="@dimen/size_margin_right"
         android:gravity="right"
-        android:minWidth="22pt"
+        android:minWidth="@dimen/size_meter_text_minwidth"
         android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textSize="@dimen/size_meter_text"
         android:visibility="visible" />
-
+
     <ImageView
         android:id="@+id/imageViewHunger"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@+id/imageViewThirst"
         android:layout_alignParentLeft="true"
-        android:layout_marginBottom="4pt"
-        android:layout_marginLeft="12pt"
+        android:layout_marginBottom="@dimen/size_meter_spacing"
+        android:layout_marginLeft="@dimen/size_margin_left"
         android:contentDescription="@null"
         android:src="@drawable/ic_hunger" />
-
+
     <ProgressBar
         android:id="@+id/progressBarHunger"
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@id/imageViewHunger"
-        android:layout_marginBottom="1pt"
-        android:layout_marginLeft="8pt"
-        android:layout_marginRight="8pt"
+        android:layout_marginBottom="@dimen/size_meter_bar_vert_spacing"
+        android:layout_marginLeft="@dimen/size_meter_bar_horiz_spacing"
+        android:layout_marginRight="@dimen/size_meter_bar_horiz_spacing"
         android:layout_toLeftOf="@+id/textViewHungerPercentage"
         android:layout_toRightOf="@id/imageViewHunger"
         android:max="100" />
-
+
     <TextView
         android:id="@+id/textViewHungerPercentage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/imageViewHunger"
         android:layout_alignParentRight="true"
-        android:layout_marginRight="12pt"
+        android:layout_marginRight="@dimen/size_margin_right"
         android:gravity="right"
-        android:minWidth="22pt"
+        android:minWidth="@dimen/size_meter_text_minwidth"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:visibility="visible" /><ImageView
-        android:id="@+id/imageViewMood"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/imageViewHunger"
-        android:layout_marginBottom="4pt"
-        android:layout_marginLeft="12pt"
-        android:contentDescription="@null"
-        android:src="@drawable/ic_mood_happy" /><ProgressBar
+        android:textSize="@dimen/size_meter_text"
+        android:visibility="visible" />
+
+<ImageView
+    android:id="@+id/imageViewMood"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_above="@+id/imageViewHunger"
+    android:layout_marginBottom="@dimen/size_meter_spacing"
+    android:layout_marginLeft="@dimen/size_margin_left"
+    android:contentDescription="@null"
+    android:src="@drawable/ic_mood_content" />
+
+<ProgressBar
         android:id="@+id/progressBarMood"
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/imageViewMood"
-        android:layout_marginBottom="1pt"
-        android:layout_marginLeft="8pt"
-        android:layout_marginRight="8pt"
+        android:layout_marginBottom="@dimen/size_meter_bar_vert_spacing"
+        android:layout_marginLeft="@dimen/size_meter_bar_horiz_spacing"
+        android:layout_marginRight="@dimen/size_meter_bar_horiz_spacing"
         android:layout_toLeftOf="@+id/textViewMoodStatus"
         android:layout_toRightOf="@+id/imageViewMood"
         android:max="100" />
+
 <TextView
-        android:id="@+id/textViewMoodStatus"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/imageViewMood"
-        android:layout_alignParentRight="true"
-        android:layout_marginRight="12pt"
-        android:gravity="right"
-        android:minWidth="22pt"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:visibility="visible" />
+    android:id="@+id/textViewMoodStatus"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_alignBottom="@+id/imageViewMood"
+    android:layout_alignParentRight="true"
+    android:layout_marginRight="@dimen/size_margin_right"
+    android:gravity="right"
+    android:minWidth="@dimen/size_meter_text_minwidth"
+    android:textAppearance="?android:attr/textAppearanceLarge"
+    android:textSize="@dimen/size_meter_text"
+    android:visibility="visible" />
 
 </RelativeLayout>
