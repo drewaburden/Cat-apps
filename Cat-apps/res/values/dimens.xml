@@ -21,6 +21,6 @@
     <dimen name="size_margin_top">14dp</dimen>
     <dimen name="size_sex_text">14dp</dimen>
     <dimen name="size_meter_text_minwidth">58dp</dimen>
-    <dimen name="size_margin_left_landscape">50dp</dimen>
+    <dimen name="size_margin_middle">28dp</dimen>
 
 </resources>
