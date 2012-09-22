@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Project: CatApps
+  File: res/drawable/progress_drawable_hearts.xml
+  
+  Description: 
+  		Defines the progress drawable bitmap for our custom progress bar.
+  
+  Contributors:
+  		Drew Burden
+  
+  Copyright © 2012 Hogg Studios
+  All rights reserved.
+-->
+
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@android:id/background">
+        <clip><shape></shape></clip>
+    </item>
+    <item android:id="@android:id/secondaryProgress">
+        <clip><shape></shape></clip>
+    </item>
+    <item android:id="@android:id/progress">
+        <clip>
+	        <bitmap
+            	android:src="@drawable/progress_hearts"
+			/>
+    	</clip>
+    </item>
+</layer-list>

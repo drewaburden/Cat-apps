@@ -9,7 +9,7 @@
 <resources>
 
     <string name="app_name">CatNip</string>
-    <string name="textViewMeow">Meow!</string>
+    <string name="textMeow">Meow!</string>
     <string name="menu_settings">Settings</string>
     <string name="title_activity_main">CatNip</string>
     <string name="title_activity_settings">Settings</string>

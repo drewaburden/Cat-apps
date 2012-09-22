@@ -3,67 +3,71 @@
   File: res/layout/activity_main.xml
   
   Copyright © 2012 Hogg Studios
-  All rights reserved.
+  All rights reserved.
 -->
-<RelativeLayout xmlns:tools="http://schemas.android.com/tools"
+
+
+<RelativeLayout xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent" xmlns:android="http://schemas.android.com/apk/res/android">
 
     <ImageButton
-        android:id="@+id/imageButtonCat"
+        android:id="@+id/buttonCat"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/textViewMeow"
+        android:layout_above="@+id/textMeow"
         android:layout_centerHorizontal="true"
         android:layout_centerInParent="false"
         android:layout_centerVertical="false"
         android:background="@drawable/ic_cat"
-        android:contentDescription="@string/textViewMeow"
+        android:contentDescription="@string/textMeow"
         android:onClick="onCatButtonClick"
         android:scaleType="center"
         android:src="@drawable/ic_cat" />
-
+
     <TextView
-        android:id="@+id/textViewMeow"
+        android:id="@+id/textMeow"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_centerInParent="true"
         android:layout_centerVertical="true"
         android:layout_marginTop="18dp"
-        android:text="@string/textViewMeow"
+        android:text="@string/textMeow"
         android:textColor="#f4a2cd"
         android:textColorHint="@android:color/primary_text_light"
         android:textSize="@dimen/size_meow"
         android:visibility="invisible"
         tools:context=".MainActivity" />
-
+
     <ImageView
-        android:id="@+id/imageViewHearts"
+        android:id="@+id/imageHearts"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/imageViewMood"
+        android:layout_above="@+id/imageMood"
         android:layout_marginBottom="@dimen/size_meter_spacing"
         android:layout_marginLeft="@dimen/size_margin_left"
         android:contentDescription="@null"
         android:src="@drawable/ic_hearts" />
-
+
     <ProgressBar
-        android:id="@+id/progressBarHearts"
+        android:id="@+id/progressHearts"
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/imageViewHearts"
+        android:layout_alignBottom="@+id/imageHearts"
         android:layout_marginBottom="@dimen/size_meter_bar_vert_spacing"
-        android:layout_marginLeft="@dimen/size_meter_bar_horiz_spacing"
-        android:layout_marginRight="@dimen/size_meter_bar_horiz_spacing"
-        android:layout_toLeftOf="@+id/textViewHeartsPercentage"
-        android:layout_toRightOf="@+id/imageViewHearts"
-        android:max="100" /><TextView
-        android:id="@+id/textViewHeartsPercentage"
+        android:layout_toLeftOf="@+id/imageProgressHeartsRight"
+        android:layout_toRightOf="@+id/imageProgressHeartsLeft"
+        android:background="@drawable/progress_bg_hearts"
+        android:max="100"
+        android:progressDrawable="@drawable/progress_drawable_hearts" />
+
+    <TextView
+        android:id="@+id/textHeartsPercentage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/imageViewHearts"
+        android:layout_alignBottom="@id/progressHearts"
         android:layout_alignParentRight="true"
         android:layout_marginRight="@dimen/size_margin_right"
         android:gravity="right"
@@ -71,9 +75,9 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textSize="@dimen/size_meter_text"
         android:visibility="visible" />
-
+
     <ImageView
-        android:id="@+id/imageViewSex"
+        android:id="@+id/imageSex"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
@@ -81,21 +85,21 @@
         android:layout_marginLeft="@dimen/size_margin_left"
         android:layout_marginTop="@dimen/size_margin_top"
         android:contentDescription="@null" />
-
+
     <TextView
-        android:id="@+id/textViewName"
+        android:id="@+id/textName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/imageViewSex"
+        android:layout_alignTop="@+id/imageSex"
         android:layout_marginLeft="@dimen/size_sex_text_spacing"
-        android:layout_toRightOf="@+id/imageViewSex"
+        android:layout_toRightOf="@+id/imageSex"
         android:text="@string/catName"
         android:textColor="#ffffff"
         android:textSize="@dimen/size_sex_text"
         android:typeface="normal" />
-
+
     <ImageView
-        android:id="@+id/imageViewThirst"
+        android:id="@+id/imageThirst"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
@@ -103,26 +107,24 @@
         android:layout_marginBottom="@dimen/size_margin_bottom"
         android:layout_marginLeft="@dimen/size_margin_left"
         android:contentDescription="@null"
-        android:src="@drawable/ic_thirst" />
-
-    <ProgressBar
-        android:id="@+id/progressBarThirst"
+        android:src="@drawable/ic_thirst" /><ProgressBar
+        android:id="@+id/progressThirst"
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@id/imageViewThirst"
+        android:layout_alignBottom="@id/imageThirst"
         android:layout_marginBottom="@dimen/size_meter_bar_vert_spacing"
-        android:layout_marginLeft="@dimen/size_meter_bar_horiz_spacing"
-        android:layout_marginRight="@dimen/size_meter_bar_horiz_spacing"
-        android:layout_toLeftOf="@+id/textViewThirstPercentage"
-        android:layout_toRightOf="@+id/imageViewThirst"
-        android:max="100" />
-
+        android:layout_toLeftOf="@+id/imageProgressThirstRight"
+        android:layout_toRightOf="@+id/imageProgressThirstLeft"
+        android:background="@drawable/progress_bg_thirst"
+        android:max="100"
+        android:progressDrawable="@drawable/progress_drawable_thirst" />
+
     <TextView
-        android:id="@+id/textViewThirstPercentage"
+        android:id="@+id/textThirstPercentage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/imageViewThirst"
+        android:layout_alignBottom="@+id/progressThirst"
         android:layout_alignParentRight="true"
         android:layout_marginRight="@dimen/size_margin_right"
         android:gravity="right"
@@ -130,36 +132,36 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textSize="@dimen/size_meter_text"
         android:visibility="visible" />
-
+
     <ImageView
-        android:id="@+id/imageViewHunger"
+        android:id="@+id/imageHunger"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/imageViewThirst"
+        android:layout_above="@+id/imageThirst"
         android:layout_alignParentLeft="true"
         android:layout_marginBottom="@dimen/size_meter_spacing"
         android:layout_marginLeft="@dimen/size_margin_left"
         android:contentDescription="@null"
         android:src="@drawable/ic_hunger" />
-
+
     <ProgressBar
-        android:id="@+id/progressBarHunger"
+        android:id="@+id/progressHunger"
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@id/imageViewHunger"
+        android:layout_alignBottom="@id/imageHunger"
         android:layout_marginBottom="@dimen/size_meter_bar_vert_spacing"
-        android:layout_marginLeft="@dimen/size_meter_bar_horiz_spacing"
-        android:layout_marginRight="@dimen/size_meter_bar_horiz_spacing"
-        android:layout_toLeftOf="@+id/textViewHungerPercentage"
-        android:layout_toRightOf="@id/imageViewHunger"
-        android:max="100" />
-
+        android:layout_toLeftOf="@+id/imageProgressHungerRight"
+        android:layout_toRightOf="@+id/imageProgressHungerLeft"
+        android:background="@drawable/progress_bg_hunger"
+        android:max="100"
+        android:progressDrawable="@drawable/progress_drawable_hunger" />
+
     <TextView
-        android:id="@+id/textViewHungerPercentage"
+        android:id="@+id/textHungerPercentage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/imageViewHunger"
+        android:layout_alignBottom="@+id/progressHunger"
         android:layout_alignParentRight="true"
         android:layout_marginRight="@dimen/size_margin_right"
         android:gravity="right"
@@ -167,41 +169,114 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textSize="@dimen/size_meter_text"
         android:visibility="visible" />
-
-<ImageView
-    android:id="@+id/imageViewMood"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_above="@+id/imageViewHunger"
-    android:layout_marginBottom="@dimen/size_meter_spacing"
-    android:layout_marginLeft="@dimen/size_margin_left"
-    android:contentDescription="@null"
-    android:src="@drawable/ic_mood_content" />
 
-<ProgressBar
-        android:id="@+id/progressBarMood"
+    <ImageView
+        android:id="@+id/imageMood"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/imageHunger"
+        android:layout_marginBottom="@dimen/size_meter_spacing"
+        android:layout_marginLeft="@dimen/size_margin_left"
+        android:contentDescription="@null"
+        android:src="@drawable/ic_mood_content" />
+
+    <ProgressBar
+        android:id="@+id/progressMood"
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/imageViewMood"
+        android:layout_alignBottom="@+id/imageMood"
         android:layout_marginBottom="@dimen/size_meter_bar_vert_spacing"
+        android:layout_toLeftOf="@+id/imageProgressMoodRight"
+        android:layout_toRightOf="@+id/imageProgressMoodLeft"
+        android:background="@drawable/progress_bg_mood"
+        android:max="100"
+        android:progressDrawable="@drawable/progress_drawable_mood" />
+
+    <TextView
+        android:id="@+id/textMoodStatus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/progressMood"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="@dimen/size_margin_right"
+        android:gravity="right"
+        android:minWidth="@dimen/size_meter_text_minwidth"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textSize="@dimen/size_meter_text"
+        android:visibility="visible" />
+
+    <ImageView
+        android:id="@+id/imageProgressHeartsLeft"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/progressHearts"
         android:layout_marginLeft="@dimen/size_meter_bar_horiz_spacing"
+        android:layout_toRightOf="@id/imageHearts"
+        android:contentDescription="@null"
+        android:src="@drawable/progress_left" />
+
+    <ImageView
+        android:id="@+id/imageProgressHeartsRight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/progressHearts"
         android:layout_marginRight="@dimen/size_meter_bar_horiz_spacing"
-        android:layout_toLeftOf="@+id/textViewMoodStatus"
-        android:layout_toRightOf="@+id/imageViewMood"
-        android:max="100" />
-
-<TextView
-    android:id="@+id/textViewMoodStatus"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_alignBottom="@+id/imageViewMood"
-    android:layout_alignParentRight="true"
-    android:layout_marginRight="@dimen/size_margin_right"
-    android:gravity="right"
-    android:minWidth="@dimen/size_meter_text_minwidth"
-    android:textAppearance="?android:attr/textAppearanceLarge"
-    android:textSize="@dimen/size_meter_text"
-    android:visibility="visible" />
+        android:layout_toLeftOf="@id/textHeartsPercentage"
+        android:contentDescription="@null"
+        android:src="@drawable/progress_right" />
+
+    <ImageView
+        android:id="@+id/imageProgressMoodLeft"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/progressMood"
+        android:layout_marginLeft="@dimen/size_meter_bar_horiz_spacing"
+        android:layout_toRightOf="@id/imageMood"
+        android:contentDescription="@null"
+        android:src="@drawable/progress_left" />
+
+    <ImageView
+        android:id="@+id/imageProgressMoodRight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/progressMood"
+        android:layout_centerHorizontal="true"
+        android:layout_marginRight="@dimen/size_meter_bar_horiz_spacing"
+        android:layout_toLeftOf="@id/textMoodStatus"
+        android:contentDescription="@null"
+        android:src="@drawable/progress_right" /><ImageView
+        android:id="@+id/imageProgressHungerLeft"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/progressHunger"
+        android:layout_marginLeft="@dimen/size_meter_bar_horiz_spacing"
+        android:layout_toRightOf="@id/imageHunger"
+        android:contentDescription="@null"
+        android:src="@drawable/progress_left" /><ImageView
+        android:id="@+id/imageProgressHungerRight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/progressHunger"
+        android:layout_marginRight="@dimen/size_meter_bar_horiz_spacing"
+        android:layout_toLeftOf="@id/textHungerPercentage"
+        android:contentDescription="@null"
+        android:src="@drawable/progress_right" /><ImageView
+        android:id="@+id/imageProgressThirstLeft"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/progressThirst"
+        android:layout_marginLeft="@dimen/size_meter_bar_horiz_spacing"
+        android:layout_toRightOf="@id/imageThirst"
+        android:contentDescription="@null"
+        android:src="@drawable/progress_left" /><ImageView
+        android:id="@+id/imageProgressThirstRight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/progressThirst"
+        android:layout_marginRight="@dimen/size_meter_bar_horiz_spacing"
+        android:layout_toLeftOf="@id/textThirstPercentage"
+        android:contentDescription="@null"
+        android:src="@drawable/progress_right" />
 
 </RelativeLayout>

@@ -33,12 +33,12 @@ public class MainActivity extends Activity {
 		setContentView(R.layout.activity_main);
 		
 		// Display the correct sex icon depending on what sex the cat is.
-		ImageView imageViewSex = (ImageView) findViewById(R.id.imageViewSex);
+		ImageView imageSex = (ImageView) findViewById(R.id.imageSex);
 		if (Init.cat.getSex() == Sex.MALE) {
-			imageViewSex.setImageResource(R.drawable.ic_male);
+			imageSex.setImageResource(R.drawable.ic_male);
 		}
 		else {
-			imageViewSex.setImageResource(R.drawable.ic_female);
+			imageSex.setImageResource(R.drawable.ic_female);
 		}
 	}
 	
@@ -55,10 +55,10 @@ public class MainActivity extends Activity {
 		super.onResume();
 		
 		// Start tracking all the meters and update their displays.
-		Init.cat.startHearts(this, R.id.progressBarHearts, R.id.textViewHeartsPercentage);
-		Init.cat.startMood(this, R.id.progressBarMood, R.id.textViewMoodStatus);
-		Init.cat.startHunger(this, R.id.progressBarHunger, R.id.textViewHungerPercentage);
-		Init.cat.startThirst(this, R.id.progressBarThirst, R.id.textViewThirstPercentage);
+		Init.cat.startHearts(this, R.id.progressHearts, R.id.textHeartsPercentage);
+		Init.cat.startMood(this, R.id.progressMood, R.id.textMoodStatus);
+		Init.cat.startHunger(this, R.id.progressHunger, R.id.textHungerPercentage);
+		Init.cat.startThirst(this, R.id.progressThirst, R.id.textThirstPercentage);
 		Init.cat.update();
 	}
 
@@ -85,22 +85,22 @@ public class MainActivity extends Activity {
 
 	public void onCatButtonClick(View view) {
 		// Find the "Meow!" text's TextView so we can manipulate it
-		final TextView textViewMeow = (TextView) findViewById(R.id.textViewMeow);
+		final TextView textMeow = (TextView) findViewById(R.id.textMeow);
 		
 		// Increase the amount of hearts and update the display
 		Init.cat.hearts.increment();
 		Init.cat.updateHearts();
 
 		// Only if the TextView is invisible
-		if (textViewMeow.getVisibility() != View.VISIBLE) {
+		if (textMeow.getVisibility() != View.VISIBLE) {
 			// Make it visible
-			textViewMeow.setVisibility(View.VISIBLE);
+			textMeow.setVisibility(View.VISIBLE);
 
 			// Wait for .5 seconds (using threads so we don't freeze the UI)
 			// and then make the text invisible again.
 			Runnable makeTextInvisible = new Runnable() {
 				public void run() {
-					textViewMeow.setVisibility(View.INVISIBLE);
+					textMeow.setVisibility(View.INVISIBLE);
 				}
 			};
 			new BackgroundSleepThread(this, makeTextInvisible, 500);

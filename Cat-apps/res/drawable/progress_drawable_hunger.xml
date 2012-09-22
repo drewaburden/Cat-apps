@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Project: CatApps
+  File: res/drawable/progress_drawable_hunger.xml
+  
+  Description: 
+  		Defines the progress drawable bitmap for our custom progress bar.
+  
+  Contributors:
+  		Drew Burden
+  
+  Copyright © 2012 Hogg Studios
+  All rights reserved.
+-->
+
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@android:id/progress">
+        <clip>
+	        <bitmap
+            	android:src="@drawable/progress_hunger"
+			/>
+    	</clip>
+    </item>
+</layer-list>
