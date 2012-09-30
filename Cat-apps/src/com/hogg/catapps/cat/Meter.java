@@ -48,7 +48,7 @@ public class Meter {
 	// Update the display of the meter
 	public void update() {
 		// Update the progressBar's display
-		progressBar.setProgress((int) getValue());
+		progressBar.setProgress((int) Math.ceil(getValue()));
 		// Update the progressBar's percentage display
 		textView.setText(this + "%");
 	}
@@ -119,7 +119,7 @@ public class Meter {
 	}
 
 	public String toString() {
-		return Integer.toString((int) value);
+		return Integer.toString((int) Math.ceil(value));
 	}
 
 	// Incrementing methods (with polymorphism)
