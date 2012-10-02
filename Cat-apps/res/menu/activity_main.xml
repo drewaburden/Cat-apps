@@ -11,9 +11,9 @@
     <item
         android:id="@+id/menu_settings"
         android:onClick="onOptionsItemSelect"
-        android:orderInCategory="100"
         android:showAsAction="never"
         android:title="@string/menu_settings"
         android:visible="true"/>
+    <item android:id="@+id/menu_exit" android:title="@string/menu_exit" android:onClick="onOptionsItemSelect"></item>
 
 </menu>

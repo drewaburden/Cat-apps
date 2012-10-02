@@ -1,9 +1,9 @@
 /*******************************************************************************
  * Project: CatApps
- * File: src/com/hogg/catapps/cat/CatMood.java
+ * File: src/com/hogg/catapps/ui/meter/MoodMeter.java
  * 
  * Description: 
- * 		Implements the CatMood class. This hold the information about the
+ * 		Implements the MoodMeter class. This hold the information about the
  * 		cat's current mood level and manages the progress bar for it.
  * 
  * Contributors:
@@ -14,10 +14,12 @@
  * All rights reserved.
  ******************************************************************************/
 
-package com.hogg.catapps.cat;
+package com.hogg.catapps.ui.meter;
 
-public class CatMood extends Meter {
-	public CatMood(int initValue, int incAmount) {
+import com.hogg.catapps.cat.Mood;
+
+public class MoodMeter extends Meter {
+	public MoodMeter(int initValue, int incAmount) {
 		super(initValue, incAmount);
 	}
 	

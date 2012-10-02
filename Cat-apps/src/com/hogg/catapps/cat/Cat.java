@@ -15,25 +15,30 @@
 
 package com.hogg.catapps.cat;
 
+import com.hogg.catapps.ui.meter.HungerMeter;
+import com.hogg.catapps.ui.meter.MoodMeter;
+import com.hogg.catapps.ui.meter.ThirstMeter;
+import com.hogg.catapps.ui.meter.HeartsMeter;
+
 import android.app.Activity;
 
 public class Cat {
 	String name;
 	Sex sex;
-	public CatHearts hearts;
-	public CatHunger hunger;
-	public CatThirst thirst;
-	public CatMood mood;
+	public HeartsMeter hearts;
+	public HungerMeter hunger;
+	public ThirstMeter thirst;
+	public MoodMeter mood;
 	
 	public Cat(String _name, Sex _sex, int initHearts, int initMood, int initHunger, int initThirst) {
 		name = _name;
 		sex = _sex;
 		
 		// Initialize meters with specified initial values and an increment/decrement values
-		hearts = new CatHearts(initHearts, 5);
-		mood = new CatMood(initMood, 1);
-		hunger = new CatHunger(initHunger, 1);
-		thirst = new CatThirst(initThirst, 1);
+		hearts = new HeartsMeter(initHearts, 5);
+		mood = new MoodMeter(initMood, 1);
+		hunger = new HungerMeter(initHunger, 1);
+		thirst = new ThirstMeter(initThirst, 1);
 	}
 	
 	public void startHearts(Activity activity, int progressBar, int textView) {
@@ -53,10 +58,10 @@ public class Cat {
 	}
 	
 	public void stopTracking() {
-		hearts.stopTracking(); // Hearts meter
-		hunger.stopTracking(); // Hunger meter
-		thirst.stopTracking(); // Thirst meter
-		mood.stopTracking(); // Mood meter		
+		hearts.stopTracking(); // HeartsMeter meter
+		hunger.stopTracking(); // HungerMeter meter
+		thirst.stopTracking(); // ThirstMeter meter
+		mood.stopTracking(); // MoodMeter meter		
 	}
 	
 	// Update all meters

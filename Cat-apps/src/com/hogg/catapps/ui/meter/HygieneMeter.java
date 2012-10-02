@@ -1,9 +1,9 @@
 /*******************************************************************************
  * Project: CatApps
- * File: src/com/hogg/catapps/cat/CatHygiene.java
+ * File: src/com/hogg/catapps/ui/meter/HygieneMeter.java
  * 
  * Description: 
- * 		Implements the CatHygiene class. This hold the information about the
+ * 		Implements the HygieneMeter class. This hold the information about the
  * 		cat's current hygiene level and manages the progress bar for it.
  * 
  * Contributors:
@@ -14,14 +14,15 @@
  * All rights reserved.
  ******************************************************************************/
 
-package com.hogg.catapps.cat;
+package com.hogg.catapps.ui.meter;
 
-public class CatHygiene extends Meter {
+
+public class HygieneMeter extends Meter {
 	// Upon decrementing or incrementing the cat's mood will go up or down
 	// by moodPercentageVariable% of the incrementAmount
 	double moodPercentageVariable = 0.10; 		
 	
-	public CatHygiene(int initValue, int incAmount) {
+	public HygieneMeter(int initValue, int incAmount) {
 		super(initValue, incAmount);
 	}
 }

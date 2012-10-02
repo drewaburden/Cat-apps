@@ -4,7 +4,7 @@
  * 
  * Description: 
  * 		Defines the Mood enum. This defines all the possible states of the
- * 		cats' moods. 
+ * 		cats' moods along with methods to easily convert them to strings. 
  * 
  * Contributors:
  * 		Drew Burden

@@ -1,9 +1,9 @@
 /*******************************************************************************
  * Project: CatApps
- * File: src/com/hogg/catapps/cat/CatHearts.java
+ * File: src/com/hogg/catapps/ui/meter/HeartsMeter.java
  * 
  * Description: 
- * 		Implements the CatHearts class. This hold the information about the
+ * 		Implements the HeartsMeter class. This hold the information about the
  * 		cat's current heart level and manages the progress bar for it.
  * 
  * Contributors:
@@ -13,10 +13,11 @@
  * All rights reserved.
  ******************************************************************************/
 
-package com.hogg.catapps.cat;
+package com.hogg.catapps.ui.meter;
 
-public class CatHearts extends Meter {
-	public CatHearts(int initValue, int incAmount) {
+
+public class HeartsMeter extends Meter {
+	public HeartsMeter(int initValue, int incAmount) {
 		super(initValue, incAmount);
 	}
 }

@@ -1,10 +1,10 @@
 /*******************************************************************************
  * Project: CatApps
- * File: src/com/hogg/catapps/cat/CatThirst.java
+ * File: src/com/hogg/catapps/ui/meter/HungerMeter.java
  * 
  * Description: 
- * 		Implements the CatThirst class. This hold the information about the
- * 		cat's current thirst level and manages the progress bar for it.
+ * 		Implements the HungerMeter class. This hold the information about the
+ * 		cat's current hunger level and manages the progress bar for it.
  * 
  * Contributors:
  * 		James Garner
@@ -14,14 +14,15 @@
  * All rights reserved.
  ******************************************************************************/
 
-package com.hogg.catapps.cat;
+package com.hogg.catapps.ui.meter;
 
-public class CatThirst extends Meter {
+
+public class HungerMeter extends Meter {
 	// Upon decrementing or incrementing the cat's mood will go up or down
 	// by moodPercentageVariable% of the incrementAmount
-	double moodPercentageVariable = 0.10; 	
+	double moodPercentageVariable = 0.10; 
 	
-	public CatThirst(int initValue, int incAmount) {
+	public HungerMeter(int initValue, int incAmount) {
 		super(initValue, incAmount);
 	}
 }

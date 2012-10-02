@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content" >
+
+    <PreferenceCategory android:title="Gameplay" >
+        <CheckBoxPreference
+            android:key="hardcore_mode"
+            android:title="Hardcore mode" />
+    </PreferenceCategory>
+    <PreferenceCategory android:title="Advanced" >
+        <PreferenceScreen android:title="Report bug" >
+            <intent
+                android:action="android.intent.action.VIEW"
+                android:data="mailto:dremth@gmail.com?subject=CatNip%20Bug%20Report" >
+                <extra
+                    android:name="android.intent.extra.TEXT"
+                    android:value="Please describe the bug in detail: " />
+            </intent>
+        </PreferenceScreen>
+
+        <Preference
+            android:key="clear_data"
+            android:title="Clear cat data" />
+    </PreferenceCategory>
+    <PreferenceCategory android:title="Secrets" >
+        <CheckBoxPreference
+            android:key="hogg_mode"
+            android:title="Hogg mode" />
+        <CheckBoxPreference
+            android:key="schrodinger_mode"
+            android:title="Schrodinger&apos;s cat mode" />
+    </PreferenceCategory>
+
+</PreferenceScreen>

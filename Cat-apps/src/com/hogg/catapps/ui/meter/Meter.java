@@ -1,6 +1,6 @@
 /*******************************************************************************
  * Project: CatApps
- * File: src/com/hogg/catapps/cat/Meter.java
+ * File: src/com/hogg/catapps/ui/meter/Meter.java
  * 
  * Description: 
  * 		Implements the abstract class Meter. This is a base class to be used to
@@ -15,7 +15,7 @@
  * All rights reserved.
  ******************************************************************************/
 
-package com.hogg.catapps.cat;
+package com.hogg.catapps.ui.meter;
 
 import android.app.Activity;
 import android.widget.ProgressBar;

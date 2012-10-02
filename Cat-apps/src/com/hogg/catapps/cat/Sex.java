@@ -4,7 +4,7 @@
  * 
  * Description: 
  * 		Defines the Sex enum. This defines all the possible states of the
- * 		cats' sex. 
+ * 		cats' sex along with methods to easily convert them to strings. 
  * 
  * Contributors:
  * 		Drew Burden
