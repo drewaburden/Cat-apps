@@ -3,33 +3,36 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content" >
 
-    <PreferenceCategory android:title="Gameplay" >
+    <PreferenceCategory android:title="@string/pref_category_gameplay" >
         <CheckBoxPreference
             android:key="hardcore_mode"
-            android:title="Hardcore mode" />
+            android:title="@string/pref_hardcore_mode" />
     </PreferenceCategory>
-    <PreferenceCategory android:title="Advanced" >
-        <PreferenceScreen android:title="Report bug" >
+    <PreferenceCategory android:title="@string/pref_category_advanced" >
+        <PreferenceScreen android:title="@string/pref_report_bug" >
             <intent
                 android:action="android.intent.action.VIEW"
                 android:data="mailto:dremth@gmail.com?subject=CatNip%20Bug%20Report" >
                 <extra
                     android:name="android.intent.extra.TEXT"
-                    android:value="Please describe the bug in detail: " />
+                    android:value="@string/pref_report_bug_body" />
             </intent>
         </PreferenceScreen>
 
         <Preference
             android:key="clear_data"
-            android:title="Clear cat data" />
+            android:title="@string/pref_clear_data" />
     </PreferenceCategory>
-    <PreferenceCategory android:title="Secrets" >
+    <PreferenceCategory android:title="@string/pref_category_secrets" >
         <CheckBoxPreference
             android:key="hogg_mode"
-            android:title="Hogg mode" />
+            android:title="@string/pref_hogg_mode" />
         <CheckBoxPreference
             android:key="schrodinger_mode"
-            android:title="Schrodinger&apos;s cat mode" />
+            android:title="@string/pref_schrodinger_mode" />
+        <CheckBoxPreference
+            android:key="morse_mode"
+            android:title="@string/pref_morse_mode" />
     </PreferenceCategory>
 
 </PreferenceScreen>

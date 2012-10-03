@@ -17,7 +17,7 @@ package com.hogg.catapps.ui;
 import com.hogg.catapps.Init;
 import com.hogg.catapps.R;
 import com.hogg.catapps.background.BackgroundSleepThread;
-import com.hogg.catapps.cat.Sex;
+import com.hogg.catapps.cat.Setup;
 
 import android.os.Bundle;
 import android.preference.PreferenceActivity;
@@ -30,23 +30,29 @@ import android.content.SharedPreferences;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 public class MainActivity extends Activity {
+	SharedPreferences prefs;
+	Setup setup;
+	AlertDialog showing_diag;
+	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_main);	
+		setContentView(R.layout.activity_main);
 		
-		final SharedPreferences prefs = getSharedPreferences("Cat", Context.MODE_PRIVATE);
+		prefs = getSharedPreferences("cat", Context.MODE_PRIVATE);
 
+		setup = new Setup(this);
+		
 		// If the preferences are not set up yet
 		if (!prefs.getBoolean("setup", false)) {
-			setupCat(prefs);
+			setup.startWizard();
 		}
 		
-		updateSex(prefs);
+		setup.updateCat();
+		setup.updateActivity();
 	}
 	
 	@Override
@@ -55,6 +61,15 @@ public class MainActivity extends Activity {
 		
 		// Stop tracking all meters.
 		Init.cat.stopTracking();
+		
+		// If we have any dialogs showing, we need to dismiss them so memory doesn't leak
+		if (showing_diag != null && showing_diag.isShowing()) {
+			showing_diag.dismiss();
+		}
+		// If the preferences are not set up yet, we need to dismiss the dialogs that are undoubtedly showing
+		if (!prefs.getBoolean("setup", false)) {
+			setup.pauseDialogs();
+		}
 	}
 	
 	@Override
@@ -67,6 +82,11 @@ public class MainActivity extends Activity {
 		Init.cat.startHunger(this, R.id.progressHunger, R.id.textHungerPercentage);
 		Init.cat.startThirst(this, R.id.progressThirst, R.id.textThirstPercentage);
 		Init.cat.update();
+		
+		// If the preferences are not set up yet, we need to resume showing the dialogs for the setup
+		if (!prefs.getBoolean("setup", false)) {
+			setup.resumeDialogs();
+		}
 	}
 
 	// Create the menu for the activity
@@ -91,20 +111,20 @@ public class MainActivity extends Activity {
 			case R.id.menu_exit:
 				// Show a confirmation asking whether the user wants to exit the application
 				AlertDialog.Builder builder = new AlertDialog.Builder(this);
-				builder.setMessage("Are you sure you want to exit?")
-				       .setCancelable(false)
-				       .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+				builder.setMessage("Are you sure you want to exit?");
+				builder.setCancelable(false);
+				builder.setPositiveButton(getString(R.string.diag_yes), new DialogInterface.OnClickListener() {
 				           public void onClick(DialogInterface dialog, int id) {
 				                MainActivity.this.finish();
 				           }
-				       })
-				       .setNegativeButton("No", new DialogInterface.OnClickListener() {
+				       });
+				builder.setNegativeButton(getString(R.string.diag_no), new DialogInterface.OnClickListener() {
 				           public void onClick(DialogInterface dialog, int id) {
 				                dialog.cancel();
 				           }
 				       });
-				builder.create();
-				builder.show();
+				showing_diag = builder.create();
+				showing_diag.show();
 				break;
 			default:
 				break;
@@ -132,57 +152,6 @@ public class MainActivity extends Activity {
 				}
 			};
 			new BackgroundSleepThread(this, makeTextInvisible, 500);
-		}
-	}
-	
-	public void setupCat(final SharedPreferences prefs) {
-		final SharedPreferences.Editor editor = prefs.edit();
-		
-		// Ask the sex of the cat
-		AlertDialog.Builder builder = new AlertDialog.Builder(this);
-		builder.setTitle("Choose your cat's sex");
-		builder.setCancelable(false);
-		final CharSequence[] items = {"Male", "Female"};
-		builder.setSingleChoiceItems(items, -1, new DialogInterface.OnClickListener() {
-		    public void onClick(DialogInterface dialog, int item) {
-		    	if (item == 0) {
-		    		Init.cat.setSex(Sex.MALE);
-		    		editor.putString("sex", Sex.MALE.toString());
-		    		editor.commit();
-		    		updateSex(prefs);
-		    		dialog.dismiss();
-		    	}
-		    	else if (item == 1){
-		    		Init.cat.setSex(Sex.FEMALE);
-		    		editor.putString("sex", Sex.FEMALE.toString());
-		    		editor.commit();
-		    		updateSex(prefs);
-		    		dialog.dismiss();
-		    	}
-		    }
-		});
-		builder.create().show();
-		
-		editor.putBoolean("setup", true);
-		editor.commit();
-	}
-	
-	public void updateSex(final SharedPreferences prefs) {
-		// Determine the sex from the preferences
-		if (prefs.getString("sex", "Male").equals(Sex.MALE.toString())) {
-			Init.cat.setSex(Sex.MALE);
-		}
-		else {
-			Init.cat.setSex(Sex.FEMALE);
-		}
-		
-		// Display the correct sex icon depending on what sex the cat is.
-		ImageView imageSex = (ImageView) findViewById(R.id.imageSex);
-		if (Init.cat.getSex() == Sex.MALE) {
-			imageSex.setImageResource(R.drawable.ic_male);
-		}
-		else {
-			imageSex.setImageResource(R.drawable.ic_female);
 		}
 	}
 }

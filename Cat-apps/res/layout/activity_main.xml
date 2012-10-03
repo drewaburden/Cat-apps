@@ -3,7 +3,7 @@
   File: res/layout/activity_main.xml
   
   Copyright © 2012 Hogg Studios
-  All rights reserved.
+  All rights reserved.
 -->
 
 
@@ -39,7 +39,7 @@
         android:textSize="@dimen/size_meow"
         android:visibility="invisible"
         tools:context=".MainActivity" />
-
+
     <ImageView
         android:id="@+id/imageHearts"
         android:layout_width="wrap_content"
@@ -49,7 +49,7 @@
         android:layout_marginLeft="@dimen/size_margin_left"
         android:contentDescription="@null"
         android:src="@drawable/ic_hearts" />
-
+
     <ProgressBar
         android:id="@+id/progressHearts"
         style="?android:attr/progressBarStyleHorizontal"
@@ -62,7 +62,7 @@
         android:background="@drawable/progress_bg_hearts"
         android:max="100"
         android:progressDrawable="@drawable/progress_drawable_hearts" />
-
+
     <TextView
         android:id="@+id/textHeartsPercentage"
         android:layout_width="wrap_content"
@@ -75,7 +75,7 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textSize="@dimen/size_meter_text"
         android:visibility="visible" />
-
+
     <ImageView
         android:id="@+id/imageSex"
         android:layout_width="wrap_content"
@@ -93,7 +93,7 @@
         android:layout_alignTop="@+id/imageSex"
         android:layout_marginLeft="@dimen/size_sex_text_spacing"
         android:layout_toRightOf="@+id/imageSex"
-        android:text="@string/catName"
+        android:text="@string/default_cat_name"
         android:textColor="#ffffff"
         android:textSize="@dimen/size_sex_text"
         android:typeface="normal" />
@@ -119,7 +119,7 @@
         android:background="@drawable/progress_bg_thirst"
         android:max="100"
         android:progressDrawable="@drawable/progress_drawable_thirst" />
-
+
     <TextView
         android:id="@+id/textThirstPercentage"
         android:layout_width="wrap_content"
@@ -143,7 +143,7 @@
         android:layout_marginLeft="@dimen/size_margin_left"
         android:contentDescription="@null"
         android:src="@drawable/ic_hunger" />
-
+
     <ProgressBar
         android:id="@+id/progressHunger"
         style="?android:attr/progressBarStyleHorizontal"
@@ -156,7 +156,7 @@
         android:background="@drawable/progress_bg_hunger"
         android:max="100"
         android:progressDrawable="@drawable/progress_drawable_hunger" />
-
+
     <TextView
         android:id="@+id/textHungerPercentage"
         android:layout_width="wrap_content"
@@ -179,7 +179,7 @@
         android:layout_marginLeft="@dimen/size_margin_left"
         android:contentDescription="@null"
         android:src="@drawable/ic_mood_content" />
-
+
     <ProgressBar
         android:id="@+id/progressMood"
         style="?android:attr/progressBarStyleHorizontal"
@@ -192,7 +192,7 @@
         android:background="@drawable/progress_bg_mood"
         android:max="100"
         android:progressDrawable="@drawable/progress_drawable_mood" />
-
+
     <TextView
         android:id="@+id/textMoodStatus"
         android:layout_width="wrap_content"
@@ -225,7 +225,7 @@
         android:layout_toLeftOf="@id/textHeartsPercentage"
         android:contentDescription="@null"
         android:src="@drawable/progress_right" />
-
+
     <ImageView
         android:id="@+id/imageProgressMoodLeft"
         android:layout_width="wrap_content"
@@ -235,7 +235,7 @@
         android:layout_toRightOf="@id/imageMood"
         android:contentDescription="@null"
         android:src="@drawable/progress_left" />
-
+
     <ImageView
         android:id="@+id/imageProgressMoodRight"
         android:layout_width="wrap_content"

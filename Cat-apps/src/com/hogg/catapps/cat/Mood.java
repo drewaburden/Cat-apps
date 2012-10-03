@@ -15,30 +15,33 @@
 
 package com.hogg.catapps.cat;
 
+import com.hogg.catapps.Init;
+import com.hogg.catapps.R;
+
 public enum Mood {
 	HAPPY {
 		public String toString() {
-			return "Happy";
+			return Init.getAppContext().getString(R.string.cat_mood_happy);
 		}
 	},
 	CONTENT {
 		public String toString() {
-			return "Content";
+			return Init.getAppContext().getString(R.string.cat_mood_content);
 		}
 	},
 	SAD {
 		public String toString() {
-			return "Sad";
+			return Init.getAppContext().getString(R.string.cat_mood_sad);
 		}
 	},
 	MAD {
 		public String toString() {
-			return "Mad";
+			return Init.getAppContext().getString(R.string.cat_mood_mad);
 		}
 	},
 	DEAD {
 		public String toString() {
-			return "Dead";
+			return Init.getAppContext().getString(R.string.cat_mood_dead);
 		}
 	}
 }

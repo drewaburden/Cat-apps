@@ -31,7 +31,8 @@ import android.view.MenuItem;
 import android.support.v4.app.NavUtils;
 
 public class SettingsActivity extends PreferenceActivity {
-	static AlertDialog.Builder clearData_confirm;
+	static AlertDialog showing_diag;
+	static AlertDialog clear_data_diag;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -41,28 +42,48 @@ public class SettingsActivity extends PreferenceActivity {
 		getActionBar().setDisplayHomeAsUpEnabled(true);
 
 		// Set up the dialog for confirming whether the user wants to delete all his or her cat's data
-		clearData_confirm = new AlertDialog.Builder(this);
-		clearData_confirm.setMessage("Are you sure you want to delete your currently loaded cat's data? This cannot be undone.");
-		clearData_confirm.setCancelable(true);
-		clearData_confirm.setPositiveButton("Delete",
+		AlertDialog.Builder builder = new AlertDialog.Builder(this);
+		builder.setMessage(getString(R.string.diag_clear_data));
+		builder.setCancelable(true);
+		builder.setPositiveButton(getString(R.string.diag_delete),
 				new DialogInterface.OnClickListener() {
 					public void onClick(DialogInterface dialog, int id) {
 						SharedPreferences prefs = Init.getAppContext()
-								.getSharedPreferences("Cat",
+								.getSharedPreferences("cat",
 										Context.MODE_PRIVATE);
 						SharedPreferences.Editor editor = prefs.edit();
 						editor.clear();
 						editor.commit();
 						dialog.dismiss();
+						showing_diag = null;
 					}
 				});
-		clearData_confirm.setNegativeButton("Cancel",
+		builder.setNegativeButton(getString(R.string.diag_cancel),
 				new DialogInterface.OnClickListener() {
 					public void onClick(DialogInterface dialog, int id) {
 						dialog.cancel();
+						showing_diag = null;
 					}
 				});
-		clearData_confirm.create();
+		clear_data_diag = builder.create();
+	}
+	
+	@Override
+	public void onResume() {
+		super.onResume();
+		
+		if (showing_diag != null) {
+			showing_diag.show();
+		}
+	}
+	
+	@Override
+	public void onPause() {
+		super.onPause();
+		
+		if (showing_diag != null && showing_diag.isShowing()) {
+			showing_diag.dismiss();
+		}
 	}
 
 	@Override
@@ -89,7 +110,8 @@ public class SettingsActivity extends PreferenceActivity {
 			myPref.setOnPreferenceClickListener(new OnPreferenceClickListener() {
 				public boolean onPreferenceClick(Preference preference) {
 					// Show the confirmation dialog
-					clearData_confirm.show();
+					showing_diag = clear_data_diag;
+					showing_diag.show();
 					return true;
 				}
 			});

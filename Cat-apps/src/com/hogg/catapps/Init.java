@@ -46,7 +46,7 @@ public class Init extends Application {
 		else {
 			s = Sex.FEMALE;
 		}
-		cat = new Cat(getString(R.string.catName), s, 0, 100, 100, 100);
+		cat = new Cat(getString(R.string.default_cat_name), s, 0, 100, 100, 100);
 	}
 	
 	public static Context getAppContext() {

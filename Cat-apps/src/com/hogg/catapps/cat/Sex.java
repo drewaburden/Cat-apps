@@ -15,15 +15,18 @@
 
 package com.hogg.catapps.cat;
 
+import com.hogg.catapps.Init;
+import com.hogg.catapps.R;
+
 public enum Sex {
 	MALE {
 		public String toString() {
-			return "Male";
+			return Init.getAppContext().getString(R.string.cat_sex_male);
 		}
 	},
 	FEMALE {
 		public String toString() {
-			return "Female";
+			return Init.getAppContext().getString(R.string.cat_sex_female);
 		}
 	}
 }

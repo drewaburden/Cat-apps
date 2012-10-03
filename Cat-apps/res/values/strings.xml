@@ -7,13 +7,40 @@
 -->
 
 <resources>
-
     <string name="app_name">CatNip</string>
     <string name="textMeow">Meow!</string>
     <string name="menu_settings">Settings</string>
     <string name="title_activity_main">CatNip</string>
     <string name="title_activity_settings">Settings</string>
-    <string name="catName">Tomo</string>
     <string name="menu_exit">Exit</string>
-
+    <string name="default_cat_name">Tomo</string>
+    <string name="pref_category_gameplay">Gameplay</string>
+    <string name="pref_category_advanced">Advanced</string>
+    <string name="pref_category_secrets">Secrets</string>
+    <string name="pref_hardcore_mode">Hardcore mode</string>
+    <string name="pref_report_bug">Report bug</string>
+    <string name="pref_report_bug_body">Please describe the bug in detail: </string>
+    <string name="pref_clear_data">Clear cat data</string>
+    <string name="pref_hogg_mode">Hogg mode</string>
+    <string name="pref_schrodinger_mode">Schrodinger\'s cat mode</string>
+    <string name="pref_morse_mode">Morse mode</string>
+    <string name="diag_clear_data">Are you sure you want to delete your currently loaded cat\'s data? This cannot be undone.</string>
+    <string name="diag_enter_name">Enter a name for your cat</string>
+    <string name="toast_name_empty">You didn\'t enter a name for your cat</string>
+    <string name="toast_name_chars">Name must only contain alphanumeric characters, spaces, periods, apostrophes (\'), and hyphens (-)</string>
+    <string name="toast_name_length">Name must not be longer than 25 characters</string>
+    <string name="diag_choose_sex">Choose the sex of your cat</string>
+    <string name="diag_confirm_exit">Are you sure you want to exit?</string>
+    <string name="diag_yes">Yes</string>
+    <string name="diag_no">No</string>
+    <string name="diag_ok">OK</string>
+    <string name="diag_cancel">Cancel</string>
+    <string name="diag_delete">Delete</string>
+    <string name="cat_sex_male">Male</string>
+    <string name="cat_sex_female">Female</string>
+    <string name="cat_mood_happy">Happy</string>
+    <string name="cat_mood_content">Content</string>
+    <string name="cat_mood_sad">Sad</string>
+    <string name="cat_mood_mad">Mad</string>
+    <string name="cat_mood_dead">Dead</string>
 </resources>

@@ -58,7 +58,7 @@
         android:layout_alignTop="@+id/imageSex"
         android:layout_marginLeft="@dimen/size_sex_text_spacing"
         android:layout_toRightOf="@+id/imageSex"
-        android:text="@string/catName"
+        android:text="@string/default_cat_name"
         android:textColor="#ffffff"
         android:textSize="@dimen/size_sex_text"
         android:typeface="normal" />
