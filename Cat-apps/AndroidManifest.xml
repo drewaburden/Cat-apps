@@ -39,7 +39,7 @@
             android:label="@string/title_activity_settings" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.hogg.catapps.ui.MainActivity" />
+                android:value=".ui.MainActivity" />
         </activity>
     </application>
 

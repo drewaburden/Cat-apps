@@ -16,8 +16,8 @@ package com.hogg.catapps.ui;
 
 import com.hogg.catapps.Init;
 import com.hogg.catapps.R;
-import com.hogg.catapps.background.BackgroundSleepThread;
 import com.hogg.catapps.cat.Setup;
+import com.hogg.catapps.petting.PetListener;
 
 import android.os.Bundle;
 import android.preference.PreferenceActivity;
@@ -29,8 +29,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.TextView;
+import android.widget.RelativeLayout;
 
 public class MainActivity extends Activity {
 	SharedPreferences prefs;
@@ -54,6 +53,10 @@ public class MainActivity extends Activity {
 		// the Activity's UI components are up to date
 		setup.updateCat();
 		setup.updateActivity();
+		
+		//Need to start listener		
+		RelativeLayout petLayout = (RelativeLayout)findViewById(R.id.RelativeLayout1);
+		petLayout.setOnTouchListener(new PetListener(petLayout, this));
 	}
 	
 	@Override
@@ -129,30 +132,6 @@ public class MainActivity extends Activity {
 				break;
 			default:
 				break;
-		}
-	}
-
-	public void onCatButtonClick(View view) {
-		// Find the "Meow!" text's TextView so we can manipulate it
-		final TextView textMeow = (TextView) findViewById(R.id.textMeow);
-		
-		// Increase the amount of hearts and update the display
-		Init.cat.hearts.increment();
-		Init.cat.updateHearts();
-
-		// Only if the TextView is invisible
-		if (textMeow.getVisibility() != View.VISIBLE) {
-			// Make it visible
-			textMeow.setVisibility(View.VISIBLE);
-
-			// Wait for .5 seconds (using threads so we don't freeze the UI)
-			// and then make the text invisible again.
-			Runnable makeTextInvisible = new Runnable() {
-				public void run() {
-					textMeow.setVisibility(View.INVISIBLE);
-				}
-			};
-			new BackgroundSleepThread(this, makeTextInvisible, 500);
 		}
 	}
 }
