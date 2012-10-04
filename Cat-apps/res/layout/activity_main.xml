@@ -2,12 +2,17 @@
   Project: CatApps
   File: res/layout/activity_main.xml
   
+  Description: 
+  		Defines layout of all the UI components for MainActivity
+  
+  Contributors:
+  		Drew Burden
+  
   Copyright © 2012 Hogg Studios
   All rights reserved.
 -->
 
-
-<RelativeLayout xmlns:tools="http://schemas.android.com/tools"
+<RelativeLayout xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent" xmlns:android="http://schemas.android.com/apk/res/android">
 

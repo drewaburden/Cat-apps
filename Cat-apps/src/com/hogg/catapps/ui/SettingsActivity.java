@@ -72,6 +72,7 @@ public class SettingsActivity extends PreferenceActivity {
 	public void onResume() {
 		super.onResume();
 		
+		// If showing a dialog before we paused, show it again
 		if (showing_diag != null) {
 			showing_diag.show();
 		}
@@ -81,6 +82,7 @@ public class SettingsActivity extends PreferenceActivity {
 	public void onPause() {
 		super.onPause();
 		
+		// If showing a dialog, dismiss it to prevent memory leaks
 		if (showing_diag != null && showing_diag.isShowing()) {
 			showing_diag.dismiss();
 		}

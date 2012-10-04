@@ -1,3 +1,22 @@
+/*******************************************************************************
+ * Project: CatApps
+ * File: src/com/hogg/catapps/cat/Setup.java
+ * 
+ * Description: 
+ * 		Implements the cat's setup wizard that will walk the user through a
+ * 		number of dialogs that ask the user what to name the cat and what the
+ * 		sex of the cat is.
+ * 		Also, this class handles the loading of SharedPreferences pertaining to
+ * 		the cat, applying the preferences to the current cat, and updating the
+ * 		UI to reflect the loaded cat data.
+ * 
+ * Contributors:
+ * 		Drew Burden
+ * 
+ * Copyright © 2012 Hogg Studios
+ * All rights reserved.
+ ******************************************************************************/
+
 package com.hogg.catapps.cat;
 
 import com.hogg.catapps.Init;

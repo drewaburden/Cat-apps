@@ -16,8 +16,6 @@
 
 package com.hogg.catapps;
 
-import java.util.Random;
-
 import com.hogg.catapps.cat.Cat;
 import com.hogg.catapps.cat.Sex;
 
@@ -26,7 +24,7 @@ import android.content.Context;
 
 public class Init extends Application {
 	public static Cat cat; // Temporary. This holds our single cat (globally accessible). Later, a Player variable will be define here which will hold an ArrayList of Cats.
-	static Context context; //  
+	static Context context; // The stored Application's Context as a global variable 
 
 	// This runs only when the app is started from scratch.
 	// Essentially, this only happens when we don't already have the variables seen above initialized.
@@ -37,18 +35,10 @@ public class Init extends Application {
         context = getApplicationContext();
 		
 		// Set up our cat and start tracking and updating its meters
-		// Give the cat a random sex (this is just temporary).
-		Random rand = new Random();
-		Sex s;
-		if (rand.nextBoolean()) {
-			s = Sex.MALE;
-		}
-		else {
-			s = Sex.FEMALE;
-		}
-		cat = new Cat(getString(R.string.default_cat_name), s, 0, 100, 100, 100);
+		cat = new Cat(getString(R.string.default_cat_name), Sex.MALE, 0, 100, 100, 100);
 	}
 	
+	// Retrieve the Application's Context from anywhere
 	public static Context getAppContext() {
         return context;
     }

@@ -2,6 +2,12 @@
   Project: CatApps
   File: res/menu/activity_main.xml
   
+  Description: 
+  		Defines MainActivity's menu items
+  
+  Contributors:
+  		Drew Burden
+  
   Copyright © 2012 Hogg Studios
   All rights reserved.
 -->

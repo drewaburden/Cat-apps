@@ -45,12 +45,13 @@ public class MainActivity extends Activity {
 		prefs = getSharedPreferences("cat", Context.MODE_PRIVATE);
 
 		setup = new Setup(this);
-		
 		// If the preferences are not set up yet
 		if (!prefs.getBoolean("setup", false)) {
 			setup.startWizard();
 		}
 		
+		// This will make sure our preferences are loaded and
+		// the Activity's UI components are up to date
 		setup.updateCat();
 		setup.updateActivity();
 	}
@@ -62,11 +63,11 @@ public class MainActivity extends Activity {
 		// Stop tracking all meters.
 		Init.cat.stopTracking();
 		
-		// If we have any dialogs showing, we need to dismiss them so memory doesn't leak
+		// If any dialogs showing, dismiss them so memory doesn't leak
 		if (showing_diag != null && showing_diag.isShowing()) {
 			showing_diag.dismiss();
 		}
-		// If the preferences are not set up yet, we need to dismiss the dialogs that are undoubtedly showing
+		// If the preferences are not set up yet, dismiss the dialogs that are undoubtedly showing
 		if (!prefs.getBoolean("setup", false)) {
 			setup.pauseDialogs();
 		}
@@ -109,7 +110,7 @@ public class MainActivity extends Activity {
 				break;
 			// Exit option
 			case R.id.menu_exit:
-				// Show a confirmation asking whether the user wants to exit the application
+				// Create and show a confirmation asking whether the user wants to exit the application
 				AlertDialog.Builder builder = new AlertDialog.Builder(this);
 				builder.setMessage("Are you sure you want to exit?");
 				builder.setCancelable(false);

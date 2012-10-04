@@ -1,4 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+  Project: CatApps
+  File: res/xml/preferences.xml
+  
+  Description: 
+  		Defines all list items to be loaded in the settings screen's PreferenceFragment
+  
+  Contributors:
+  		Drew Burden
+  
+  Copyright © 2012 Hogg Studios
+  All rights reserved.
+-->
+
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content" >

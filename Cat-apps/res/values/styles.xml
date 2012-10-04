@@ -2,6 +2,13 @@
   Project: CatApps
   File: res/values/styles.xml
   
+  Description: 
+  		Defines all styles
+  		(Target API and other's not explicitly defined)
+  
+  Contributors:
+  		Drew Burden
+  
   Copyright © 2012 Hogg Studios
   All rights reserved.
 -->
