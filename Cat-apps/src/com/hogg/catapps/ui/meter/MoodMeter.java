@@ -9,6 +9,7 @@
  * Contributors:
  * 		James Garner
  * 		Drew Burden
+ * 		Daniel Thomas
  * 
  * Copyright © 2012 Hogg Studios
  * All rights reserved.
@@ -27,7 +28,7 @@ public class MoodMeter extends Meter {
 	@Override
 	public void update() {
 		// Update the progressBar's display
-		progressBar.setProgress(getValue());
+		progressBar.setProgress((int) getValue());
 		// Update the progressBar's percentage display
 		textView.setText(Mood.CONTENT.toString());
 	}

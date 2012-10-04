@@ -35,7 +35,7 @@ public class Init extends Application {
         context = getApplicationContext();
 		
 		// Set up our cat and start tracking and updating its meters
-		cat = new Cat(getString(R.string.default_cat_name), Sex.MALE, 0, 100, 100, 100);
+		cat = new Cat(getString(R.string.default_cat_name), Sex.MALE, 0, 100, 50, 50);
 	}
 	
 	// Retrieve the Application's Context from anywhere

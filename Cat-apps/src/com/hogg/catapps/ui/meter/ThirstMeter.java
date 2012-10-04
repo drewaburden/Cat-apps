@@ -9,6 +9,7 @@
  * Contributors:
  * 		James Garner
  * 		Drew Burden
+ * 		Daniel Thomas
  * 
  * Copyright © 2012 Hogg Studios
  * All rights reserved.
@@ -22,7 +23,7 @@ public class ThirstMeter extends Meter {
 	// by moodPercentageVariable% of the incrementAmount
 	double moodPercentageVariable = 0.10; 	
 	
-	public ThirstMeter(int initValue, int incAmount) {
+	public ThirstMeter(int initValue, double incAmount) {
 		super(initValue, incAmount);
 	}
 }
