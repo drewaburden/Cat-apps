@@ -112,7 +112,7 @@ public class Setup {
 		                if (!name.equals("") && !name.equals(" ")) {
 	                		if (name.length() <= 25) {
 	                			//if (name.matches("[A-Za-zÀ-ÖØ-öø-ÿ0-9&&[^_]\'-\\.\\s]*")) {
-	                			if (name.matches("[A-Za-zÀ-ÖØ-öø-ÿ0-9[^_]\\'\\-\\s]*")) {
+	                			if (name.matches("([A-Za-zÀ-ÖØ-öø-ÿ0-9\\.\\'-]*\\s*)*")) {
 	                				prefs_editor.putString("name", name);
 	                				prefs_editor.commit();
 	                				
