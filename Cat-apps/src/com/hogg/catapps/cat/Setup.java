@@ -59,7 +59,12 @@ public class Setup {
 	}
 	
 	public void resumeDialogs() {
-		showing_diag.show();
+		if (showing_diag != null) {
+			showing_diag.show();
+		}
+		else {
+			this.startWizard();
+		}
 	}
 	
 	public void startWizard() {
@@ -77,7 +82,6 @@ public class Setup {
 		// Create and set up edit box
 		final EditText input = new EditText(activity);
 		input.setSingleLine();
-		input.setText(entered_text.getString("entered_text", activity.getString(R.string.default_cat_name)));
 		input.setSelection(input.getText().length());
 		input.addTextChangedListener(new TextWatcher() {
 			public void onTextChanged(CharSequence s, int start, int before, int count) {
@@ -101,6 +105,7 @@ public class Setup {
 		// Handle OK button click
 		name_diag.setOnShowListener(new DialogInterface.OnShowListener() {
 		    public void onShow(DialogInterface dialog) {
+		    	input.setText(entered_text.getString("entered_text", activity.getString(R.string.default_cat_name)));
 		        Button ok = name_diag.getButton(AlertDialog.BUTTON_POSITIVE);
 		        ok.setOnClickListener(new View.OnClickListener() {
 		            public void onClick(View view) {
@@ -142,7 +147,7 @@ public class Setup {
 	
 	private void createSexDialog() {
 		// Ask the sex of the cat
-		AlertDialog.Builder builder = new AlertDialog.Builder(activity);
+		final AlertDialog.Builder builder = new AlertDialog.Builder(activity);
 		builder.setTitle(activity.getString(R.string.diag_choose_sex));
 		builder.setCancelable(false);
 		final CharSequence[] items = {Sex.MALE.toString(), Sex.FEMALE.toString()};
@@ -157,7 +162,8 @@ public class Setup {
 		    		updateCat();
 		    		updateActivity();
 		    		
-		    		dialog.dismiss();
+		    		sex_diag.dismiss();
+		    		showing_diag = null;
 		    	}
 		    	else if (item == 1){
 		    		Init.cat.setSex(Sex.FEMALE);
@@ -168,8 +174,10 @@ public class Setup {
 		    		updateCat();
 		    		updateActivity();
 		    		
-		    		dialog.dismiss();
-		    	}
+		    		sex_diag.dismiss();
+		    		
+		    		// In case the setup needs to be run again during the life of the application
+		    		showing_diag = name_diag;		    	}
 		    }
 		});
 		sex_diag = builder.create();

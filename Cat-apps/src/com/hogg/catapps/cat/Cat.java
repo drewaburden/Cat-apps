@@ -32,6 +32,7 @@ public class Cat {
 	public HungerMeter hunger;
 	public ThirstMeter thirst;
 	public MoodMeter mood;
+	public Simulation simulation;
 
 	public Cat(String _name, Sex _sex, int initHearts, int initMood,
 			int initHunger, int initThirst) {
@@ -47,16 +48,20 @@ public class Cat {
 
 		// the 36 is because 60 minutes in an hour times 60 seconds in a minute
 		// divided by 100 points in hunger
-		hunger = new HungerMeter(initHunger,
-				1.0 / (hardcoreHungerHours * 36 * hardcoreMultiplier));
+		//hunger = new HungerMeter(initHunger,
+		//		1.0 / (hardcoreHungerHours * 36 * hardcoreMultiplier));
+		hunger = new HungerMeter(initHunger, 0.5);
 
 		int hardcoreThirstHours = 24; // number of hours it takes thirst to get
 										// from 100 to 0 in hardcore mode
 
 		// the 36 is because 60 minutes in an hour times 60 seconds in a minute
 		// divided by 100 points in thirst
-		thirst = new ThirstMeter(initThirst,
-				1.0 / (hardcoreThirstHours * 36 * hardcoreMultiplier));
+		//thirst = new ThirstMeter(initThirst,
+		//		1.0 / (hardcoreThirstHours * 36 * hardcoreMultiplier));
+		thirst = new ThirstMeter(initThirst, 1);
+		
+		simulation = new Simulation();
 	}
 
 	// toggles hardcore mode on/off
@@ -84,7 +89,7 @@ public class Cat {
 	}
 
 	public void stopTracking() {
-		hearts.stopTracking(); // Hearts meter
+		//hearts.stopTracking(); // Hearts meter
 		hunger.stopTracking(); // Hunger meter
 		thirst.stopTracking(); // Thirst meter
 		mood.stopTracking(); // Mood meter

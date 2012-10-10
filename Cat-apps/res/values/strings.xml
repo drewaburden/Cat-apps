@@ -23,7 +23,13 @@
     <string name="pref_category_gameplay">Gameplay</string>
     <string name="pref_category_advanced">Advanced</string>
     <string name="pref_category_secrets">Secrets</string>
-    <string name="pref_hardcore_mode">Hardcore mode</string>
+    <string name="pref_difficulty">Difficulty</string>
+    <string name="pref_difficulty_easy">Easy</string>
+    <string name="pref_difficulty_normal">Normal</string>
+    <string name="pref_difficulty_hard">Hard</string>
+    <string name="pref_difficulty_hardcore">Hardcore</string>
+    <string name="pref_difficulty_default">@string/pref_difficulty_normal</string>
+    <string name="pref_notifications">Notifications</string>
     <string name="pref_report_bug">Report bug</string>
     <string name="pref_report_bug_body">Please describe the bug in detail: </string>
     <string name="pref_clear_data">Clear cat data</string>
@@ -49,4 +55,6 @@
     <string name="cat_mood_sad">Sad</string>
     <string name="cat_mood_mad">Mad</string>
     <string name="cat_mood_dead">Dead</string>
+    <string name="button_feed">Give Food\nFood left: </string>
+    <string name="button_water">Give Water\nWater left: </string>
 </resources>

@@ -15,9 +15,49 @@
 
 package com.hogg.catapps.ui.meter;
 
+import com.hogg.catapps.Init;
+
+import android.app.Activity;
+import android.widget.ProgressBar;
+import android.widget.TextView;
+
 
 public class HeartsMeter extends Meter {
 	public HeartsMeter(int initValue, int incAmount) {
 		super(initValue, incAmount);
+	}
+	
+	@Override
+	// Start the looping thread to periodically change the value of the meter
+	public void startTracking(Activity _activity, int _progressBar,
+			int _textView) {
+		activity = _activity; // What activity the UI components are in
+
+		// Find our UI components in the activity so we can manipulate them
+		textView = (TextView) activity.findViewById(_textView);
+		progressBar = (ProgressBar) activity.findViewById(_progressBar);
+		tracking = true;
+	}
+	
+	@Override
+	public void increment(double amount) {
+		super.increment(amount);
+		if (value + amount >= maxValue) {
+			setValue(minValue);
+			Init.player.food += 5;
+			Init.player.water += 5;
+			Init.player.updateButtonText();
+		}
+	}
+	
+	@Override
+	public void increment() {
+		super.increment();
+		if (value + incrementAmount >= maxValue) {
+			setValue(minValue);
+			Init.player.food += 5;
+			Init.player.water += 5;
+			Init.player.updateButtonText();
+		}
 	}
 }

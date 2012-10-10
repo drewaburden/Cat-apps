@@ -132,9 +132,9 @@ public class Meter {
 		}
 	}
 
-	public void increment(double i) {
-		if (value + i <= maxValue) {
-			value += i;
+	public void increment(double amount) {
+		if (value + amount <= maxValue) {
+			value += amount;
 		} else {
 			value = maxValue;
 		}
@@ -150,9 +150,9 @@ public class Meter {
 		}
 	}
 
-	public void decrement(double i) {
-		if (value - i > minValue) {
-			value -= i;
+	public void decrement(double amount) {
+		if (value - amount > minValue) {
+			value -= amount;
 		} else {
 			value = minValue;
 		}

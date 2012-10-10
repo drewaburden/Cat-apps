@@ -18,10 +18,19 @@
     android:layout_height="wrap_content" >
 
     <PreferenceCategory android:title="@string/pref_category_gameplay" >
-        <CheckBoxPreference
-            android:key="hardcore_mode"
-            android:title="@string/pref_hardcore_mode" />
+        <ListPreference android:key="difficulty"
+		    android:title="@string/pref_difficulty"
+		    android:summary="@string/pref_difficulty_default"
+		    android:entries="@array/pref_difficulties"
+		    android:entryValues="@array/pref_difficulties"
+		     android:defaultValue="@string/pref_difficulty_default" 
+		    android:dialogTitle="@string/pref_difficulty"
+		    android:persistent="true" />
     </PreferenceCategory>
+	    <CheckBoxPreference
+	            android:key="notifications"
+	            android:title="@string/pref_notifications"
+	            android:defaultValue="true" />
     <PreferenceCategory android:title="@string/pref_category_advanced" >
         <PreferenceScreen android:title="@string/pref_report_bug" >
             <intent

@@ -23,17 +23,21 @@ import android.preference.Preference;
 import android.preference.Preference.OnPreferenceClickListener;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceFragment;
+import android.preference.PreferenceManager;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
+import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
 import android.view.MenuItem;
 import android.support.v4.app.NavUtils;
 
 public class SettingsActivity extends PreferenceActivity {
 	static AlertDialog showing_diag;
 	static AlertDialog clear_data_diag;
-
+	OnSharedPreferenceChangeListener sharedPreferenceChangeListener;
+	static Preference difficultyPref;
+	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -76,6 +80,24 @@ public class SettingsActivity extends PreferenceActivity {
 		if (showing_diag != null) {
 			showing_diag.show();
 		}
+		
+		difficultyPref.setSummary(
+			PreferenceManager.getDefaultSharedPreferences(
+				Init.getAppContext()).getString(
+					"difficulty", getString(R.string.pref_difficulty_default
+				)
+			)
+		);
+		sharedPreferenceChangeListener = new OnSharedPreferenceChangeListener() {
+			public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {				
+		        // A preference value changes
+		        if (key.equals("difficulty")) {
+		            difficultyPref.setSummary(sharedPreferences.getString(key, getString(R.string.pref_difficulty_default)));
+		        }
+		    }
+		};
+		
+		PreferenceManager.getDefaultSharedPreferences(Init.getAppContext()).registerOnSharedPreferenceChangeListener(sharedPreferenceChangeListener);
 	}
 	
 	@Override
@@ -86,6 +108,8 @@ public class SettingsActivity extends PreferenceActivity {
 		if (showing_diag != null && showing_diag.isShowing()) {
 			showing_diag.dismiss();
 		}
+		
+		PreferenceManager.getDefaultSharedPreferences(Init.getAppContext()).unregisterOnSharedPreferenceChangeListener(sharedPreferenceChangeListener);
 	}
 
 	@Override
@@ -108,7 +132,7 @@ public class SettingsActivity extends PreferenceActivity {
 			addPreferencesFromResource(R.xml.preferences);
 
 			// Set up the click listener for the data clear button
-			Preference myPref = (Preference) findPreference("clear_data");
+			Preference myPref = findPreference("clear_data");
 			myPref.setOnPreferenceClickListener(new OnPreferenceClickListener() {
 				public boolean onPreferenceClick(Preference preference) {
 					// Show the confirmation dialog
@@ -117,6 +141,12 @@ public class SettingsActivity extends PreferenceActivity {
 					return true;
 				}
 			});
+			
+			difficultyPref = findPreference("difficulty");
+		}
+		
+		public Preference getDifficultyPreference() {
+			return findPreference("difficulty");
 		}
 	}
 }
