@@ -18,17 +18,13 @@ package com.hogg.catapps;
 
 import com.hogg.catapps.cat.Cat;
 import com.hogg.catapps.cat.Sex;
-<<<<<<< HEAD
 import com.hogg.catapps.player.Player;
-=======
 import com.hogg.catapps.simulation.Simulation;
->>>>>>> Simulation Push 1
 
 import android.app.Application;
 import android.content.Context;
 
 public class Init extends Application {
-<<<<<<< HEAD
 	public static Cat cat; // Temporary. This holds our single cat (globally accessible). Later, activity Player variable will be define here which will hold an ArrayList of Cats.
 	public static Player player; // Temporary.
 	static Context context; // The stored Application's Context as a global variable 
