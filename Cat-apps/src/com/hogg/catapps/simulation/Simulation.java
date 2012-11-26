@@ -4,19 +4,44 @@
  * 
  * Description: 
  * 		Simulation Thread
+ * 		This class creates a simulation of a state machine so that we may
+ * 		simulate a real cat and the events the cat does at any given time.
+ * 		For instance, this will enable us to graphically show the cat doing
+ * 		Various things such as standing, walking, sitting, playing, etc.
  * 
  * Contributors:
- * 		Drew Burden
+ * 		James Garner
  * 
  * Copyright © 2012 Hogg Studios
  * All rights reserved.
  ******************************************************************************/
+
+
+
+
+/*
+ * Note to other project members:
+ * This is the simulation, it does everything automatically. If we need to change the state a cat is in, we do it manually, and this will normalize it after.
+ * For instance, if at any time you need to break the cat out of a state and have them do something do the following:
+ * 		Init.simulation.interrupt();    					//This will ensure that we have control over the cat's behavior and that the state machine will 
+ * 															//not change the cats state while we are working
+ * 		...code here to do whatever you need to, probably have the cat bend over and eat
+ * 		Init.cat.setState(State.WHATEVER);					//Change the state in the cat's state field to whatever the cat should be doing after your code runs.
+ * 															//If for instance you are having the cat bend over to eat, after he eats, does he end up SITTING or STANDING
+ * 		Init.simulation = new Thread(new Simulation());		//The interrupt before made the thread stop, so we need a new one!
+ * 		Init.simulation.start();							//Start the thread so the cat can resume simulation
+ */
+
+
 package com.hogg.catapps.simulation;
 
 import java.util.Calendar;
 import java.util.Random;
 
 import android.util.Log;
+
+import com.hogg.catapps.Init;
+
 
 public class Simulation implements Runnable {
 
@@ -29,12 +54,10 @@ public class Simulation implements Runnable {
 		SLEEPING ("Sleeping"),
 		PLAYING ("Playing"),
 		EATING ("Eating"),
-		DRINKING ("Drinking");
-		
-		private final String name;
+		DRINKING ("Drinking"),
+		NOTHING ("Nothing");
 		
 		States(String s) {
-			this.name = s;
 		}
 	}
 	
@@ -78,22 +101,9 @@ public class Simulation implements Runnable {
 	int stateCount = 9;
 	int minimumTime = 5000;
 	
-	
-	public void run() {
-			
-		States currentState;
-		States nextState = States.STANDING;
-		//Need to actually run a simulation of a state machine for the cat's "lifecycle"
-		Log.i("Debug", "State machine has stated.");
-		
-		//Need to get a random number generator going
-		Calendar c = Calendar.getInstance();
-		Random numberGenerator = new Random(c.get(Calendar.SECOND));
-		int sleepTime;
-		int nextStateNum;
-		
-		
-		while(true) {		
+	public void sim(States currentState, States nextState, Random numberGenerator, int sleepTime, int nextStateNum) {
+		boolean isInterrupted = false;
+		while(!isInterrupted) {
 			try {
 				//Get random time to be in current state, up to one minute, 
 				sleepTime = numberGenerator.nextInt() % 60000;
@@ -109,18 +119,48 @@ public class Simulation implements Runnable {
 				
 				currentState = nextState;
 				nextState = RandomState(currentState, nextStateNum);
+				Init.cat.setState(currentState);
 				
-				Log.i("Debug", "The current state is: " + currentState.name);
-				Log.i("Debug", "The next state will be: " + nextState.name);
 				if(Thread.interrupted()) { return; }
 				Thread.sleep(sleepTime);
 				if(Thread.interrupted()) { return; }
 			}
 			catch (InterruptedException e) {
-				Log.i("Debug", "INTERRUPTED, BITCH. SHUTTING DOWN STATE MACHINE!");
-				return;
+				isInterrupted = true;
+				Log.i("Debug", "State machine interrupted");
 			}
 		}
+		return;
+	}
+	
+	public void run() {
+		States currentState;
+		States nextState;
+		Calendar c = Calendar.getInstance();
+		Random numberGenerator = new Random(c.get(Calendar.SECOND));
+		int sleepTime = 0;
+		int nextStateNum;
+		
+		//Log calls to test, comment out when not needed
+		Log.i("Debug", "Running state machine thread");
+		
+		//Check, first, that the cat is not already in a state
+		if(Init.cat.getState() == States.NOTHING) {
+			//If the cat is not in a state, then need to assign the current state to be nothing, and the next state to the default, standing.
+			currentState = States.NOTHING;
+			nextState = States.STANDING;
+			nextStateNum = 0;
+		} else {
+			//If the cat is already in a state, we are starting afresh from an interrupt.
+			//This means, grab the current state and find a random next state based on it.
+			nextStateNum = numberGenerator.nextInt() % 9;
+			currentState = Init.cat.getState();
+			nextState = RandomState(currentState, nextStateNum);
+		}
+		
+		//Once the state's have been detected, enter the simulation
+		sim(currentState, nextState, numberGenerator, sleepTime, nextStateNum);
+		Log.i("Debug", "State machine stopping");
 	}
 
 }

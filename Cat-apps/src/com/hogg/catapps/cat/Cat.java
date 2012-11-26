@@ -16,6 +16,7 @@
 
 package com.hogg.catapps.cat;
 
+import com.hogg.catapps.simulation.Simulation.States;
 import com.hogg.catapps.ui.meter.HungerMeter;
 import com.hogg.catapps.ui.meter.MoodMeter;
 import com.hogg.catapps.ui.meter.ThirstMeter;
@@ -33,16 +34,19 @@ public class Cat {
 	public ThirstMeter thirst;
 	public MoodMeter mood;
 	public Simulation simulation;
+	States currentState;
 
 	public Cat(String _name, Sex _sex, int initHearts, int initMood,
 			int initHunger, int initThirst) {
 		name = _name;
 		sex = _sex;
+		currentState = States.NOTHING;
 
 		// Initialize meters with specified initial values and an
 		hearts = new HeartsMeter(initHearts, 5);
 		mood = new MoodMeter(initMood, 1);
 
+		@SuppressWarnings("unused")
 		int hardcoreHungerHours = 48; // number of hours it takes hunger to get
 										// from 100 to 0 in hardcore mode
 
@@ -52,6 +56,7 @@ public class Cat {
 		//		1.0 / (hardcoreHungerHours * 36 * hardcoreMultiplier));
 		hunger = new HungerMeter(initHunger, 0.5);
 
+		@SuppressWarnings("unused")
 		int hardcoreThirstHours = 24; // number of hours it takes thirst to get
 										// from 100 to 0 in hardcore mode
 
@@ -143,5 +148,14 @@ public class Cat {
 
 	public Sex getSex() {
 		return sex;
+	}
+	
+	//Get and set currentState
+	public void setState(States _currentState) {
+		currentState = _currentState;
+	}
+	
+	public States getState() {
+		return currentState;
 	}
 }

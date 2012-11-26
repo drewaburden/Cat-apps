@@ -19,7 +19,6 @@ package com.hogg.catapps;
 import com.hogg.catapps.cat.Cat;
 import com.hogg.catapps.cat.Sex;
 import com.hogg.catapps.player.Player;
-import com.hogg.catapps.simulation.Simulation;
 
 import android.app.Application;
 import android.content.Context;
@@ -29,6 +28,7 @@ public class Init extends Application {
 	public static Player player; // Temporary.
 	static Context context; // The stored Application's Context as a global variable 
 	public static Thread simulation;
+	boolean simStart;
 
 	// This runs only when the app is started from scratch.
 	// Essentially, this only happens when we don't already have the variables seen above initialized.
@@ -40,10 +40,9 @@ public class Init extends Application {
 		
 		// Set up our cat and start tracking and updating its meters
 		player = new Player("");
-        simulation = new Thread(new Simulation());
-        simulation.start();
 		
         cat = new Cat(getString(R.string.default_cat_name), Sex.MALE, 0, 100, 50, 50);
+		
 		
 	}
 	

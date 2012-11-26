@@ -19,6 +19,7 @@ import com.hogg.catapps.R;
 import com.hogg.catapps.background.BackgroundSleepThread;
 import com.hogg.catapps.cat.PetListener;
 import com.hogg.catapps.cat.Setup;
+import com.hogg.catapps.simulation.Simulation;
 
 import android.os.Bundle;
 import android.preference.PreferenceActivity;
@@ -71,6 +72,9 @@ public class MainActivity extends Activity {
 		Init.cat.stopTracking();
 		Init.cat.simulation.stopTracking();
 		
+		//Interrupt the state machine simulation
+		Init.simulation.interrupt();
+		
 		// If any dialogs showing, dismiss them so memory doesn't leak
 		if (showing_diag != null && showing_diag.isShowing()) {
 			showing_diag.dismiss();
@@ -92,6 +96,10 @@ public class MainActivity extends Activity {
 		Init.cat.startThirst(this, R.id.progressThirst, R.id.textThirstPercentage);
 		Init.cat.simulation.startTracking(this, R.id.textMeow);
 		Init.cat.update();
+		
+		//A new thread must be started
+		Init.simulation = new Thread(new Simulation());
+        Init.simulation.start();
 		
 		Button foodButton = (Button) findViewById(R.id.button1);
 		Button waterButton = (Button) findViewById(R.id.button2);
