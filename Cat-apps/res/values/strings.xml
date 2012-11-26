@@ -20,6 +20,7 @@
     <string name="title_activity_settings">Settings</string>
     <string name="menu_exit">Exit</string>
     <string name="default_cat_name">Tomo</string>
+    <string name="default_money">0</string>
     <string name="pref_category_gameplay">Gameplay</string>
     <string name="pref_category_advanced">Advanced</string>
     <string name="pref_category_secrets">Secrets</string>

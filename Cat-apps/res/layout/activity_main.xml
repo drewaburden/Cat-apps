@@ -11,7 +11,7 @@
   Copyright © 2012 Hogg Studios
   All rights reserved.
 -->
-<RelativeLayout xmlns:tools="http://schemas.android.com/tools"
+<RelativeLayout xmlns:tools="http://schemas.android.com/tools"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/layoutMain"
     android:layout_width="match_parent"
@@ -25,10 +25,10 @@
         android:layout_centerHorizontal="true"
         android:layout_centerInParent="false"
         android:layout_centerVertical="false"
+        android:adjustViewBounds="true"
         android:contentDescription="@string/textMeow"
         android:scaleType="center"
-        android:src="@drawable/ic_cat_content"
-        android:adjustViewBounds="true" />
+        android:src="@drawable/ic_cat_content" />
 
     <TextView
         android:id="@+id/textMeow"
@@ -112,7 +112,9 @@
         android:layout_marginBottom="@dimen/size_margin_bottom"
         android:layout_marginLeft="@dimen/size_margin_left"
         android:contentDescription="@null"
-        android:src="@drawable/ic_thirst" /><ProgressBar
+        android:src="@drawable/ic_thirst" />
+
+    <ProgressBar
         android:id="@+id/progressThirst"
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="wrap_content"
@@ -250,7 +252,9 @@
         android:layout_marginRight="@dimen/size_meter_bar_horiz_spacing"
         android:layout_toLeftOf="@id/textMoodStatus"
         android:contentDescription="@null"
-        android:src="@drawable/progress_right" /><ImageView
+        android:src="@drawable/progress_right" />
+
+    <ImageView
         android:id="@+id/imageProgressHungerLeft"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -258,7 +262,9 @@
         android:layout_marginLeft="@dimen/size_meter_bar_horiz_spacing"
         android:layout_toRightOf="@id/imageHunger"
         android:contentDescription="@null"
-        android:src="@drawable/progress_left" /><ImageView
+        android:src="@drawable/progress_left" />
+
+    <ImageView
         android:id="@+id/imageProgressHungerRight"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -266,7 +272,9 @@
         android:layout_marginRight="@dimen/size_meter_bar_horiz_spacing"
         android:layout_toLeftOf="@id/textHungerPercentage"
         android:contentDescription="@null"
-        android:src="@drawable/progress_right" /><ImageView
+        android:src="@drawable/progress_right" />
+
+    <ImageView
         android:id="@+id/imageProgressThirstLeft"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -274,7 +282,9 @@
         android:layout_marginLeft="@dimen/size_meter_bar_horiz_spacing"
         android:layout_toRightOf="@id/imageThirst"
         android:contentDescription="@null"
-        android:src="@drawable/progress_left" /><ImageView
+        android:src="@drawable/progress_left" />
+
+    <ImageView
         android:id="@+id/imageProgressThirstRight"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -283,30 +293,55 @@
         android:layout_toLeftOf="@id/textThirstPercentage"
         android:contentDescription="@null"
         android:src="@drawable/progress_right" />
-
-        <Button
-            android:id="@+id/button1"
-            style="?android:attr/buttonStyleSmall"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_above="@+id/imageHearts"
-            android:layout_alignParentLeft="true"
-            android:layout_marginBottom="24dp"
-            android:layout_marginLeft="48dp"
-            android:onClick="onGiveFoodClick"
-            android:text="@string/button_feed" />
-
-        <Button
-            android:id="@+id/button2"
-            style="?android:attr/buttonStyleSmall"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_above="@+id/imageHearts"
-            android:layout_alignParentRight="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginBottom="24dp"
-            android:layout_marginRight="48dp"
-            android:onClick="onGiveWaterClick"
-            android:text="@string/button_water" />
+
+    <Button
+        android:id="@+id/button1"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/imageHearts"
+        android:layout_alignParentLeft="true"
+        android:layout_marginBottom="24dp"
+        android:layout_marginLeft="48dp"
+        android:onClick="onGiveFoodClick"
+        android:text="@string/button_feed" />
+
+    <Button
+        android:id="@+id/button2"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/imageHearts"
+        android:layout_alignParentRight="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="24dp"
+        android:layout_marginRight="48dp"
+        android:onClick="onGiveWaterClick"
+        android:text="@string/button_water" />
+
+    <TextView
+        android:id="@+id/textMoney"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="false"
+        android:layout_alignParentTop="false"
+        android:layout_alignTop="@+id/imageMoney"
+        android:layout_marginRight="@dimen/size_money_text_spacing"
+        android:layout_toLeftOf="@+id/imageMoney"
+        android:text="@string/default_money"
+        android:textColor="#ffffff"
+        android:textSize="@dimen/size_money_text"
+        android:typeface="normal" />
+
+    <ImageView
+        android:id="@+id/imageMoney"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginRight="@dimen/size_margin_right"
+        android:layout_marginTop="@dimen/size_margin_top"
+        android:contentDescription="@null"
+        android:src="@drawable/ic_money" />
 
 </RelativeLayout>

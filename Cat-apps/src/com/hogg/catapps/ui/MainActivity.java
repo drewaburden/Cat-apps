@@ -33,6 +33,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 public class MainActivity extends Activity {
 	SharedPreferences prefs;
@@ -94,7 +95,8 @@ public class MainActivity extends Activity {
 		
 		Button foodButton = (Button) findViewById(R.id.button1);
 		Button waterButton = (Button) findViewById(R.id.button2);
-		Init.player.startTracking(foodButton, waterButton);
+		TextView moneyText = (TextView) findViewById(R.id.textMoney);
+		Init.player.startTracking(foodButton, waterButton, moneyText);
 		Init.player.updateButtonText();
 		
 		// If the preferences are not set up yet, we need to resume showing the dialogs for the setup

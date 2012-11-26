@@ -24,8 +24,10 @@
     <dimen name="size_meter_spacing">10dp</dimen>
     <dimen name="size_meter_text">16dp</dimen>
     <dimen name="size_sex_text_spacing">8dp</dimen>
+    <dimen name="size_money_text_spacing">8dp</dimen>
     <dimen name="size_margin_top">14dp</dimen>
     <dimen name="size_sex_text">14dp</dimen>
+    <dimen name="size_money_text">14dp</dimen>
     <dimen name="size_meter_text_minwidth">58dp</dimen>
     <dimen name="size_margin_middle">28dp</dimen>
 

@@ -18,6 +18,7 @@ package com.hogg.catapps.player;
 import java.util.ArrayList;
 
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.hogg.catapps.Init;
 import com.hogg.catapps.R;
@@ -29,6 +30,7 @@ public class Player {
 	public static ArrayList<Cat> cats; // Holds all of the players cats
 	
 	Button foodButton, waterButton;
+	TextView moneyText;
 	public int food = 5;
 	public int water = 5;
 
@@ -36,9 +38,10 @@ public class Player {
 		name = _name;
 	}
 	
-	public void startTracking(Button _foodButton, Button _waterButton) {
+	public void startTracking(Button _foodButton, Button _waterButton, TextView _moneyText) {
 		foodButton = _foodButton;
 		waterButton = _waterButton;
+		moneyText = _moneyText;
 	}
 	
 	public void updateButtonText() {
@@ -56,10 +59,14 @@ public class Player {
 	
 	// Get and set money
 	public void setMoney(int _money) {
-		money = _money;
+		money = Math.min(_money, 999999);
+		moneyText.setText(Integer.toString(money));
 	}
 	public int getMoney() {
 		return money;
 	}
-
+	public void incrementMoney(int _money) {
+		money = Math.min(money + _money, 999999);
+		moneyText.setText(Integer.toString(money));
+	}
 }
