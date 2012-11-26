@@ -29,6 +29,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -95,11 +96,13 @@ public class MainActivity extends Activity {
 		Init.cat.startHunger(this, R.id.progressHunger, R.id.textHungerPercentage);
 		Init.cat.startThirst(this, R.id.progressThirst, R.id.textThirstPercentage);
 		Init.cat.simulation.startTracking(this, R.id.textMeow);
+		Init.cat.setActivity(this);
 		Init.cat.update();
 		
 		//A new thread must be started
 		Init.simulation = new Thread(new Simulation());
         Init.simulation.start();
+        Init.cat.updateStateText();
 		
 		Button foodButton = (Button) findViewById(R.id.button1);
 		Button waterButton = (Button) findViewById(R.id.button2);

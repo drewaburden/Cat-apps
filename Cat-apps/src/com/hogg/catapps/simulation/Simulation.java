@@ -16,9 +16,6 @@
  * All rights reserved.
  ******************************************************************************/
 
-
-
-
 /*
  * Note to other project members:
  * This is the simulation, it does everything automatically. If we need to change the state a cat is in, we do it manually, and this will normalize it after.
@@ -31,7 +28,6 @@
  * 		Init.simulation = new Thread(new Simulation());		//The interrupt before made the thread stop, so we need a new one!
  * 		Init.simulation.start();							//Start the thread so the cat can resume simulation
  */
-
 
 package com.hogg.catapps.simulation;
 
@@ -57,10 +53,12 @@ public class Simulation implements Runnable {
 		DRINKING ("Drinking"),
 		NOTHING ("Nothing");
 		
+		public final String name;
+		
 		States(String s) {
+			name = s;
 		}
 	}
-	
 	
 	/*
 	 * Will randomly pick a state to go to, based on the previous state.
@@ -73,9 +71,9 @@ public class Simulation implements Runnable {
 			else if(randomVariable > 6 && randomVariable <= 8) { return States.WALKING; }
 			else { return States.PLAYING; }
 		} else if(startState == States.SITTING) {											//Sitting
-			if(randomVariable <= 4) { return States.SITTING; }
-			else if(randomVariable > 4 && randomVariable <= 6) { return States.LAYING; }
-			else if(randomVariable > 6 && randomVariable <= 8) { return States.STANDING; }
+			if(randomVariable <= 3) { return States.SITTING; }
+			else if(randomVariable > 3 && randomVariable <= 5) { return States.LAYING; }
+			else if(randomVariable > 5 && randomVariable <= 8) { return States.STANDING; }
 			else { return States.GROOMING; }
 		} else if(startState == States.LAYING) {											//Laying
 			if(randomVariable <= 4) { return States.LAYING; }
@@ -106,7 +104,7 @@ public class Simulation implements Runnable {
 		while(!isInterrupted) {
 			try {
 				//Get random time to be in current state, up to one minute, 
-				sleepTime = numberGenerator.nextInt() % 60000;
+				sleepTime = numberGenerator.nextInt() % 30000;
 				nextStateNum = numberGenerator.nextInt() % 9;
 				
 				//Normalize the numbers. If they are negative, change the sign. If the sleep time is too short a time span, make it longer.
@@ -117,9 +115,14 @@ public class Simulation implements Runnable {
 				if(sleepTime < minimumTime)
 					sleepTime = minimumTime;
 				
+				Log.d("Debug", "sleep time be: " + Integer.toString(sleepTime) + ", motherfucker.");
+				
+				
 				currentState = nextState;
-				nextState = RandomState(currentState, nextStateNum);
-				Init.cat.setState(currentState);
+				Log.d("Debug", "previousState: " + currentState.name);
+				nextState = RandomState(Init.cat.getState(), nextStateNum);
+				Log.d("Debug", "Going from " + Init.cat.getState().name + " to " + nextState.name);
+				Init.cat.setState(nextState);				
 				
 				if(Thread.interrupted()) { return; }
 				Thread.sleep(sleepTime);

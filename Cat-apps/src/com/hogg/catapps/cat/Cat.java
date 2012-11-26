@@ -16,6 +16,8 @@
 
 package com.hogg.catapps.cat;
 
+import com.hogg.catapps.Init;
+import com.hogg.catapps.R;
 import com.hogg.catapps.simulation.Simulation.States;
 import com.hogg.catapps.ui.meter.HungerMeter;
 import com.hogg.catapps.ui.meter.MoodMeter;
@@ -23,8 +25,11 @@ import com.hogg.catapps.ui.meter.ThirstMeter;
 import com.hogg.catapps.ui.meter.HeartsMeter;
 
 import android.app.Activity;
+import android.util.Log;
+import android.widget.TextView;
 
 public class Cat {
+	Activity activity;
 	String name;
 	Sex sex;
 	// Maybe hardcore should be in Player.java?
@@ -35,6 +40,7 @@ public class Cat {
 	public MoodMeter mood;
 	public Simulation simulation;
 	States currentState;
+	TextView stateText;
 
 	public Cat(String _name, Sex _sex, int initHearts, int initMood,
 			int initHunger, int initThirst) {
@@ -67,6 +73,10 @@ public class Cat {
 		thirst = new ThirstMeter(initThirst, 1);
 		
 		simulation = new Simulation();
+	}
+	
+	public void setActivity(Activity _activity) {
+		activity = _activity;
 	}
 
 	// toggles hardcore mode on/off
@@ -153,9 +163,23 @@ public class Cat {
 	//Get and set currentState
 	public void setState(States _currentState) {
 		currentState = _currentState;
+		updateStateText();
 	}
 	
 	public States getState() {
 		return currentState;
+	}
+	
+	public void updateStateText() {
+		Log.d("Debug", currentState.name);
+		stateText = (TextView) activity.findViewById(R.id.textState);
+		Runnable shit_in_my_asshole_you_motherfucker_BITCH = new Runnable() {
+
+			public void run() {
+				stateText.setText(currentState.name);
+			}
+			
+		};
+		activity.runOnUiThread(shit_in_my_asshole_you_motherfucker_BITCH);
 	}
 }
