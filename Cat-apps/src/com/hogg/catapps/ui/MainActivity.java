@@ -98,6 +98,7 @@ public class MainActivity extends Activity {
 		TextView moneyText = (TextView) findViewById(R.id.textMoney);
 		Init.player.startTracking(foodButton, waterButton, moneyText);
 		Init.player.updateButtonText();
+		Init.player.updateMoneyText();
 		
 		// If the preferences are not set up yet, we need to resume showing the dialogs for the setup
 		if (!prefs.getBoolean("setup", false)) {

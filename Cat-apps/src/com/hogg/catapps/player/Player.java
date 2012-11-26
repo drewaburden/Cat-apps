@@ -60,13 +60,16 @@ public class Player {
 	// Get and set money
 	public void setMoney(int _money) {
 		money = Math.min(_money, 999999);
-		moneyText.setText(Integer.toString(money));
+		updateMoneyText();
 	}
 	public int getMoney() {
 		return money;
 	}
 	public void incrementMoney(int _money) {
 		money = Math.min(money + _money, 999999);
+		updateMoneyText();
+	}
+	public void updateMoneyText() {
 		moneyText.setText(Integer.toString(money));
 	}
 }
