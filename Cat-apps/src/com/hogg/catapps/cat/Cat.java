@@ -25,6 +25,8 @@ import com.hogg.catapps.ui.meter.ThirstMeter;
 import com.hogg.catapps.ui.meter.HeartsMeter;
 
 import android.app.Activity;
+import android.content.Context;
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.widget.TextView;
 
@@ -32,8 +34,7 @@ public class Cat {
 	Activity activity;
 	String name;
 	Sex sex;
-	// Maybe hardcore should be in Player.java?
-	int hardcoreMultiplier = 3; // 1 if hardcore, 3 if not hardcore (default)
+	double difficultyMultiplier;
 	public HeartsMeter hearts;
 	public HungerMeter hunger;
 	public ThirstMeter thirst;
@@ -47,7 +48,23 @@ public class Cat {
 		name = _name;
 		sex = _sex;
 		currentState = States.NOTHING;
-
+		
+		Context appContext = Init.getAppContext();
+		String difficultyPref = PreferenceManager.getDefaultSharedPreferences(appContext).getString("difficulty", appContext.getString(R.string.pref_difficulty_default));
+		if(difficultyPref.equals(appContext.getString(R.string.pref_difficulty_easy))){
+			difficultyMultiplier = 1/4.0;
+		}
+		else if(difficultyPref.equals(appContext.getString(R.string.pref_difficulty_normal))){
+			difficultyMultiplier = 1/2.0;
+		}
+		else if(difficultyPref.equals(appContext.getString(R.string.pref_difficulty_hard))){
+			difficultyMultiplier = 1.0;
+		}
+		else if(difficultyPref.equals(appContext.getString(R.string.pref_difficulty_hardcore))){
+			difficultyMultiplier = 2.0;
+		}
+		
+		
 		// Initialize meters with specified initial values and an
 		hearts = new HeartsMeter(initHearts, 5);
 		mood = new MoodMeter(initMood, 1);
@@ -56,35 +73,23 @@ public class Cat {
 		int hardcoreHungerHours = 48; // number of hours it takes hunger to get
 										// from 100 to 0 in hardcore mode
 
-		// the 36 is because 60 minutes in an hour times 60 seconds in a minute
-		// divided by 100 points in hunger
-		//hunger = new HungerMeter(initHunger,
-		//		1.0 / (hardcoreHungerHours * 36 * hardcoreMultiplier));
+		// the 3600 is because 60 minutes in an hour times 60 seconds in a minute
+		// hunger = new HungerMeter(initHunger, 100.0 / hardcoreHungerHours / 3600.0 / difficultyMultiplier);
 		hunger = new HungerMeter(initHunger, 0.5);
 
 		@SuppressWarnings("unused")
 		int hardcoreThirstHours = 24; // number of hours it takes thirst to get
 										// from 100 to 0 in hardcore mode
 
-		// the 36 is because 60 minutes in an hour times 60 seconds in a minute
-		// divided by 100 points in thirst
-		//thirst = new ThirstMeter(initThirst,
-		//		1.0 / (hardcoreThirstHours * 36 * hardcoreMultiplier));
+		// the 3600 is because 60 minutes in an hour times 60 seconds in a minute
+		// thirst = new ThirstMeter(initThirst, 100.0 / hardcoreThirstHours / 3600.0 / difficultyMultiplier);
 		thirst = new ThirstMeter(initThirst, 1);
-		
+
 		simulation = new Simulation();
 	}
-	
+
 	public void setActivity(Activity _activity) {
 		activity = _activity;
-	}
-
-	// toggles hardcore mode on/off
-	public void toggleHardcore() {
-		if (hardcoreMultiplier == 3)
-			hardcoreMultiplier = 1;
-		else
-			hardcoreMultiplier = 3;
 	}
 
 	public void startHearts(Activity activity, int progressBar, int textView) {
@@ -104,7 +109,7 @@ public class Cat {
 	}
 
 	public void stopTracking() {
-		//hearts.stopTracking(); // Hearts meter
+		// hearts.stopTracking(); // Hearts meter
 		hunger.stopTracking(); // Hunger meter
 		thirst.stopTracking(); // Thirst meter
 		mood.stopTracking(); // Mood meter
@@ -159,17 +164,17 @@ public class Cat {
 	public Sex getSex() {
 		return sex;
 	}
-	
-	//Get and set currentState
+
+	// Get and set currentState
 	public void setState(States _currentState) {
 		currentState = _currentState;
 		updateStateText();
 	}
-	
+
 	public States getState() {
 		return currentState;
 	}
-	
+
 	public void updateStateText() {
 		Log.d("Debug", currentState.name);
 		stateText = (TextView) activity.findViewById(R.id.textState);
@@ -178,7 +183,7 @@ public class Cat {
 			public void run() {
 				stateText.setText(currentState.name);
 			}
-			
+
 		};
 		activity.runOnUiThread(shit_in_my_asshole_you_motherfucker_BITCH);
 	}
