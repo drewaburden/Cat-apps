@@ -8,7 +8,7 @@
     <item type="water" id="item_tapwater" price="50" value="10" onUse="useWater">Tap water</item>
     <item type="water" id="item_filteredwater" price="100" value="25" onUse="useWater">Filtered tap water</item>
     <item type="water" id="item_bottledwater" price="175" value="50" onUse="useWater">Bottled water</item>
-    <item type="water" id="item_bottledwater" price="250" value="75" onUse="useWater">Bottled water</item>
+    <item type="water" id="item_mineralwater" price="250" value="75" onUse="useWater">Mineral water</item>
     <item type="water" id="item_autowater" price="325" value="100" onUse="useWater">Automatic cat water fountain</item>
     
     <item type="toy" id="item_catnip" price="1000" value="100" onUse="useCatNip">Cat nip</item>

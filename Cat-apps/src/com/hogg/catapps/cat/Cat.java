@@ -19,7 +19,6 @@ package com.hogg.catapps.cat;
 import com.hogg.catapps.Init;
 import com.hogg.catapps.R;
 import com.hogg.catapps.cat.simulation.Meow;
-import com.hogg.catapps.cat.simulation.States;
 import com.hogg.catapps.ui.meter.HungerMeter;
 import com.hogg.catapps.ui.meter.MoodMeter;
 import com.hogg.catapps.ui.meter.ThirstMeter;

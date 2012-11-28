@@ -1,6 +1,6 @@
 /*******************************************************************************
  * Project: CatApps
- * File: src/com/hogg/catapps/cat/Simluation.java
+ * File: src/com/hogg/catapps/cat/simulation/Meow.java
  * 
  * Description: 
  * 		Currently, this randomly makes the cat meow every so often. 

@@ -1,6 +1,6 @@
 /*******************************************************************************
  * Project: CatApps
- * File: src/com/hogg/catapps/cat/Petting.java
+ * File: src/com/hogg/catapps/cat/petting/PetListener.java
  * 
  * Description: 
  * 		Will capture MotionEvents and check that within one gesture, if

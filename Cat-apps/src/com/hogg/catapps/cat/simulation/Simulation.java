@@ -1,9 +1,9 @@
 /*******************************************************************************
  * Project: CatApps
- * File: src/com/hogg/catapps/simulation/Meow.java
+ * File: src/com/hogg/catapps/cat/simulation/States.java
  * 
  * Description: 
- * 		Meow Thread
+ * 		Simulation Thread
  * 		This class creates a simulation of a state machine so that we may
  * 		simulate a real cat and the events the cat does at any given time.
  * 		For instance, this will enable us to graphically show the cat doing
@@ -25,18 +25,16 @@
  * 		...code here to do whatever you need to, probably have the cat bend over and eat
  * 		Init.cat.setState(State.WHATEVER);					//Change the state in the cat's state field to whatever the cat should be doing after your code runs.
  * 															//If for instance you are having the cat bend over to eat, after he eats, does he end up SITTING or STANDING
- * 		Init.simulation = new Thread(new Meow());		//The interrupt before made the thread stop, so we need a new one!
+ * 		Init.simulation = new Thread(new Simulation());		//The interrupt before made the thread stop, so we need a new one!
  * 		Init.simulation.start();							//Start the thread so the cat can resume simulation
  */
 
 package com.hogg.catapps.cat.simulation;
 
-import java.util.Calendar;
 import java.util.Random;
-
 import android.util.Log;
-
 import com.hogg.catapps.Init;
+import com.hogg.catapps.cat.States;
 
 
 public class Simulation implements Runnable {
@@ -114,8 +112,7 @@ public class Simulation implements Runnable {
 	public void run() {
 		States currentState;
 		States nextState;
-		Calendar c = Calendar.getInstance();
-		Random numberGenerator = new Random(c.get(Calendar.SECOND));
+		Random numberGenerator = new Random();
 		int sleepTime = 0;
 		int nextStateNum;
 		
