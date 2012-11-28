@@ -1,4 +1,4 @@
-package com.hogg.catapps.player.items;
+package com.hogg.catapps.items;
 
 import android.graphics.drawable.Drawable;
 

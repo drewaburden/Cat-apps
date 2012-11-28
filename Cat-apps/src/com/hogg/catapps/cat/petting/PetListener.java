@@ -16,7 +16,7 @@
  * All rights reserved.
  ******************************************************************************/
 
-package com.hogg.catapps.cat;
+package com.hogg.catapps.cat.petting;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,9 +1,9 @@
 /*******************************************************************************
  * Project: CatApps
- * File: src/com/hogg/catapps/simulation/Simulation.java
+ * File: src/com/hogg/catapps/simulation/Meow.java
  * 
  * Description: 
- * 		Simulation Thread
+ * 		Meow Thread
  * 		This class creates a simulation of a state machine so that we may
  * 		simulate a real cat and the events the cat does at any given time.
  * 		For instance, this will enable us to graphically show the cat doing
@@ -25,11 +25,11 @@
  * 		...code here to do whatever you need to, probably have the cat bend over and eat
  * 		Init.cat.setState(State.WHATEVER);					//Change the state in the cat's state field to whatever the cat should be doing after your code runs.
  * 															//If for instance you are having the cat bend over to eat, after he eats, does he end up SITTING or STANDING
- * 		Init.simulation = new Thread(new Simulation());		//The interrupt before made the thread stop, so we need a new one!
+ * 		Init.simulation = new Thread(new Meow());		//The interrupt before made the thread stop, so we need a new one!
  * 		Init.simulation.start();							//Start the thread so the cat can resume simulation
  */
 
-package com.hogg.catapps.simulation;
+package com.hogg.catapps.cat.simulation;
 
 import java.util.Calendar;
 import java.util.Random;
@@ -40,26 +40,6 @@ import com.hogg.catapps.Init;
 
 
 public class Simulation implements Runnable {
-
-	public enum States {
-		STANDING ("Standing"),
-		WALKING ("Walking"),
-		SITTING ("Sitting"),
-		GROOMING ("Grooming"),
-		LAYING ("Laying"),
-		SLEEPING ("Sleeping"),
-		PLAYING ("Playing"),
-		EATING ("Eating"),
-		DRINKING ("Drinking"),
-		NOTHING ("Nothing");
-		
-		public final String name;
-		
-		States(String s) {
-			name = s;
-		}
-	}
-	
 	/*
 	 * Will randomly pick a state to go to, based on the previous state.
 	 * randomVariable will be a value between 0-9
@@ -115,13 +95,8 @@ public class Simulation implements Runnable {
 				if(sleepTime < minimumTime)
 					sleepTime = minimumTime;
 				
-				Log.d("Debug", "sleep time be: " + Integer.toString(sleepTime) + ", motherfucker.");
-				
-				
 				currentState = nextState;
-				Log.d("Debug", "previousState: " + currentState.name);
 				nextState = RandomState(Init.cat.getState(), nextStateNum);
-				Log.d("Debug", "Going from " + Init.cat.getState().name + " to " + nextState.name);
 				Init.cat.setState(nextState);				
 				
 				if(Thread.interrupted()) { return; }

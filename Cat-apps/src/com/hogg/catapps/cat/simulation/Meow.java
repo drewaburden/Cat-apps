@@ -12,7 +12,7 @@
  * All rights reserved.
  ******************************************************************************/
 
-package com.hogg.catapps.cat;
+package com.hogg.catapps.cat.simulation;
 
 import java.util.Random;
 
@@ -23,7 +23,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
-public class Simulation {
+public class Meow {
 	Activity activity;
 	Thread thread;
 	TextView textView;

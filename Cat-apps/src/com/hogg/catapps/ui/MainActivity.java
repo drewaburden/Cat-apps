@@ -17,9 +17,9 @@ package com.hogg.catapps.ui;
 import com.hogg.catapps.Init;
 import com.hogg.catapps.R;
 import com.hogg.catapps.background.BackgroundSleepThread;
-import com.hogg.catapps.cat.PetListener;
 import com.hogg.catapps.cat.Setup;
-import com.hogg.catapps.simulation.Simulation;
+import com.hogg.catapps.cat.petting.PetListener;
+import com.hogg.catapps.cat.simulation.Simulation;
 
 import android.os.Bundle;
 import android.preference.PreferenceActivity;

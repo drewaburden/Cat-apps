@@ -18,7 +18,8 @@ package com.hogg.catapps.cat;
 
 import com.hogg.catapps.Init;
 import com.hogg.catapps.R;
-import com.hogg.catapps.simulation.Simulation.States;
+import com.hogg.catapps.cat.simulation.Meow;
+import com.hogg.catapps.cat.simulation.States;
 import com.hogg.catapps.ui.meter.HungerMeter;
 import com.hogg.catapps.ui.meter.MoodMeter;
 import com.hogg.catapps.ui.meter.ThirstMeter;
@@ -27,7 +28,6 @@ import com.hogg.catapps.ui.meter.HeartsMeter;
 import android.app.Activity;
 import android.content.Context;
 import android.preference.PreferenceManager;
-import android.util.Log;
 import android.widget.TextView;
 
 public class Cat {
@@ -39,7 +39,7 @@ public class Cat {
 	public HungerMeter hunger;
 	public ThirstMeter thirst;
 	public MoodMeter mood;
-	public Simulation simulation;
+	public Meow simulation;
 	States currentState;
 	TextView stateText;
 
@@ -85,7 +85,7 @@ public class Cat {
 		// thirst = new ThirstMeter(initThirst, 100.0 / hardcoreThirstHours / 3600.0 / difficultyMultiplier);
 		thirst = new ThirstMeter(initThirst, 1);
 
-		simulation = new Simulation();
+		simulation = new Meow();
 	}
 
 	public void setActivity(Activity _activity) {
@@ -176,15 +176,13 @@ public class Cat {
 	}
 
 	public void updateStateText() {
-		Log.d("Debug", currentState.name);
 		stateText = (TextView) activity.findViewById(R.id.textState);
-		Runnable shit_in_my_asshole_you_motherfucker_BITCH = new Runnable() {
-
-			public void run() {
-				stateText.setText(currentState.name);
-			}
-
-		};
-		activity.runOnUiThread(shit_in_my_asshole_you_motherfucker_BITCH);
+		activity.runOnUiThread(
+				new Runnable() {
+					public void run() {
+						stateText.setText(currentState.toString());
+					}
+				}
+			);
 	}
 }
