@@ -23,7 +23,7 @@
 		    android:summary="@string/pref_difficulty_default"
 		    android:entries="@array/pref_difficulties"
 		    android:entryValues="@array/pref_difficulties"
-		     android:defaultValue="@string/pref_difficulty_default" 
+		    android:defaultValue="@string/pref_difficulty_default" 
 		    android:dialogTitle="@string/pref_difficulty"
 		    android:persistent="true" />
     </PreferenceCategory>
