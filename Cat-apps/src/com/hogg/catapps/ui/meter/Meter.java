@@ -29,8 +29,8 @@ public class Meter {
 	TextView textView; // ProgressBar's percentage display
 	double minValue = 0.0;
 	double maxValue = 100.0;
-	private double incrementAmount = 1.0;
-	private double decrementAmount = 1.0;
+	protected double incrementAmount = 1.0;
+	protected double decrementAmount = 1.0;
 	int updateWaitTime = 1000; // Milliseconds to wait before updating in the
 								// tracking thread
 	Thread thread; // Since most meters' values will be constantly changing,

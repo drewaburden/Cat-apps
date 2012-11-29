@@ -113,7 +113,7 @@ public class PetListener implements OnTouchListener {
 				onCatButtonClick();
 			} else if(isAsleep() && currentPercent >= petPercentThreshold) {
 				onPetAsleep();
-			} else if(isHardcore() && isAgainstGrain(moveX)) {
+			} else if(isHardcore() && moveX.size() > 0 && isAgainstGrain(moveX)) {
 				onBackwardsPet();
 			} else if(currentPercent >= petPercentThreshold) {
 				//is a pet!

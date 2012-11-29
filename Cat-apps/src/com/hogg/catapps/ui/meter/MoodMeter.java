@@ -25,6 +25,8 @@ import com.hogg.catapps.cat.Mood;
 import com.hogg.catapps.R;
 
 public class MoodMeter extends Meter {
+	double thirstThreshold = 0.01;
+	double hungerThreshold = 0.01;
 	
 	public MoodMeter(int initValue, int incAmount) {
 		super(initValue, incAmount);
@@ -67,6 +69,45 @@ public class MoodMeter extends Meter {
 		
 		// Update the progressBar's percentage display
 		textView.setText(Init.cat.getMood().toString());
+	}
+	
+	public void increment() {		
+		int multiplier = 1;
+		if(Init.cat.thirst.getValue() == 0 && isHardcore())
+			multiplier *= 3;
+		if(Init.cat.hunger.getValue() == 0 && isHardcore())
+			multiplier *= 2;
+		
+		value += (getIncrementAmount()*multiplier);
+	}
+	
+	public void increment(int x) {
+		int multiplier = 1;
+		if(Init.cat.thirst.getValue() == 0 && isHardcore())
+			multiplier *= 3;
+		if(Init.cat.hunger.getValue() == 0 && isHardcore())
+			multiplier *= 2;
+		
+		value += (x*multiplier);
+	}
+	
+	
+	public void decrement() {
+		int multiplier = 1;
+		if(Init.cat.thirst.getValue() == 0 && isHardcore())
+			multiplier *= 3;
+		if(Init.cat.hunger.getValue() == 0 && isHardcore())
+			multiplier *= 2;
+		value -= ( ( thirstThreshold * (100 - Init.cat.thirst.getValue()) ) + (hungerThreshold * (100 - Init.cat.hunger.getValue()) ) * multiplier);
+	}
+	
+	public void decrement(int i) {
+		int multiplier = 1;
+		if(Init.cat.thirst.getValue() == 0 && isHardcore())
+			multiplier *= 3;
+		if(Init.cat.hunger.getValue() == 0 && isHardcore())
+			multiplier *= 2;
+		value -= (i*multiplier);
 	}
 	
 	//TODO: Make this scale correctly. Currently, the resources it changes to are too large.
