@@ -16,6 +16,7 @@ package com.hogg.catapps.cat.simulation;
 
 import java.util.Random;
 
+import com.hogg.catapps.Init;
 import com.hogg.catapps.background.BackgroundSleepThread;
 
 import android.app.Activity;
@@ -52,8 +53,8 @@ public class Meow {
 					activity.runOnUiThread(new Runnable() {
 						public void run() {
 							// After waiting, decrement the meter and update its
-							// display
-							if (randomGenerator.nextInt(15) == 0) {
+							// display, but only meow if the cat is awake
+							if (randomGenerator.nextInt(15) == 0 && Init.cat.getState().name.equals("Sleeping") != true) {
 								Log.i("slerp", "Meowed");
 								// Find the "Meow!" text's TextView so we can manipulate it
 								

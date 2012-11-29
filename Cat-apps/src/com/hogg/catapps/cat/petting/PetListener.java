@@ -24,6 +24,8 @@ import java.util.List;
 import com.hogg.catapps.Init;
 import com.hogg.catapps.R;
 import com.hogg.catapps.background.BackgroundSleepThread;
+import com.hogg.catapps.cat.States;
+import com.hogg.catapps.cat.simulation.Simulation;
 
 import android.app.Activity;
 import android.preference.PreferenceManager;
@@ -105,8 +107,12 @@ public class PetListener implements OnTouchListener {
 			if(!move.isEmpty()) {
 				currentPercent = ((float) movesInRect)/totalMoves;
 			}
-			if(isWithinRect(downX, downY) && isWithinRect(upX, upY) && totalMoves < petPokeThreshold) {
+			if(isWithinRect(downX, downY) && isWithinRect(upX, upY) && totalMoves < petPokeThreshold && isAsleep()) {
+				onCatButtonClickAsleep();
+			} else if(isWithinRect(downX, downY) && isWithinRect(upX, upY) && totalMoves < petPokeThreshold) {
 				onCatButtonClick();
+			} else if(isAsleep() && currentPercent >= petPercentThreshold) {
+				onPetAsleep();
 			} else if(isHardcore() && isAgainstGrain(moveX)) {
 				onBackwardsPet();
 			} else if(currentPercent >= petPercentThreshold) {
@@ -191,6 +197,22 @@ public class PetListener implements OnTouchListener {
 		badMotionAction(10);
 	}
 	
+	private void sleepingEventHandler(int x) {
+		Init.simulation.interrupt();
+		badMotionAction(x);
+		Init.cat.setState(States.LAYING);
+		Init.simulation = new Thread(new Simulation());
+		Init.simulation.start();
+	}
+	
+	private void onCatButtonClickAsleep() {
+		sleepingEventHandler(5);
+	}
+	
+	private void onPetAsleep() {
+		sleepingEventHandler(15);
+	}
+	
 	private boolean isAgainstGrain(List<Float> moveX) {
 		
 		double percentAgainst = 0.5;
@@ -209,6 +231,12 @@ public class PetListener implements OnTouchListener {
 		} else {
 			return false;
 		}
+	}
+	
+	private boolean isAsleep() {
+		if (Init.cat.getState().name.equals("Sleeping"))
+			return true;
+		return false;
 	}
 	
 	private boolean isHardcore() {
