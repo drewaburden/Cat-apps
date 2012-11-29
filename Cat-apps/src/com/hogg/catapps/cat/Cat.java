@@ -43,6 +43,7 @@ public class Cat {
 	States currentState;
 	TextView stateText;
 	int timeRemaining;
+	Mood currentMood;
 
 	public Cat(String _name, Sex _sex, int initHearts, int initMood,
 			int initHunger, int initThirst) {
@@ -50,6 +51,7 @@ public class Cat {
 		sex = _sex;
 		currentState = States.NOTHING;
 		timeRemaining = 0;
+		currentMood = Mood.CONTENT;
 		
 		Context appContext = Init.getAppContext();
 		String difficultyPref = PreferenceManager.getDefaultSharedPreferences(appContext).getString("difficulty", appContext.getString(R.string.pref_difficulty_default));
@@ -183,6 +185,14 @@ public class Cat {
 	
 	public void setTimeRemaining(int _timeRemaining) {
 		timeRemaining = _timeRemaining;
+	}
+	
+	public Mood getMood() {
+		return currentMood;
+	}
+	
+	public void setMood(Mood _currentMood) {
+		currentMood = _currentMood;
 	}
 
 	public void updateStateText() {

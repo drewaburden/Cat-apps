@@ -33,6 +33,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -104,6 +105,7 @@ public class MainActivity extends Activity {
         Init.cat.updateStateText();
 		
 		Button foodButton = (Button) findViewById(R.id.button1);
+		ImageView imageMood = (ImageView) findViewById(R.id.imageMood);
 		Button waterButton = (Button) findViewById(R.id.button2);
 		TextView moneyText = (TextView) findViewById(R.id.textMoney);
 		Init.player.startTracking(foodButton, waterButton, moneyText);

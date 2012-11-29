@@ -119,9 +119,9 @@ public class PetListener implements OnTouchListener {
 				//is a pet!
 				Init.cat.hearts.increment();
 				Init.cat.updateHearts();
-				
-				isAgainstGrain(moveX);
-				
+				Init.cat.mood.increment();
+				Init.cat.updateMood();
+								
 				imageCat.setImageDrawable(layout.getResources().getDrawable(R.drawable.ic_cat_happy));
 
 				// Wait for .5 seconds (using threads so we don't freeze the UI)
@@ -170,8 +170,8 @@ public class PetListener implements OnTouchListener {
 	
 	private void badMotionAction(int x) {
 		// Decrease the amount of hearts and update the display
-		Init.cat.hearts.decrement(x);
-		Init.cat.updateHearts();
+		Init.cat.mood.decrement(x);
+		Init.cat.updateMood();
 
 		
 		imageCat.setImageDrawable(layout.getResources().getDrawable(R.drawable.ic_cat_mad));
