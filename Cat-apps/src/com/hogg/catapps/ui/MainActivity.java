@@ -136,6 +136,12 @@ public class MainActivity extends Activity {
 				intent.putExtra(PreferenceActivity.EXTRA_SHOW_FRAGMENT, SettingsActivity.MainFragment.class.getName());
 				startActivity(intent);
 				break;
+			// Settings option
+			case R.id.menu_store:
+				// Start the settings activity
+				Intent intent1 = new Intent(this, ItemListActivity.class);
+				startActivity(intent1);
+				break;
 			// Exit option
 			case R.id.menu_exit:
 				// Create and show a confirmation asking whether the user wants to exit the application

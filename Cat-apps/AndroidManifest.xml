@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <!--
   Project: CatApps
   File: AndroidManifest.xml
@@ -9,7 +10,7 @@
   		Drew Burden
   
   Copyright © 2012 Hogg Studios
-  All rights reserved.
+  All rights reserved.
 -->
 
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
@@ -18,15 +19,17 @@
     android:versionName="1.0" >
 
     <uses-sdk
-        android:minSdkVersion="11"
-        android:targetSdkVersion="15" android:maxSdkVersion="16"/>
+        android:maxSdkVersion="16"
+        android:minSdkVersion="14"
+        android:targetSdkVersion="15" />
 
     <application
+        android:name="com.hogg.catapps.Init"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@android:style/Theme.DeviceDefault" android:name="Init">
+        android:theme="@android:style/Theme.DeviceDefault" >
         <activity
-            android:name=".ui.MainActivity"
+            android:name="com.hogg.catapps.ui.MainActivity"
             android:label="@string/title_activity_main" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -35,11 +38,25 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ui.SettingsActivity"
+            android:name="com.hogg.catapps.ui.SettingsActivity"
             android:label="@string/title_activity_settings" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".ui.MainActivity" />
+        </activity>
+        <activity
+            android:name="com.hogg.catapps.ui.ItemListActivity"
+            android:label="@string/title_item_list" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.hogg.catapps.ui.MainActivity" />
+        </activity>
+        <activity
+            android:name="com.hogg.catapps.ui.ItemDetailActivity"
+            android:label="@string/title_item_detail" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.hogg.catapps.ui.ItemListActivity" />
         </activity>
     </application>
 
