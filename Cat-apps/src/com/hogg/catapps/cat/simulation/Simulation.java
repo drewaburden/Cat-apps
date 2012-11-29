@@ -32,7 +32,6 @@
 package com.hogg.catapps.cat.simulation;
 
 import java.util.Random;
-import android.util.Log;
 import com.hogg.catapps.Init;
 import com.hogg.catapps.cat.States;
 
@@ -74,15 +73,19 @@ public class Simulation implements Runnable {
 		}
 	}
 	
+	
 	int stateCount = 9;
 	int minimumTime = 5000;
 	
 	public void sim(States currentState, States nextState, Random numberGenerator, int sleepTime, int nextStateNum) {
 		boolean isInterrupted = false;
+		int secondsBegin =  0;
+		int secondsEnd;
+		if(sleepTime == 0) {
+			sleepTime = numberGenerator.nextInt() % 30000;
+		}
 		while(!isInterrupted) {
 			try {
-				//Get random time to be in current state, up to one minute, 
-				sleepTime = numberGenerator.nextInt() % 30000;
 				nextStateNum = numberGenerator.nextInt() % 9;
 				
 				//Normalize the numbers. If they are negative, change the sign. If the sleep time is too short a time span, make it longer.
@@ -98,12 +101,16 @@ public class Simulation implements Runnable {
 				Init.cat.setState(nextState);				
 				
 				if(Thread.interrupted()) { return; }
+				secondsBegin = (int) System.currentTimeMillis();
 				Thread.sleep(sleepTime);
 				if(Thread.interrupted()) { return; }
+				sleepTime = numberGenerator.nextInt() % 30000;
 			}
 			catch (InterruptedException e) {
 				isInterrupted = true;
-				Log.i("Debug", "State machine interrupted");
+				secondsEnd = (int) System.currentTimeMillis();
+				int diff = secondsEnd - secondsBegin;
+				Init.cat.setTimeRemaining(sleepTime - diff);
 			}
 		}
 		return;
@@ -113,17 +120,17 @@ public class Simulation implements Runnable {
 		States currentState;
 		States nextState;
 		Random numberGenerator = new Random();
-		int sleepTime = 0;
+		int sleepTime;
 		int nextStateNum;
 		
 		//Log calls to test, comment out when not needed
-		Log.i("Debug", "Running state machine thread");
 		
 		//Check, first, that the cat is not already in a state
 		if(Init.cat.getState() == States.NOTHING) {
 			//If the cat is not in a state, then need to assign the current state to be nothing, and the next state to the default, standing.
 			currentState = States.NOTHING;
 			nextState = States.STANDING;
+			sleepTime = 0;
 			nextStateNum = 0;
 		} else {
 			//If the cat is already in a state, we are starting afresh from an interrupt.
@@ -131,11 +138,11 @@ public class Simulation implements Runnable {
 			nextStateNum = numberGenerator.nextInt() % 9;
 			currentState = Init.cat.getState();
 			nextState = RandomState(currentState, nextStateNum);
+			sleepTime = (int) Init.cat.getTimeRemaining();
 		}
 		
 		//Once the state's have been detected, enter the simulation
 		sim(currentState, nextState, numberGenerator, sleepTime, nextStateNum);
-		Log.i("Debug", "State machine stopping");
 	}
 
 }

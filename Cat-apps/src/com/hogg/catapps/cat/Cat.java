@@ -9,6 +9,7 @@
  * Contributors:
  * 		Drew Burden
  * 		Daniel Thomas
+ * 		James Garner
  * 
  * Copyright © 2012 Hogg Studios
  * All rights reserved.
@@ -41,12 +42,14 @@ public class Cat {
 	public Meow simulation;
 	States currentState;
 	TextView stateText;
+	int timeRemaining;
 
 	public Cat(String _name, Sex _sex, int initHearts, int initMood,
 			int initHunger, int initThirst) {
 		name = _name;
 		sex = _sex;
 		currentState = States.NOTHING;
+		timeRemaining = 0;
 		
 		Context appContext = Init.getAppContext();
 		String difficultyPref = PreferenceManager.getDefaultSharedPreferences(appContext).getString("difficulty", appContext.getString(R.string.pref_difficulty_default));
@@ -172,6 +175,14 @@ public class Cat {
 
 	public States getState() {
 		return currentState;
+	}
+	
+	public double getTimeRemaining() {
+		return timeRemaining;
+	}
+	
+	public void setTimeRemaining(int _timeRemaining) {
+		timeRemaining = _timeRemaining;
 	}
 
 	public void updateStateText() {
