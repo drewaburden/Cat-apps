@@ -18,18 +18,6 @@ import android.util.Xml;
 public class ItemXMLParser {
 	private static final String ns = null;
 	
-	public List<Item> parse(InputStream in) throws XmlPullParserException, IOException {
-        try {
-            XmlPullParser parser = Xml.newPullParser();
-            parser.setFeature(XmlPullParser.FEATURE_PROCESS_NAMESPACES, false);
-            parser.setInput(in, null);
-            parser.nextTag();
-            return readFeed(parser);
-        } finally {
-            in.close();
-        }
-    }
-	
 	public List<Item> readFeed(XmlPullParser parser) throws XmlPullParserException, IOException {
 		List<Item> items = new ArrayList<Item>();
 		
@@ -115,71 +103,4 @@ public class ItemXMLParser {
 		
 		return items;
 	}
-	
-	// Parses the contents of an entry. If it encounters a title, summary, or link tag, hands them off
-	// to their respective "read" methods for processing. Otherwise, skips the tag.
-	private Item readItem(XmlPullParser parser) throws XmlPullParserException, IOException {
-	    String type = null;
-	    String name = null;
-	    int price = 0;
-	    int value = 0;
-	    String description = null;
-	    
-	    while (parser.next() != XmlPullParser.END_TAG) {
-	        if (parser.getEventType() != XmlPullParser.START_TAG) {
-	            continue;
-	        }
-	        String tag = parser.getName();
-	        
-	        if (tag.equals("name")) {
-	            name = readTag(parser, tag);
-	        } else if (tag.equals("type")) {
-	            type = readTag(parser, tag);
-	        } else if (tag.equals("price")) {
-	            price = Integer.parseInt(readTag(parser, tag));
-	        } else if (tag.equals("value")) {
-	            value = Integer.parseInt(readTag(parser, tag));
-	        } else if (tag.equals("description")) {
-	            description = readTag(parser, tag);
-	        } else {
-	            skip(parser);
-	        }
-	    }
-	    return new Item(type, name, price, value, description);
-	}
-	
-	// Processes title tags in the feed.
-	private String readTag(XmlPullParser parser, String tag) throws IOException, XmlPullParserException {
-	    parser.require(XmlPullParser.START_TAG, ns, tag);
-	    String title = readText(parser);
-	    parser.require(XmlPullParser.END_TAG, ns, tag);
-	    return title;
-	}
-	
-	// For the tags title and summary, extracts their text values.
-	private String readText(XmlPullParser parser) throws IOException, XmlPullParserException {
-	    String result = "";
-	    if (parser.next() == XmlPullParser.TEXT) {
-	        result = parser.getText();
-	        parser.nextTag();
-	    }
-	    return result;
-	}
-	
-	private void skip(XmlPullParser parser) throws XmlPullParserException, IOException {
-	    if (parser.getEventType() != XmlPullParser.START_TAG) {
-	        throw new IllegalStateException();
-	    }
-	    int depth = 1;
-	    while (depth != 0) {
-	        switch (parser.next()) {
-	        case XmlPullParser.END_TAG:
-	            depth--;
-	            break;
-	        case XmlPullParser.START_TAG:
-	            depth++;
-	            break;
-	        }
-	    }
-	 }
 }

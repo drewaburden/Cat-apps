@@ -12,7 +12,7 @@ import android.widget.TextView;
 import com.hogg.catapps.R;
 import com.hogg.catapps.R.id;
 import com.hogg.catapps.R.layout;
-import com.hogg.catapps.dummy.DummyContent;
+import com.hogg.catapps.items.StoreFragmentContent;
 import com.hogg.catapps.items.Item;
 
 /**
@@ -47,7 +47,7 @@ public class ItemDetailFragment extends Fragment {
 			// Load the dummy content specified by the fragment
 			// arguments. In a real-world scenario, use a Loader
 			// to load content from a content provider.
-			mItem = DummyContent.ITEM_MAP.get(getArguments().getString(
+			mItem = StoreFragmentContent.ITEM_MAP.get(getArguments().getString(
 					ARG_ITEM_ID));
 		}
 	}
@@ -60,8 +60,14 @@ public class ItemDetailFragment extends Fragment {
 
 		// Show the dummy content as text in a TextView.
 		if (mItem != null) {
-			((TextView) rootView.findViewById(R.id.item_name))
+			((TextView) rootView.findViewById(R.id.textName))
 					.setText(mItem.getName());
+			
+			((TextView) rootView.findViewById(R.id.textPrice))
+			.setText(Integer.toString(mItem.getPrice()));
+			
+			((TextView) rootView.findViewById(R.id.textDescription))
+			.setText(mItem.getDescription());
 			
 			// Enable the scrollbars on the description
 			TextView textView = (TextView) rootView.findViewById(R.id.textDescription);

@@ -1,11 +1,13 @@
 package com.hogg.catapps.ui;
 
+import com.hogg.catapps.Init;
 import com.hogg.catapps.R;
 import com.hogg.catapps.R.id;
 import com.hogg.catapps.R.layout;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.NavUtils;
 import android.text.method.ScrollingMovementMethod;
@@ -40,7 +42,13 @@ public class ItemListActivity extends FragmentActivity implements
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_item_list);
+		if (PreferenceManager.getDefaultSharedPreferences(Init.getAppContext())
+				.getBoolean("store_twopane", false) == true) {
+			setContentView(R.layout.activity_item_twopane);
+		}
+		else {
+			setContentView(R.layout.activity_item_list);
+		}
 		// Show the Up button in the action bar.
 		getActionBar().setDisplayHomeAsUpEnabled(true);
 
@@ -50,6 +58,8 @@ public class ItemListActivity extends FragmentActivity implements
 			// res/values-sw600dp). If this view is present, then the
 			// activity should be in two-pane mode.
 			mTwoPane = true;
+			
+			Log.d("Debug", "Two pane mode");
 
 			// In two-pane mode, list items should be given the
 			// 'activated' state when touched.

@@ -19,9 +19,11 @@ import com.hogg.catapps.Init;
 import com.hogg.catapps.R;
 
 import android.os.Bundle;
+import android.preference.CheckBoxPreference;
 import android.preference.Preference;
 import android.preference.Preference.OnPreferenceClickListener;
 import android.preference.PreferenceActivity;
+import android.preference.PreferenceCategory;
 import android.preference.PreferenceFragment;
 import android.preference.PreferenceManager;
 import android.app.AlertDialog;
@@ -29,6 +31,8 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
+import android.content.res.Configuration;
+import android.util.Log;
 import android.view.MenuItem;
 import android.support.v4.app.NavUtils;
 
@@ -37,6 +41,8 @@ public class SettingsActivity extends PreferenceActivity {
 	static AlertDialog clear_data_diag;
 	OnSharedPreferenceChangeListener sharedPreferenceChangeListener;
 	static Preference difficultyPref;
+	static CheckBoxPreference storeTwoPanePref;
+	static boolean twoPaneSet;
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -81,9 +87,13 @@ public class SettingsActivity extends PreferenceActivity {
 			showing_diag.show();
 		}
 		
+		if (isTwoPane() && !twoPaneSet) {
+			storeTwoPanePref.setChecked(true);
+		}
+		
 		difficultyPref.setSummary(
-			PreferenceManager.getDefaultSharedPreferences(
-				Init.getAppContext()).getString(
+			PreferenceManager.getDefaultSharedPreferences(Init.getAppContext())
+				.getString(
 					"difficulty", getString(R.string.pref_difficulty_default
 				)
 			)
@@ -130,7 +140,7 @@ public class SettingsActivity extends PreferenceActivity {
 
 			// Add all our preferences to the fragment
 			addPreferencesFromResource(R.xml.preferences);
-
+					
 			// Set up the click listener for the data clear button
 			Preference myPref = findPreference("clear_data");
 			myPref.setOnPreferenceClickListener(new OnPreferenceClickListener() {
@@ -142,11 +152,35 @@ public class SettingsActivity extends PreferenceActivity {
 				}
 			});
 			
+			storeTwoPanePref = (CheckBoxPreference) findPreference("store_twopane");
 			difficultyPref = findPreference("difficulty");
+			
+			// Set up the click listener for the two pane store preference
+			storeTwoPanePref.setOnPreferenceClickListener(new OnPreferenceClickListener() {
+				public boolean onPreferenceClick(Preference preference) {
+					SharedPreferences.Editor prefs_editor = PreferenceManager.getDefaultSharedPreferences(Init.getAppContext()).edit();
+		        	prefs_editor.putBoolean("store_twopane_set", true);
+		        	prefs_editor.apply();
+					return true;
+				}
+			});
+			
+			twoPaneSet = PreferenceManager.getDefaultSharedPreferences(Init.getAppContext())
+				.getBoolean(
+					"store_twopane_set", false
+				);
 		}
-		
-		public Preference getDifficultyPreference() {
-			return findPreference("difficulty");
+	}
+	
+	public boolean isTwoPane() {
+		Configuration config = getResources().getConfiguration();
+		if ((config.screenLayout & Configuration.SCREENLAYOUT_SIZE_MASK) == Configuration.SCREENLAYOUT_SIZE_LARGE ||
+				(config.screenLayout & Configuration.SCREENLAYOUT_SIZE_MASK) == Configuration.SCREENLAYOUT_SIZE_XLARGE ||
+				config.smallestScreenWidthDp >= 600) {
+			Log.d("Debug", "Two pane mode");
+			return true;
 		}
+		Log.d("Debug", "NOT Two pane mode");
+		return false;
 	}
 }

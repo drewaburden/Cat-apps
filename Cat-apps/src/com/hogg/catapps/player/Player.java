@@ -69,6 +69,10 @@ public class Player {
 		money = Math.min(money + _money, 999999);
 		updateMoneyText();
 	}
+	public void decrementMoney(int _money) {
+		money = Math.max(money - _money, 0);
+		updateMoneyText();
+	}
 	public void updateMoneyText() {
 		moneyText.setText(Integer.toString(money));
 	}

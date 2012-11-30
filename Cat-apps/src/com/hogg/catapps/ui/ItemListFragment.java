@@ -13,7 +13,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.hogg.catapps.R;
-import com.hogg.catapps.dummy.DummyContent;
+import com.hogg.catapps.items.StoreFragmentContent;
 import com.hogg.catapps.items.Item;
 
 /**
@@ -79,7 +79,7 @@ public class ItemListFragment extends ListFragment {
 		// TODO: replace with a real list adapter.
 		setListAdapter(new ArrayAdapter<Item>(getActivity(),
 				android.R.layout.simple_list_item_activated_1,
-				android.R.id.text1, DummyContent.ITEMS));
+				android.R.id.text1, StoreFragmentContent.ITEMS));
 	}
 
 	@Override
@@ -122,7 +122,7 @@ public class ItemListFragment extends ListFragment {
 
 		// Notify the active callbacks interface (the activity, if the
 		// fragment is attached to one) that an item has been selected.
-		mCallbacks.onItemSelected(DummyContent.ITEMS.get(position).getName());
+		mCallbacks.onItemSelected(StoreFragmentContent.ITEMS.get(position).getName());
 	}
 
 	@Override

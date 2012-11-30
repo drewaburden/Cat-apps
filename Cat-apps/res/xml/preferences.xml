@@ -26,12 +26,16 @@
 		     android:defaultValue="@string/pref_difficulty_default" 
 		    android:dialogTitle="@string/pref_difficulty"
 		    android:persistent="true" />
-    </PreferenceCategory>
 	    <CheckBoxPreference
 	            android:key="notifications"
 	            android:title="@string/pref_notifications"
 	            android:defaultValue="true" />
+	</PreferenceCategory>
     <PreferenceCategory android:title="@string/pref_category_advanced" >
+        <CheckBoxPreference
+	            android:key="store_twopane"
+	            android:title="@string/pref_store_twopane"
+	            android:defaultValue="false" />
         <PreferenceScreen android:title="@string/pref_report_bug" >
             <intent
                 android:action="android.intent.action.VIEW"

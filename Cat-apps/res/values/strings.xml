@@ -33,6 +33,7 @@
     <string name="pref_difficulty_hardcore">Hardcore</string>
     <string name="pref_difficulty_default">@string/pref_difficulty_normal</string>
     <string name="pref_notifications">Notifications</string>
+    <string name="pref_store_twopane">Two-paned Store</string>
     <string name="pref_report_bug">Report bug</string>
     <string name="pref_report_bug_body">Please describe the bug in detail: </string>
     <string name="pref_clear_data">Clear cat data</string>

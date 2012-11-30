@@ -8,7 +8,7 @@
     <TextView
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
-        android:id="@+id/item_name"
+        android:id="@+id/textName"
         style="?android:attr/textAppearanceLarge"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
@@ -73,7 +73,7 @@
             android:layout_weight="1.00" >
 
             <TextView
-                android:id="@+id/textPrice"
+                android:id="@+id/textPriceLabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_above="@+id/layoutPrice"
@@ -92,7 +92,7 @@
                 android:paddingBottom="18dp" >
 
                 <TextView
-                    android:id="@+id/textCost"
+                    android:id="@+id/textPrice"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="right"

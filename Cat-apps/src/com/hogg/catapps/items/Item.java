@@ -26,6 +26,7 @@ public class Item {
 	Drawable drawable;
 	
 	public Item(String _type, String _name, int _price, int _value, String _description) {
+		type = _type;
 		name = _name;
 		price = _price;
 		value = _value;
@@ -41,8 +42,15 @@ public class Item {
 		return name;
 	}
 	
-	public void setCost(int _price) {
+	public void setPrice(int _price) {
 		price = _price;
+	}
+	public int getPrice() {
+		return price;
+	}
+	
+	public String getDescription() {
+		return description;
 	}
 	
 	public void setDrawable(Drawable _drawable) {

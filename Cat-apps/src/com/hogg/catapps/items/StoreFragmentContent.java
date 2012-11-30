@@ -1,27 +1,18 @@
-package com.hogg.catapps.dummy;
+package com.hogg.catapps.items;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
-import org.xmlpull.v1.XmlPullParserFactory;
 
-import android.content.res.Resources;
 import android.util.Log;
-import android.util.Xml;
 
 import com.hogg.catapps.Init;
 import com.hogg.catapps.R;
-import com.hogg.catapps.items.Item;
-import com.hogg.catapps.items.ItemXMLParser;
 
 /**
  * Helper class for providing sample content for user interfaces created by
@@ -29,7 +20,7 @@ import com.hogg.catapps.items.ItemXMLParser;
  * <p>
  * TODO: Replace all uses of this class before publishing your app.
  */
-public class DummyContent {
+public class StoreFragmentContent {
 
 	/**
 	 * An array of sample (dummy) items.
