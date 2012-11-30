@@ -62,6 +62,13 @@ public class Item implements Comparable<Item>{
 	}
 
 	public int compareTo(Item i) {
-		return name.compareTo(i.name);
+		//Need to compare type
+		int typeDiff = type.compareToIgnoreCase(i.type);
+		if( typeDiff != 0) {
+			return typeDiff;
+		}
+		//Else they are the same type, return difference to price
+		return price - i.price;
 	}
+	
 }
