@@ -23,8 +23,12 @@ import android.widget.TextView;
 
 
 public class HeartsMeter extends Meter {
-	public HeartsMeter(int initValue, int incAmount) {
-		super(initValue, incAmount);
+	public HeartsMeter(int initValue, double decAmount) {
+		super(initValue, decAmount);
+	}
+	
+	public HeartsMeter(int initValue, double decAmount, double incAmount){
+		super(initValue, decAmount, incAmount);
 	}
 	
 	@Override
@@ -54,7 +58,7 @@ public class HeartsMeter extends Meter {
 	@Override
 	public void increment() {
 		super.increment();
-		if (value + incrementAmount >= maxValue) {
+		if (value + getIncrementAmount() >= maxValue) {
 			setValue(minValue);
 			Init.player.incrementMoney(100);
 			Init.player.food += 5;

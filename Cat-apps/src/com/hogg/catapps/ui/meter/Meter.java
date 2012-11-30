@@ -29,7 +29,8 @@ public class Meter {
 	TextView textView; // ProgressBar's percentage display
 	double minValue = 0.0;
 	double maxValue = 100.0;
-	double incrementAmount = 1.0;
+	protected double incrementAmount = 1.0;
+	protected double decrementAmount = 1.0;
 	int updateWaitTime = 1000; // Milliseconds to wait before updating in the
 								// tracking thread
 	Thread thread; // Since most meters' values will be constantly changing,
@@ -40,9 +41,15 @@ public class Meter {
 	double value = 0.0; // This variable holds the core value of the meter, whatever
 					// that may be implemented to represent.
 
-	public Meter(int initValue, double incAmount) {
+	public Meter(int initValue, double decAmount) {
 		value = initValue;
-		incrementAmount = incAmount;
+		setDecrementAmount(decAmount);
+	}
+	
+	public Meter(int initValue, double decAmount, double incAmount){
+		value = initValue;
+		setIncrementAmount(incAmount);
+		setDecrementAmount(decAmount);
 	}
 
 	// Update the display of the meter
@@ -104,6 +111,11 @@ public class Meter {
 		// as often.
 		thread.interrupt();
 	}
+	
+	public void resetTracking(){
+		stopTracking();
+		startTracking(this.activity, this.progressBar.getId(), this.textView.getId());
+	}
 
 	public void setUpdateWaitTime(int _updateWaitTime) {
 		updateWaitTime = _updateWaitTime;
@@ -118,6 +130,22 @@ public class Meter {
 		return value;
 	}
 
+	public double getIncrementAmount() {
+		return incrementAmount;
+	}
+
+	public void setIncrementAmount(double incrementAmount) {
+		this.incrementAmount = incrementAmount;
+	}
+
+	public double getDecrementAmount() {
+		return decrementAmount;
+	}
+
+	public void setDecrementAmount(double decrementAmount) {
+		this.decrementAmount = decrementAmount;
+	}
+
 	public String toString() {
 		return Integer.toString((int) Math.ceil(value));
 	}
@@ -125,8 +153,8 @@ public class Meter {
 	// Incrementing methods (with polymorphism)
 	public void increment() {
 		// Make sure the value does not exceed the max value
-		if ((value + incrementAmount) < maxValue) {
-			value += incrementAmount;
+		if ((value + getIncrementAmount()) < maxValue) {
+			value += getIncrementAmount();
 		} else {
 			value = maxValue;
 		}
@@ -143,8 +171,8 @@ public class Meter {
 	// Decrementing methods (with polymorphism)
 	public void decrement() {
 		// Make sure the value does not equal less than the min value
-		if (value - incrementAmount > minValue) {
-			value -= incrementAmount;
+		if (value - getDecrementAmount() > minValue) {
+			value -= getDecrementAmount();
 		} else {
 			value = minValue;
 		}

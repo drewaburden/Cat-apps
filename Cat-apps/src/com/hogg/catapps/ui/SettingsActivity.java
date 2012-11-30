@@ -43,15 +43,16 @@ public class SettingsActivity extends PreferenceActivity {
 	static Preference difficultyPref;
 	static CheckBoxPreference storeTwoPanePref;
 	static boolean twoPaneSet;
-	
+
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		
+
 		// Set up the back button in the action bar
 		getActionBar().setDisplayHomeAsUpEnabled(true);
 
-		// Set up the dialog for confirming whether the user wants to delete all his or her cat's data
+		// Set up the dialog for confirming whether the user wants to delete all
+		// his or her cat's data
 		AlertDialog.Builder builder = new AlertDialog.Builder(this);
 		builder.setMessage(getString(R.string.diag_clear_data));
 		builder.setCancelable(true);
@@ -77,58 +78,62 @@ public class SettingsActivity extends PreferenceActivity {
 				});
 		clear_data_diag = builder.create();
 	}
-	
+
 	@Override
 	public void onResume() {
 		super.onResume();
-		
+
 		// If showing a dialog before we paused, show it again
 		if (showing_diag != null) {
 			showing_diag.show();
 		}
-		
+
 		if (isTwoPane() && !twoPaneSet) {
 			storeTwoPanePref.setChecked(true);
 		}
 		
-		difficultyPref.setSummary(
 			PreferenceManager.getDefaultSharedPreferences(Init.getAppContext())
 				.getString(
-					"difficulty", getString(R.string.pref_difficulty_default
-				)
-			)
-		);
 		sharedPreferenceChangeListener = new OnSharedPreferenceChangeListener() {
-			public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {				
-		        // A preference value changes
-		        if (key.equals("difficulty")) {
-		            difficultyPref.setSummary(sharedPreferences.getString(key, getString(R.string.pref_difficulty_default)));
-		        }
-		    }
+			public void onSharedPreferenceChanged(
+					SharedPreferences sharedPreferences, String key) {
+				// A preference value changes
+				if (key.equals("difficulty")) {
+					difficultyPref.setSummary(sharedPreferences.getString(key,
+							getString(R.string.pref_difficulty_default)));
+					Init.cat.updateDifficulty(sharedPreferences.getString(key,
+							getString(R.string.pref_difficulty_default)));
+				}
+			}
 		};
-		
-		PreferenceManager.getDefaultSharedPreferences(Init.getAppContext()).registerOnSharedPreferenceChangeListener(sharedPreferenceChangeListener);
+
+		PreferenceManager.getDefaultSharedPreferences(Init.getAppContext())
+				.registerOnSharedPreferenceChangeListener(
+						sharedPreferenceChangeListener);
 	}
-	
+
 	@Override
 	public void onPause() {
 		super.onPause();
-		
+
 		// If showing a dialog, dismiss it to prevent memory leaks
 		if (showing_diag != null && showing_diag.isShowing()) {
 			showing_diag.dismiss();
 		}
-		
-		PreferenceManager.getDefaultSharedPreferences(Init.getAppContext()).unregisterOnSharedPreferenceChangeListener(sharedPreferenceChangeListener);
+
+		PreferenceManager.getDefaultSharedPreferences(Init.getAppContext())
+				.unregisterOnSharedPreferenceChangeListener(
+						sharedPreferenceChangeListener);
 	}
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
-		// If the user clicked the back button in the action bar, take them back to the parent activity
+		// If the user clicked the back button in the action bar, take them back
+		// to the parent activity
 		switch (item.getItemId()) {
-			case android.R.id.home:
-				NavUtils.navigateUpFromSameTask(this);
-				return true;
+		case android.R.id.home:
+			NavUtils.navigateUpFromSameTask(this);
+			return true;
 		}
 		return super.onOptionsItemSelected(item);
 	}
@@ -151,7 +156,7 @@ public class SettingsActivity extends PreferenceActivity {
 					return true;
 				}
 			});
-			
+
 			storeTwoPanePref = (CheckBoxPreference) findPreference("store_twopane");
 			difficultyPref = findPreference("difficulty");
 			
