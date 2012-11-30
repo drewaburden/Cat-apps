@@ -92,8 +92,14 @@ public class SettingsActivity extends PreferenceActivity {
 			storeTwoPanePref.setChecked(true);
 		}
 		
-			PreferenceManager.getDefaultSharedPreferences(Init.getAppContext())
-				.getString(
+		difficultyPref.setSummary(
+				PreferenceManager.getDefaultSharedPreferences(Init.getAppContext())
+					.getString(
+						"difficulty", getString(R.string.pref_difficulty_default
+					)
+				)
+			);
+		
 		sharedPreferenceChangeListener = new OnSharedPreferenceChangeListener() {
 			public void onSharedPreferenceChanged(
 					SharedPreferences sharedPreferences, String key) {
