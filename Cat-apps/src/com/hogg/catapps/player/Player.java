@@ -23,11 +23,13 @@ import android.widget.TextView;
 import com.hogg.catapps.Init;
 import com.hogg.catapps.R;
 import com.hogg.catapps.cat.Cat;
+import com.hogg.catapps.player.inventory.Inventory;
 
 public class Player {
 	String name = "";
 	int money = 0;
 	public static ArrayList<Cat> cats; // Holds all of the players cats
+	Inventory inv;
 	
 	Button foodButton, waterButton;
 	TextView moneyText;
@@ -36,6 +38,7 @@ public class Player {
 
 	public Player(String _name) {
 		name = _name;
+		inv = new Inventory();
 	}
 	
 	public void startTracking(Button _foodButton, Button _waterButton, TextView _moneyText) {

@@ -17,7 +17,7 @@ package com.hogg.catapps.items;
 
 import android.graphics.drawable.Drawable;
 
-public class Item {
+public class Item implements Comparable<Item>{
 	String type = "";
 	String name = "";
 	String description = "";
@@ -59,5 +59,9 @@ public class Item {
 	
 	public String toString() {
 		return name;
+	}
+
+	public int compareTo(Item i) {
+		return name.compareTo(i.name);
 	}
 }
