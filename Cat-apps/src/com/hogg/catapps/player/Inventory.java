@@ -1,4 +1,4 @@
-package com.hogg.catapps.player.inventory;
+package com.hogg.catapps.player;
 
 import java.util.SortedMap;
 import java.util.TreeMap;
@@ -37,8 +37,16 @@ public class Inventory {
 			ownedItems.remove(item);
 			ownedItems.put(item, (previousQuantity - quantity) );
 			return true;
+		}	
+	}
+	
+	public int itemCount(Item i) {
+		Integer in = ownedItems.get(i);
+		if(in == null) {
+			return 0;
+		} else {
+		return ownedItems.get(i);
 		}
-		
 	}
 	
 }

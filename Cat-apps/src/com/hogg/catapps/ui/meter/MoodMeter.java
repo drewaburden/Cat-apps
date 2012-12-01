@@ -50,10 +50,16 @@ public class MoodMeter extends Meter {
 			} else if (Init.cat.getMood() == Mood.SAD && isHardcore()) {
 				Init.cat.setMood(Mood.DEAD);
 				changeIcon(R.drawable.ic_mood_dead);
-			}				
+			} else if (Init.cat.getMood() == Mood.SAD) {
+				setValue(-100);
+			} else if (Init.cat.getMood() == Mood.DEAD && isHardcore()) {
+				setValue(-100);
+			}			
 			setValue(getValue() + 100);
 		} else if((int) getValue() >= 100) {
-			if(Init.cat.getMood() == Mood.CONTENT) {
+			if(Init.cat.getMood() == Mood.HAPPY) {
+				setValue(200);
+			} else if(Init.cat.getMood() == Mood.CONTENT) {
 				Init.cat.setMood(Mood.HAPPY);
 				changeIcon(R.drawable.ic_mood_happy);
 			} else if (Init.cat.getMood() == Mood.MAD) {

@@ -10,7 +10,7 @@
   		Drew Burden
   
   Copyright © 2012 Hogg Studios
-  All rights reserved.
+  All rights reserved.
 -->
 
 <resources>
@@ -40,8 +40,9 @@
     <string name="pref_hogg_mode">Hogg mode</string>
     <string name="pref_schrodinger_mode">Schrodinger\'s cat mode</string>
     <string name="pref_morse_mode">Morse mode</string>
-    <string name="diag_clear_data">Are you sure you want to delete your currently loaded cat\'s data? This cannot be undone.</string>
+    <string name="diag_clear_data">Are you sure you want to delete your currently loaded cat\'s data? You will also lose all hearts associated with this cat. This cannot be undone.</string>
     <string name="diag_enter_name">Enter a name for your cat</string>
+    <string name="diag_buy_head">Quantity</string>
     <string name="toast_name_empty">You didn\'t enter a name for your cat</string>
     <string name="toast_name_chars">Name must only contain alphanumeric characters, spaces, periods, apostrophes (\'), and hyphens (-)</string>
     <string name="toast_name_length">Name must not be longer than 25 characters</string>

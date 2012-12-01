@@ -26,7 +26,6 @@ import android.widget.TextView;
 import com.hogg.catapps.Init;
 import com.hogg.catapps.R;
 import com.hogg.catapps.cat.Cat;
-import com.hogg.catapps.player.inventory.Inventory;
 
 public class Player {
 	String name = "";
@@ -42,6 +41,7 @@ public class Player {
 	public Player(String _name) {
 		name = _name;
 		inv = new Inventory();
+		money = Init.getAppContext().getSharedPreferences("cat", Context.MODE_PRIVATE).getInt("money", 0);
 	}
 	
 	public void startTracking(Button _foodButton, Button _waterButton, TextView _moneyText) {
@@ -80,11 +80,18 @@ public class Player {
 		commitMoney();
 	}
 	public void commitMoney() {
-		SharedPreferences.Editor prefs_editor = Init.getAppContext().getSharedPreferences("player", Context.MODE_PRIVATE).edit();
-    	prefs_editor.putInt("money", 0);
+		SharedPreferences.Editor prefs_editor = Init.getAppContext().getSharedPreferences("cat", Context.MODE_PRIVATE).edit();
+    	prefs_editor.putInt("money", money);
     	prefs_editor.apply();
 	}
 	public void updateMoneyText() {
 		moneyText.setText(Integer.toString(money));
+	}
+	
+	public void setInv(Inventory _inv) {
+		inv = _inv;
+	}
+	public Inventory getInv() {
+		return inv;
 	}
 }
