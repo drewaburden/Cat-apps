@@ -17,7 +17,7 @@ package com.hogg.catapps.items;
 
 import android.graphics.drawable.Drawable;
 
-public class Item {
+public class Item implements Comparable<Item>{
 	String type = "";
 	String name = "";
 	String description = "";
@@ -60,4 +60,15 @@ public class Item {
 	public String toString() {
 		return name;
 	}
+
+	public int compareTo(Item i) {
+		//Need to compare type
+		int typeDiff = type.compareToIgnoreCase(i.type);
+		if( typeDiff != 0) {
+			return typeDiff;
+		}
+		//Else they are the same type, return difference to price
+		return price - i.price;
+	}
+	
 }
