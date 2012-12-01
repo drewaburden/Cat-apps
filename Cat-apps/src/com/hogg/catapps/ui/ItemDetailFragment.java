@@ -1,5 +1,7 @@
 package com.hogg.catapps.ui;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.text.method.ScrollingMovementMethod;
@@ -7,8 +9,11 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
+import com.hogg.catapps.Init;
 import com.hogg.catapps.R;
 import com.hogg.catapps.R.id;
 import com.hogg.catapps.R.layout;
@@ -56,7 +61,7 @@ public class ItemDetailFragment extends Fragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		View rootView = inflater.inflate(R.layout.activity_item_detail,
-				container, false);
+				container, false);		
 
 		// Show the dummy content as text in a TextView.
 		if (mItem != null) {
@@ -72,6 +77,20 @@ public class ItemDetailFragment extends Fragment {
 			// Enable the scrollbars on the description
 			TextView textView = (TextView) rootView.findViewById(R.id.textDescription);
 			textView.setMovementMethod(ScrollingMovementMethod.getInstance());
+			
+			if (Init.player.getMoney() < mItem.getPrice()) {
+				((ImageButton) rootView.findViewById(R.id.buttonBuy)).setImageResource(R.drawable.ic_buy_disabled);
+			}
+			else {
+				((ImageButton) rootView.findViewById(R.id.buttonBuy)).setImageResource(R.drawable.ic_buy);
+			}
+		}
+		else {
+			((TextView) rootView.findViewById(R.id.textName))
+			.setText("Please select an item");
+	
+			((TextView) rootView.findViewById(R.id.textPrice))
+			.setText("0");
 		}
 
 		return rootView;

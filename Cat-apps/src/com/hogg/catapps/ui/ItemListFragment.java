@@ -91,6 +91,8 @@ public class ItemListFragment extends ListFragment {
 				&& savedInstanceState.containsKey(STATE_ACTIVATED_POSITION)) {
 			setActivatedPosition(savedInstanceState
 					.getInt(STATE_ACTIVATED_POSITION));
+			mCallbacks.onItemSelected(StoreFragmentContent.ITEMS.get(savedInstanceState
+					.getInt(STATE_ACTIVATED_POSITION)).getName());
 		}
 	}
 

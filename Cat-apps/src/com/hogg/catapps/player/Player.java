@@ -17,6 +17,9 @@ package com.hogg.catapps.player;
 
 import java.util.ArrayList;
 
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -59,19 +62,24 @@ public class Player {
 	
 	// Get and set money
 	public void setMoney(int _money) {
-		money = Math.min(_money, 999999);
-		updateMoneyText();
+		money = Math.max(Math.min(_money, 999999), 0);
+		commitMoney();
 	}
 	public int getMoney() {
 		return money;
 	}
 	public void incrementMoney(int _money) {
 		money = Math.min(money + _money, 999999);
-		updateMoneyText();
+		commitMoney();
 	}
 	public void decrementMoney(int _money) {
 		money = Math.max(money - _money, 0);
-		updateMoneyText();
+		commitMoney();
+	}
+	public void commitMoney() {
+		SharedPreferences.Editor prefs_editor = Init.getAppContext().getSharedPreferences("player", Context.MODE_PRIVATE).edit();
+    	prefs_editor.putInt("money", 0);
+    	prefs_editor.apply();
 	}
 	public void updateMoneyText() {
 		moneyText.setText(Integer.toString(money));

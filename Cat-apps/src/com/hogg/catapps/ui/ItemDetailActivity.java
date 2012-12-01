@@ -1,5 +1,6 @@
 package com.hogg.catapps.ui;
 
+import com.hogg.catapps.Init;
 import com.hogg.catapps.R;
 import com.hogg.catapps.R.id;
 import com.hogg.catapps.R.layout;

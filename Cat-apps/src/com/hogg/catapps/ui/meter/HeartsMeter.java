@@ -49,6 +49,7 @@ public class HeartsMeter extends Meter {
 		if (value + amount >= maxValue) {
 			setValue(minValue);
 			Init.player.incrementMoney(100);
+			Init.player.updateMoneyText();
 			Init.player.food += 5;
 			Init.player.water += 5;
 			Init.player.updateButtonText();
@@ -61,6 +62,7 @@ public class HeartsMeter extends Meter {
 		if (value + getIncrementAmount() >= maxValue) {
 			setValue(minValue);
 			Init.player.incrementMoney(100);
+			Init.player.updateMoneyText();
 			Init.player.food += 5;
 			Init.player.water += 5;
 			Init.player.updateButtonText();

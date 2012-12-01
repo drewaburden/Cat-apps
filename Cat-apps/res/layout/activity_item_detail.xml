@@ -65,6 +65,7 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
+        android:baselineAligned="false"
         android:orientation="horizontal" >
 
         <RelativeLayout
@@ -102,7 +103,7 @@
                     android:textSize="14sp" />
 
                 <ImageView
-                    android:id="@+id/imageCost"
+                    android:id="@+id/imagePrice"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@drawable/ic_money" />
@@ -125,7 +126,7 @@
                 android:paddingBottom="24dp"
                 android:paddingLeft="46dp"
                 android:scaleType="center"
-                android:src="@drawable/ic_buy" />
+                android:src="@drawable/ic_buy_disabled" />
         </RelativeLayout>
     </LinearLayout>
 

@@ -1,18 +1,67 @@
 <RelativeLayout
-    	xmlns:android="http://schemas.android.com/apk/res/android"
-	    xmlns:tools="http://schemas.android.com/tools"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-	<LinearLayout
-	    android:layout_height="match_parent"
+	xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    
+	<RelativeLayout
+	    android:id="@+id/layoutInfoBar"
 	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:layout_alignParentTop="true"
+	    android:paddingBottom="4dp"
+	    android:paddingRight="4dp">
+	
+	    <ImageView
+	        android:id="@+id/imageMoney"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_alignParentRight="true"
+	        android:paddingTop="4dp"
+	        android:src="@drawable/ic_money" />
+	
+	    <TextView
+	        android:id="@+id/textPlayerMoney"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_marginRight="@dimen/size_money_text_spacing"
+	        android:layout_marginTop="4dp"
+	        android:layout_toLeftOf="@+id/imageMoney"
+	        android:gravity="right"
+	        android:minEms="3"
+	        android:text="0"
+	        android:textColor="#ffffff"
+	        android:textSize="@dimen/size_money_text" />
+	
+	    <TextView
+	        android:id="@+id/textView1"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_marginRight="4dp"
+	        android:layout_marginTop="4dp"
+	        android:layout_toLeftOf="@+id/textPlayerMoney"
+	        android:text="You have:"
+	        android:textColor="#ffffff" />
+	</RelativeLayout>
+	
+    <TextView
+       android:id="@+id/line"
+       style="?android:attr/listSeparatorTextViewStyle"
+       android:layout_width="match_parent"
+       android:layout_height="1dp"
+       android:layout_below="@id/layoutInfoBar"
+       android:gravity="center_horizontal" />
+	    
+	<LinearLayout
+	    android:layout_width="match_parent"
+	    android:layout_height="match_parent"
+	    android:layout_below="@id/layoutInfoBar"
 	    android:layout_marginLeft="14dp"
 	    android:layout_marginRight="14dp"
 	    android:divider="?android:attr/dividerHorizontal"
 	    android:orientation="horizontal"
 	    android:showDividers="middle"
-	    tools:context=".ItemListActivity" xmlns:android="http://schemas.android.com/apk/res/android">
+	    tools:context=".ItemListActivity" >
 	
 	    <!--
 	    This layout is a two-pane layout for the Items
@@ -33,69 +82,12 @@
 	        android:layout_weight="2"
 	        tools:layout="@android:layout/list_content" />
 	
-	    <RelativeLayout
-	        android:layout_width="0dp"
-	        android:layout_height="match_parent"
-	        android:layout_weight="3" >
-	        
-	        <RelativeLayout
-	            android:id="@+id/layoutInfoBar"
-	            android:layout_width="match_parent"
-	            android:layout_height="wrap_content"
-	            android:paddingBottom="7dp" >
-	
-		        <ImageView
-		            android:id="@+id/imageMoney"
-		            android:layout_width="wrap_content"
-		            android:layout_height="wrap_content"
-		            android:layout_alignParentRight="true"
-		            android:paddingTop="7dp"
-		            android:src="@drawable/ic_money" />
-		
-		        <TextView
-		            android:id="@+id/textMoney"
-		            android:layout_width="wrap_content"
-		            android:layout_height="wrap_content"
-		            android:layout_marginRight="@dimen/size_money_text_spacing"
-		            android:layout_marginTop="7dp"
-		            android:layout_toLeftOf="@+id/imageMoney"
-		            android:gravity="right"
-		            android:minEms="3"
-		            android:text="0"
-		            android:textColor="#ffffff"
-		            android:textSize="@dimen/size_money_text" />
-		
-		        <TextView
-		            android:id="@+id/textView1"
-		            android:layout_width="wrap_content"
-		            android:layout_height="wrap_content"
-		            android:layout_marginRight="4dp"
-		            android:layout_marginTop="7dp"
-		            android:layout_toLeftOf="@+id/textMoney"
-		            android:text="You have:"
-		            android:textColor="#ffffff" />
-		        
-		        <TextView
-		            android:id="@+id/line"
-		            style="?android:attr/listSeparatorTextViewStyle"
-		            android:layout_width="match_parent"
-		            android:layout_height="1dp"
-		            android:layout_below="@id/textMoney"
-		            android:layout_marginTop="8dp"
-		            android:gravity="center_horizontal"
-		            android:paddingTop="5dip" />
-		
-		    </RelativeLayout>
-	        
-	        <FrameLayout
-	            android:id="@+id/item_detail_container"
-	            android:layout_width="fill_parent"
-	            android:layout_height="0dp"
-	            android:layout_alignParentBottom="true"
-	            android:layout_below="@+id/layoutInfoBar" />
-	
-	    </RelativeLayout>
+	       <FrameLayout
+	           android:id="@+id/item_detail_container"
+	           android:layout_width="0dp"
+	           android:layout_height="match_parent"
+	           android:layout_weight="3" />
 	
 	</LinearLayout>
-	
+
 </RelativeLayout>

@@ -5,7 +5,9 @@ import com.hogg.catapps.R;
 import com.hogg.catapps.R.id;
 import com.hogg.catapps.R.layout;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v4.app.FragmentActivity;
@@ -13,6 +15,7 @@ import android.support.v4.app.NavUtils;
 import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
 
 /**
@@ -52,7 +55,7 @@ public class ItemListActivity extends FragmentActivity implements
 		// Show the Up button in the action bar.
 		getActionBar().setDisplayHomeAsUpEnabled(true);
 
-		if (findViewById(R.id.item_detail_container) != null) {
+		if (findViewById(R.id.item_detail_container) != null && mTwoPane != true) {
 			// The detail container view will be present only in the
 			// large-screen layouts (res/values-large and
 			// res/values-sw600dp). If this view is present, then the
@@ -65,11 +68,28 @@ public class ItemListActivity extends FragmentActivity implements
 			// 'activated' state when touched.
 			((ItemListFragment) getSupportFragmentManager().findFragmentById(
 					R.id.item_list)).setActivateOnItemClick(true);
+			
+			// In two-pane mode, show the detail view in this activity by
+			// adding or replacing the detail fragment using a
+			// fragment transaction.
+			Bundle arguments = new Bundle();
+			arguments.putString(ItemDetailFragment.ARG_ITEM_ID, "-1");
+			ItemDetailFragment fragment = new ItemDetailFragment();
+			fragment.setArguments(arguments);
+			getSupportFragmentManager().beginTransaction()
+					.replace(R.id.item_detail_container, fragment).commit();
 		}
-
+		
 		// TODO: If exposing deep links into your app, handle intents here.
 	}
-
+	
+	@Override
+	public void onResume() {
+		super.onResume();
+		
+		updatePlayerMoneyDisplay();
+	}
+	
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
@@ -110,5 +130,10 @@ public class ItemListActivity extends FragmentActivity implements
 			detailIntent.putExtra(ItemDetailFragment.ARG_ITEM_ID, id);
 			startActivity(detailIntent);
 		}
+	}
+	
+	public void updatePlayerMoneyDisplay() {
+		TextView curmoney = (TextView) findViewById(R.id.textPlayerMoney);
+		curmoney.setText(Integer.toString(Init.player.getMoney()));
 	}
 }
