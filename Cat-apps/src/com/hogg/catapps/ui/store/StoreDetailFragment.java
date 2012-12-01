@@ -2,30 +2,22 @@ package com.hogg.catapps.ui.store;
 
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.content.Context;
 import android.content.DialogInterface;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.text.method.ScrollingMovementMethod;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.ListView;
 import android.widget.SeekBar;
 import android.widget.SeekBar.OnSeekBarChangeListener;
 import android.widget.TextView;
 
 import com.hogg.catapps.Init;
 import com.hogg.catapps.R;
-import com.hogg.catapps.R.id;
-import com.hogg.catapps.R.layout;
 import com.hogg.catapps.items.StoreFragmentContent;
 import com.hogg.catapps.items.Item;
-import com.hogg.catapps.ui.store.StoreListFragment.Callbacks;
 
 /**
  * A fragment representing a single Item detail screen. This fragment is either

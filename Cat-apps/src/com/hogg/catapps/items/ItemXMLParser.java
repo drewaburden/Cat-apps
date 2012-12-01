@@ -1,7 +1,6 @@
 package com.hogg.catapps.items;
 
 import java.io.IOException;
-import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,14 +8,9 @@ import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
 import org.xmlpull.v1.XmlPullParserFactory;
 
-import com.hogg.catapps.Init;
-import com.hogg.catapps.R;
-
 import android.util.Log;
-import android.util.Xml;
 
 public class ItemXMLParser {
-	private static final String ns = null;
 	
 	public List<Item> readFeed(XmlPullParser parser) throws XmlPullParserException, IOException {
 		List<Item> items = new ArrayList<Item>();

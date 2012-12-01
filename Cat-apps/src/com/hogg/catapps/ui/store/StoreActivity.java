@@ -2,21 +2,13 @@ package com.hogg.catapps.ui.store;
 
 import com.hogg.catapps.Init;
 import com.hogg.catapps.R;
-import com.hogg.catapps.R.id;
-import com.hogg.catapps.R.layout;
-import com.hogg.catapps.ui.store.StoreDetailFragment.Callbacks;
 
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.NavUtils;
-import android.text.method.ScrollingMovementMethod;
-import android.util.Log;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.TextView;
 
 /**

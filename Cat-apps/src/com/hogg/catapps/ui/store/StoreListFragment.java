@@ -3,16 +3,10 @@ package com.hogg.catapps.ui.store;
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.ListFragment;
-import android.text.method.ScrollingMovementMethod;
-import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.TextView;
 
-import com.hogg.catapps.R;
 import com.hogg.catapps.items.StoreFragmentContent;
 import com.hogg.catapps.items.Item;
 

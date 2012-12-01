@@ -1,19 +1,12 @@
 package com.hogg.catapps.ui.store;
 
-import com.hogg.catapps.Init;
 import com.hogg.catapps.R;
-import com.hogg.catapps.R.id;
-import com.hogg.catapps.R.layout;
-import com.hogg.catapps.ui.store.StoreDetailFragment.Callbacks;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.NavUtils;
-import android.text.method.ScrollingMovementMethod;
-import android.util.Log;
 import android.view.MenuItem;
-import android.widget.TextView;
 
 /**
  * An activity representing a single Item detail screen. This activity is only

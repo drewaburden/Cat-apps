@@ -19,7 +19,6 @@ import java.util.ArrayList;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.preference.PreferenceManager;
 import android.widget.Button;
 import android.widget.TextView;
 

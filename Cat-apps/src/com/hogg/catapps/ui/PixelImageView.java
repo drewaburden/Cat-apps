@@ -1,6 +1,6 @@
 package com.hogg.catapps.ui;
 
-import com.hogg.catapps.R;
+/*import com.hogg.catapps.R;
 
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -13,7 +13,7 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.widget.ImageView;
 
-/*public class PixelImageView extends ImageView {
+public class PixelImageView extends ImageView {
 	Paint p = new Paint();
 	BitmapDrawable image;
 	Bitmap toDraw;
