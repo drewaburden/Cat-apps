@@ -60,13 +60,13 @@
 
 		<fragment
 		    android:id="@+id/item_list"
-		    android:name="com.hogg.catapps.ui.ItemListFragment"
+		    android:name="com.hogg.catapps.ui.store.StoreListFragment"
 		    android:layout_width="match_parent"
 		    android:layout_height="match_parent"
 		    android:layout_below="@id/layoutInfoBar"
 		    android:layout_marginLeft="16dp"
 		    android:layout_marginRight="16dp"
-		    tools:context=".ItemListActivity"
+		    tools:context=".StoreActivity"
 		    tools:layout="@android:layout/list_content" />
 
 	</RelativeLayout>

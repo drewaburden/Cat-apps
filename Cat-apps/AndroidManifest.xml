@@ -44,14 +44,14 @@
                 android:value=".ui.MainActivity" />
         </activity>
         <activity
-            android:name="com.hogg.catapps.ui.ItemListActivity"
+            android:name="com.hogg.catapps.ui.store.StoreActivity"
             android:label="@string/title_item_list" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.hogg.catapps.ui.MainActivity" />
         </activity>
         <activity
-            android:name="com.hogg.catapps.ui.ItemDetailActivity"
+            android:name="com.hogg.catapps.ui.store.StoreDetailActivity"
             android:label="@string/title_item_detail" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"

@@ -20,6 +20,7 @@ import com.hogg.catapps.background.BackgroundSleepThread;
 import com.hogg.catapps.cat.Setup;
 import com.hogg.catapps.cat.petting.PetListener;
 import com.hogg.catapps.cat.simulation.Simulation;
+import com.hogg.catapps.ui.store.StoreActivity;
 
 import android.os.Bundle;
 import android.preference.PreferenceActivity;
@@ -139,7 +140,7 @@ public class MainActivity extends Activity {
 			// Settings option
 			case R.id.menu_store:
 				// Start the settings activity
-				Intent intent1 = new Intent(this, ItemListActivity.class);
+				Intent intent1 = new Intent(this, StoreActivity.class);
 				startActivity(intent1);
 				break;
 			// Exit option

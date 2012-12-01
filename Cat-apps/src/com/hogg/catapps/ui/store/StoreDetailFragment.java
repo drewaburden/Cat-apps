@@ -1,4 +1,4 @@
-package com.hogg.catapps.ui;
+package com.hogg.catapps.ui.store;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -25,14 +25,14 @@ import com.hogg.catapps.R.id;
 import com.hogg.catapps.R.layout;
 import com.hogg.catapps.items.StoreFragmentContent;
 import com.hogg.catapps.items.Item;
-import com.hogg.catapps.ui.ItemListFragment.Callbacks;
+import com.hogg.catapps.ui.store.StoreListFragment.Callbacks;
 
 /**
  * A fragment representing a single Item detail screen. This fragment is either
- * contained in a {@link ItemListActivity} in two-pane mode (on tablets) or a
- * {@link ItemDetailActivity} on handsets.
+ * contained in a {@link StoreActivity} in two-pane mode (on tablets) or a
+ * {@link StoreDetailActivity} on handsets.
  */
-public class ItemDetailFragment extends Fragment {
+public class StoreDetailFragment extends Fragment {
 	/**
 	 * The fragment argument representing the item ID that this fragment
 	 * represents.
@@ -48,7 +48,7 @@ public class ItemDetailFragment extends Fragment {
 	 * Mandatory empty constructor for the fragment manager to instantiate the
 	 * fragment (e.g. upon screen orientation changes).
 	 */
-	public ItemDetailFragment() {
+	public StoreDetailFragment() {
 	}
 	
 	private Callbacks mCallbacks = sDummyCallbacks;
@@ -105,7 +105,7 @@ public class ItemDetailFragment extends Fragment {
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
-		View rootView = inflater.inflate(R.layout.activity_item_detail,
+		View rootView = inflater.inflate(R.layout.activity_store_detail,
 				container, false);		
 
 		// Show the dummy content as text in a TextView.
