@@ -28,7 +28,7 @@ public class Meter {
 	ProgressBar progressBar; // ProgressBar
 	TextView textView; // ProgressBar's percentage display
 	double minValue = 0.0;
-	double maxValue = 100.0;
+	private static double maxValue = 100.0;
 	protected double incrementAmount = 1.0;
 	protected double decrementAmount = 1.0;
 	int updateWaitTime = 1000; // Milliseconds to wait before updating in the
@@ -153,18 +153,18 @@ public class Meter {
 	// Incrementing methods (with polymorphism)
 	public void increment() {
 		// Make sure the value does not exceed the max value
-		if ((value + getIncrementAmount()) < maxValue) {
+		if ((value + getIncrementAmount()) < getMaxValue()) {
 			value += getIncrementAmount();
 		} else {
-			value = maxValue;
+			value = getMaxValue();
 		}
 	}
 
 	public void increment(double amount) {
-		if (value + amount <= maxValue) {
+		if (value + amount <= getMaxValue()) {
 			value += amount;
 		} else {
-			value = maxValue;
+			value = getMaxValue();
 		}
 	}
 
@@ -185,4 +185,9 @@ public class Meter {
 			value = minValue;
 		}
 	}
+
+	public static double getMaxValue() {
+		return maxValue;
+	}
+
 }

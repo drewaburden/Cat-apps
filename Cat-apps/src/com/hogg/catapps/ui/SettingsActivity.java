@@ -23,7 +23,6 @@ import android.preference.CheckBoxPreference;
 import android.preference.Preference;
 import android.preference.Preference.OnPreferenceClickListener;
 import android.preference.PreferenceActivity;
-import android.preference.PreferenceCategory;
 import android.preference.PreferenceFragment;
 import android.preference.PreferenceManager;
 import android.app.AlertDialog;
@@ -59,6 +58,7 @@ public class SettingsActivity extends PreferenceActivity {
 		builder.setPositiveButton(getString(R.string.diag_delete),
 				new DialogInterface.OnClickListener() {
 					public void onClick(DialogInterface dialog, int id) {
+						Init.cat.stopTracking();
 						SharedPreferences prefs = Init.getAppContext()
 								.getSharedPreferences("cat",
 										Context.MODE_PRIVATE);
@@ -91,15 +91,12 @@ public class SettingsActivity extends PreferenceActivity {
 		if (isTwoPane() && !twoPaneSet) {
 			storeTwoPanePref.setChecked(true);
 		}
-		
-		difficultyPref.setSummary(
-				PreferenceManager.getDefaultSharedPreferences(Init.getAppContext())
-					.getString(
-						"difficulty", getString(R.string.pref_difficulty_default
-					)
-				)
-			);
-		
+
+		difficultyPref.setSummary(PreferenceManager
+				.getDefaultSharedPreferences(Init.getAppContext()).getString(
+						"difficulty",
+						getString(R.string.pref_difficulty_default)));
+
 		sharedPreferenceChangeListener = new OnSharedPreferenceChangeListener() {
 			public void onSharedPreferenceChanged(
 					SharedPreferences sharedPreferences, String key) {
@@ -151,7 +148,7 @@ public class SettingsActivity extends PreferenceActivity {
 
 			// Add all our preferences to the fragment
 			addPreferencesFromResource(R.xml.preferences);
-					
+
 			// Set up the click listener for the data clear button
 			Preference myPref = findPreference("clear_data");
 			myPref.setOnPreferenceClickListener(new OnPreferenceClickListener() {
@@ -165,29 +162,31 @@ public class SettingsActivity extends PreferenceActivity {
 
 			storeTwoPanePref = (CheckBoxPreference) findPreference("store_twopane");
 			difficultyPref = findPreference("difficulty");
-			
+
 			// Set up the click listener for the two pane store preference
-			storeTwoPanePref.setOnPreferenceClickListener(new OnPreferenceClickListener() {
-				public boolean onPreferenceClick(Preference preference) {
-					SharedPreferences.Editor prefs_editor = PreferenceManager.getDefaultSharedPreferences(Init.getAppContext()).edit();
-		        	prefs_editor.putBoolean("store_twopane_set", true);
-		        	prefs_editor.apply();
-					return true;
-				}
-			});
-			
-			twoPaneSet = PreferenceManager.getDefaultSharedPreferences(Init.getAppContext())
-				.getBoolean(
-					"store_twopane_set", false
-				);
+			storeTwoPanePref
+					.setOnPreferenceClickListener(new OnPreferenceClickListener() {
+						public boolean onPreferenceClick(Preference preference) {
+							SharedPreferences.Editor prefs_editor = PreferenceManager
+									.getDefaultSharedPreferences(
+											Init.getAppContext()).edit();
+							prefs_editor.putBoolean("store_twopane_set", true);
+							prefs_editor.apply();
+							return true;
+						}
+					});
+
+			twoPaneSet = PreferenceManager.getDefaultSharedPreferences(
+					Init.getAppContext())
+					.getBoolean("store_twopane_set", false);
 		}
 	}
-	
+
 	public boolean isTwoPane() {
 		Configuration config = getResources().getConfiguration();
-		if ((config.screenLayout & Configuration.SCREENLAYOUT_SIZE_MASK) == Configuration.SCREENLAYOUT_SIZE_LARGE ||
-				(config.screenLayout & Configuration.SCREENLAYOUT_SIZE_MASK) == Configuration.SCREENLAYOUT_SIZE_XLARGE ||
-				config.smallestScreenWidthDp >= 600) {
+		if ((config.screenLayout & Configuration.SCREENLAYOUT_SIZE_MASK) == Configuration.SCREENLAYOUT_SIZE_LARGE
+				|| (config.screenLayout & Configuration.SCREENLAYOUT_SIZE_MASK) == Configuration.SCREENLAYOUT_SIZE_XLARGE
+				|| config.smallestScreenWidthDp >= 600) {
 			Log.d("Debug", "Two pane mode");
 			return true;
 		}

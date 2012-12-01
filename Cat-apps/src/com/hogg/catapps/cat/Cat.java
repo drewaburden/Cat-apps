@@ -73,16 +73,16 @@ public class Cat {
 		
 		
 		// Initialize meters with specified initial values and an
-		hearts = new HeartsMeter(initHearts, 100.0 / realisticHeartsHours / 3600 / difficultyMultiplier, 1.0 / difficultyMultiplier);
+		hearts = new HeartsMeter(initHearts, HeartsMeter.getMaxValue() / realisticHeartsHours / 3600 / difficultyMultiplier, 1.0 / difficultyMultiplier);
 		
 		mood = new MoodMeter(initMood, 1);
 
 		// the 3600 is because 60 minutes in an hour times 60 seconds in a minute
-		hunger = new HungerMeter(initHunger, 100.0 / realisticHungerHours / 3600.0 / difficultyMultiplier);
+		hunger = new HungerMeter(initHunger, HungerMeter.getMaxValue() / realisticHungerHours / 3600.0 / difficultyMultiplier);
 		//hunger = new HungerMeter(initHunger, 0.5);
 
 		// the 3600 is because 60 minutes in an hour times 60 seconds in a minute
-		thirst = new ThirstMeter(initThirst, 100.0 / realisticThirstHours / 3600.0 / difficultyMultiplier);
+		thirst = new ThirstMeter(initThirst, ThirstMeter.getMaxValue() / realisticThirstHours / 3600.0 / difficultyMultiplier);
 		//thirst = new ThirstMeter(initThirst, 1);
 
 		simulation = new Meow();
@@ -109,7 +109,7 @@ public class Cat {
 	}
 
 	public void stopTracking() {
-		// hearts.stopTracking(); // Hearts meter
+		hearts.stopTracking(); // Hearts meter
 		hunger.stopTracking(); // Hunger meter
 		thirst.stopTracking(); // Thirst meter
 		mood.stopTracking(); // Mood meter
