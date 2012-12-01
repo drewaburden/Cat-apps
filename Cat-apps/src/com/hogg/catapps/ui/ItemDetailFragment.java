@@ -1,5 +1,6 @@
 package com.hogg.catapps.ui;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -13,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ListView;
 import android.widget.SeekBar;
 import android.widget.SeekBar.OnSeekBarChangeListener;
 import android.widget.TextView;
@@ -23,6 +25,7 @@ import com.hogg.catapps.R.id;
 import com.hogg.catapps.R.layout;
 import com.hogg.catapps.items.StoreFragmentContent;
 import com.hogg.catapps.items.Item;
+import com.hogg.catapps.ui.ItemListFragment.Callbacks;
 
 /**
  * A fragment representing a single Item detail screen. This fragment is either
@@ -46,6 +49,44 @@ public class ItemDetailFragment extends Fragment {
 	 * fragment (e.g. upon screen orientation changes).
 	 */
 	public ItemDetailFragment() {
+	}
+	
+	private Callbacks mCallbacks = sDummyCallbacks;
+
+	/**
+	 * A callback interface that all activities containing this fragment must
+	 * implement. This mechanism allows activities to be notified of item
+	 * selections.
+	 */
+	public interface Callbacks {
+		/**
+		 * Callback for when an item has been selected.
+		 */
+		public void onBuyButtonSelected();
+	}
+
+	/**
+	 * A dummy implementation of the {@link Callbacks} interface that does
+	 * nothing. Used only when this fragment is not attached to an activity.
+	 */
+	private static Callbacks sDummyCallbacks = new Callbacks() {
+
+		public void onBuyButtonSelected() {
+			
+		}
+
+	};
+	
+	public void onAttach(Activity activity) {
+		super.onAttach(activity);
+
+		// Activities containing this fragment must implement its callbacks.
+		if (!(activity instanceof Callbacks)) {
+			throw new IllegalStateException(
+					"Activity must implement fragment's callbacks.");
+		}
+
+		mCallbacks = (Callbacks) activity;
 	}
 
 	@Override
@@ -90,7 +131,7 @@ public class ItemDetailFragment extends Fragment {
 				ImageButton buyButton = (ImageButton) rootView.findViewById(R.id.buttonBuy);
 				buyButton.setOnClickListener(new View.OnClickListener() {
 					public void onClick(View v) {
-						onBuyButtonPress();
+						onBuyButtonPress(v);
 					}
 					
 				});
@@ -107,7 +148,7 @@ public class ItemDetailFragment extends Fragment {
 		return rootView;
 	}
 	
-	public void onBuyButtonPress() {
+	public void onBuyButtonPress(final View v) {
 		
 		final SeekBar seek = new SeekBar(Init.getAppContext());
 		seek.setMax(Math.min((int) Math.floor(Init.player.getMoney()/mItem.getPrice()),
@@ -129,6 +170,11 @@ public class ItemDetailFragment extends Fragment {
 			public void onClick(DialogInterface dialog, int which) { 
 				Init.player.decrementMoney( (mItem.getPrice() * seek.getProgress()) );
 				Init.player.getInv().addItem(mItem, seek.getProgress());
+				if(Init.player.getMoney() < mItem.getPrice()) {
+					((ImageButton) v).setImageResource(R.drawable.ic_buy_disabled);
+					v.setEnabled(false);
+				}
+				mCallbacks.onBuyButtonSelected();
 			}
 		});
 		

@@ -34,7 +34,7 @@ import android.widget.TextView;
  * interface to listen for item selections.
  */
 public class ItemListActivity extends FragmentActivity implements
-		ItemListFragment.Callbacks {
+		ItemListFragment.Callbacks, ItemDetailFragment.Callbacks {
 
 	/**
 	 * Whether or not the activity is in two-pane mode, i.e. running on a tablet
@@ -62,8 +62,6 @@ public class ItemListActivity extends FragmentActivity implements
 			// activity should be in two-pane mode.
 			mTwoPane = true;
 			
-			Log.d("Debug", "Two pane mode");
-
 			// In two-pane mode, list items should be given the
 			// 'activated' state when touched.
 			((ItemListFragment) getSupportFragmentManager().findFragmentById(
@@ -135,5 +133,9 @@ public class ItemListActivity extends FragmentActivity implements
 	public void updatePlayerMoneyDisplay() {
 		TextView curmoney = (TextView) findViewById(R.id.textPlayerMoney);
 		curmoney.setText(Integer.toString(Init.player.getMoney()));
+	}
+
+	public void onBuyButtonSelected() {
+		updatePlayerMoneyDisplay();
 	}
 }
