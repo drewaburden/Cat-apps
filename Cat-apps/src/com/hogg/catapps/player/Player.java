@@ -79,4 +79,12 @@ public class Player {
 	public void updateMoneyText() {
 		moneyText.setText(Integer.toString(money));
 	}
+	
+	public void setInv(Inventory _inv) {
+		inv = _inv;
+	}
+	
+	public Inventory getInv() {
+		return inv;
+	}
 }

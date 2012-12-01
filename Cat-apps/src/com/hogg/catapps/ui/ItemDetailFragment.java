@@ -1,5 +1,8 @@
 package com.hogg.catapps.ui;
 
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.text.method.ScrollingMovementMethod;
@@ -7,8 +10,12 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
+import android.widget.SeekBar;
+import android.widget.SeekBar.OnSeekBarChangeListener;
 import android.widget.TextView;
 
+import com.hogg.catapps.Init;
 import com.hogg.catapps.R;
 import com.hogg.catapps.R.id;
 import com.hogg.catapps.R.layout;
@@ -72,8 +79,48 @@ public class ItemDetailFragment extends Fragment {
 			// Enable the scrollbars on the description
 			TextView textView = (TextView) rootView.findViewById(R.id.textDescription);
 			textView.setMovementMethod(ScrollingMovementMethod.getInstance());
+			
+			ImageButton test = (ImageButton) rootView.findViewById(R.id.buttonBuy);
+			test.setOnClickListener( new View.OnClickListener() {
+				
+				public void onClick(View v) {
+					onBuyButtonPress();
+				}
+				
+			});
+			
 		}
 
 		return rootView;
 	}
+	
+
+	public void onBuyButtonPress() {
+				
+		final SeekBar seek = new SeekBar(Init.getAppContext());
+		seek.setMax( Math.min((int) Math.floor( Init.player.getMoney()/mItem.getPrice() ), 99-Init.player.getInv().itemCount(mItem)) );
+		seek.setProgress(1);
+		seek.setOnSeekBarChangeListener(new OnSeekBarChangeListener() {		
+			public void onProgressChanged(SeekBar s, int i, boolean b) {
+				s.setProgress(i);
+			}
+			public void onStartTrackingTouch(SeekBar s) { }
+			public void onStopTrackingTouch(SeekBar s) { }				
+	});
+		
+		AlertDialog.Builder builder = new AlertDialog.Builder(Init.getAppContext());
+		builder.setTitle(R.string.diag_buy_head);
+		builder.setCancelable(true);
+		builder.setView(seek);
+		builder.setPositiveButton(Init.getAppContext().getString(R.string.diag_ok), new DialogInterface.OnClickListener() {
+			public void onClick(DialogInterface dialog, int which) { 
+				Init.player.decrementMoney( (mItem.getPrice() * seek.getProgress()) );
+				Init.player.getInv().addItem(mItem, seek.getProgress());
+			}
+		});
+		
+		AlertDialog dialog = builder.create();
+		dialog.show();
+	}
+	
 }

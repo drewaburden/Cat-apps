@@ -117,7 +117,7 @@ public class PetListener implements OnTouchListener {
 				onBackwardsPet();
 			} else if(currentPercent >= petPercentThreshold) {
 				//is a pet!
-				Init.cat.hearts.increment();
+				Init.cat.hearts.increment(10);
 				Init.cat.updateHearts();
 				Init.cat.mood.increment();
 				Init.cat.updateMood();

@@ -4,28 +4,28 @@
 	    <type>food</type>
 	    <price>100</price>
 		<value>5</value>
-		<description>Description</description>	        
+		<description>An off-brand bag of dry cat food that will nourish your cat. Will replenish 5% of your cat's hunger attribute.</description>	        
 	</item>
 	<item>
 		<name>Dry cat food (Brand name)</name>
 		<type>food</type>
 		<price>175</price>
 		<value>10</value>
-		<description>Description</description>
+		<description>A brand name bag of cat food that will nourish your cat. Will replenish 10% of your cat's hunger bar.</description>
 	</item>
 	<item>
 	    <name>Wet cat food (Off-brand)</name>
 	    <type>food</type>
 	    <price>250</price>
 		<value>20</value>
-	    <description>Description</description>
+	    <description>A tin of off-brand wet cat food to nourish your cat. Will replenish 20% of your cat's hunger bar.</description>
 	</item>
 	<item>
 	    <name>Wet cat food (Brand name)</name>
 	    <type>food</type>
 	    <price>350</price>
 		<value>35</value>
-	    <description>Description</description>
+	    <description>A tin of brand name wet cat food to nourish your cat. Will replenish 35% of your cat's hunger bar.</description>
 	</item>
 
 	<item>
@@ -33,42 +33,41 @@
 	    <type>drink</type>
 	    <price>50</price>
 		<value>10</value>
-	    <description>Description</description>
+	    <description>A dish full of water to rehydrate your cat. Will replenish 10% of your cat's thirst bar.</description>
 	</item>
 	<item>
 	    <name>Filtered tap water</name>
 	    <type>drink</type>
 	    <price>100</price>
 		<value>25</value>
-	    <description>Description</description>
+	    <description>A dish full of filtered tap water to rehydrate your cat. Will replenish 25% of your cat's thirst bar.</description>
 	</item>
 	<item>
 	    <name>Bottled water</name>
 	    <type>drink</type>
 	    <price>175</price>
 		<value>50</value>
-	    <description>Description</description>
+	    <description>A dish full of bottled water to rehydrate your cat. Will replenish 50% of your cat's thirst bar.</description>
 	</item>
 	<item>
 	    <name>Enriched mineral water</name>
 	    <type>drink</type>
 	    <price>250</price>
 		<value>75</value>
-	    <description>Description</description>
+	    <description>A dish full of enriched mineral water to rehydrate your cat. Will replenish 75% of your cat's thirst bar.</description>
 	</item>
 	<item>
 	    <name>Automatic cat water fountain</name>
 	    <type>drink</type>
 	    <price>325</price>
 		<value>100</value>
-	    <description>Description</description>
+	    <description>A water fountain that will automatically rehydrate your cat at timed intervals. Will replenish 100% of your cat's thirst bar.</description>
 	</item>
-
 	<item>
 		<name>Cat nip</name>
 		<type>toy</type>
 		<price>1000</price>
 		<value>100</value>
-		<description>Description</description>
+		<description>A little, "pep," in your cat's, "step." Used to excite and give your cat a good high. Will replenish the cat's hearts bar.</description>
 	</item>
 </resources>
