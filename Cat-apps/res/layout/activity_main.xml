@@ -293,31 +293,6 @@
         android:contentDescription="@null"
         android:src="@drawable/progress_right" />
 
-    <Button
-        android:id="@+id/button1"
-        style="?android:attr/buttonStyleSmall"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/imageHearts"
-        android:layout_alignParentLeft="true"
-        android:layout_marginBottom="24dp"
-        android:layout_marginLeft="48dp"
-        android:onClick="onGiveFoodClick"
-        android:text="@string/button_feed" />
-
-    <Button
-        android:id="@+id/button2"
-        style="?android:attr/buttonStyleSmall"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/imageHearts"
-        android:layout_alignParentRight="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="24dp"
-        android:layout_marginRight="48dp"
-        android:onClick="onGiveWaterClick"
-        android:text="@string/button_water" />
-
 
     <TextView
         android:id="@+id/textMoney"

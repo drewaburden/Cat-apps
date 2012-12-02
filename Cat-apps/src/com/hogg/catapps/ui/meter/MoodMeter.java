@@ -41,6 +41,12 @@ public class MoodMeter extends Meter {
 	// Update the display of the meter
 	@Override
 	public void update() {
+		if(Init.cat.getMood() ==  Mood.DEAD) {
+			setValue(0);
+			progressBar.setProgress((int) getValue());
+			textView.setText(Init.cat.getMood().toString());
+			return;
+		}
 		// Update the progressBar's display
 		if ((int) getValue() <= 0) {
 			// Need to change the mood to one below
@@ -56,9 +62,8 @@ public class MoodMeter extends Meter {
 			} else if (Init.cat.getMood() == Mood.SAD && isHardcore()) {
 				Init.cat.setMood(Mood.DEAD);
 				changeIcon(R.drawable.ic_mood_dead);
+				onDead();
 			} else if (Init.cat.getMood() == Mood.SAD) {
-				setValue(-100);
-			} else if (Init.cat.getMood() == Mood.DEAD && isHardcore()) {
 				setValue(-100);
 			}
 			setValue(getValue() + 100);
@@ -180,5 +185,21 @@ public class MoodMeter extends Meter {
 		} else {
 			return false;
 		}
+	}
+	
+	public void onDead() {
+		Init.cat.thirst.setValue(0);
+		Init.cat.updateThirst();
+		Init.cat.hunger.setValue(0);
+		Init.cat.updateHunger();
+		Init.cat.hearts.setValue(0);
+		Init.cat.updateHearts();
+		Init.cat.mood.setValue(0);
+		Init.cat.updateMood();
+		Init.cat.stopTracking();
+		Init.player.setMoney(0);
+		Init.player.updateMoneyText();
+		Init.player.setInv(null);
+		Init.cat.simulation.stopTracking();
 	}
 }

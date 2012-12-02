@@ -15,6 +15,8 @@
 
 package com.hogg.catapps.items;
 
+import com.hogg.catapps.Init;
+
 import android.graphics.drawable.Drawable;
 
 public class Item implements Comparable<Item>{
@@ -69,6 +71,19 @@ public class Item implements Comparable<Item>{
 		}
 		//Else they are the same type, return difference to price
 		return price - i.price;
+	}
+	
+	public void useItem() {
+		if(type.equals("food") == true) {
+			Init.cat.hunger.increment(value);
+		} else if(type.equals("drink") == true) {
+			Init.cat.thirst.increment(value);
+		} else if(type.equals("catnip") == true) {
+				Init.cat.hearts.increment(value);
+		} else if(type.equals("toy") == true) {
+				//TODO: Implement custom methods for items!
+		}
+		Init.player.getInv().removeItem(this, 1);
 	}
 	
 }

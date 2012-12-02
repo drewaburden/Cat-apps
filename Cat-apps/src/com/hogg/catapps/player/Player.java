@@ -19,11 +19,9 @@ import java.util.ArrayList;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.widget.Button;
 import android.widget.TextView;
 
 import com.hogg.catapps.Init;
-import com.hogg.catapps.R;
 import com.hogg.catapps.cat.Cat;
 
 public class Player {
@@ -32,7 +30,6 @@ public class Player {
 	public static ArrayList<Cat> cats; // Holds all of the players cats
 	Inventory inv;
 	
-	Button foodButton, waterButton;
 	TextView moneyText;
 	public int food = 5;
 	public int water = 5;
@@ -43,17 +40,10 @@ public class Player {
 		money = Init.getAppContext().getSharedPreferences("cat", Context.MODE_PRIVATE).getInt("money", 0);
 	}
 	
-	public void startTracking(Button _foodButton, Button _waterButton, TextView _moneyText) {
-		foodButton = _foodButton;
-		waterButton = _waterButton;
+	public void startTracking(TextView _moneyText) {
 		moneyText = _moneyText;
 	}
-	
-	public void updateButtonText() {
-		foodButton.setText(Init.getAppContext().getString(R.string.button_feed) + " " + Integer.toString(Init.player.food));
-		waterButton.setText(Init.getAppContext().getString(R.string.button_water) + " " + Integer.toString(Init.player.water));
-	}
-	
+		
 	// Get and set name
 	public void setName(String _name) {
 		name = _name;

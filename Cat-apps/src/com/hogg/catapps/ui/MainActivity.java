@@ -16,7 +16,6 @@ package com.hogg.catapps.ui;
 
 import com.hogg.catapps.Init;
 import com.hogg.catapps.R;
-import com.hogg.catapps.background.BackgroundSleepThread;
 import com.hogg.catapps.cat.Setup;
 import com.hogg.catapps.cat.petting.PetListener;
 import com.hogg.catapps.cat.simulation.Simulation;
@@ -32,8 +31,9 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
-import android.widget.Button;
+import android.view.View.OnTouchListener;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -41,6 +41,7 @@ public class MainActivity extends Activity {
 	SharedPreferences prefs;
 	Setup setup;
 	AlertDialog showing_diag;
+	RelativeLayout petLayout;
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -61,8 +62,8 @@ public class MainActivity extends Activity {
 		setup.updateActivity();
 		
 		//Need to start listener		
-		RelativeLayout petLayout = (RelativeLayout) findViewById(R.id.layoutMain);
-		petLayout.setOnTouchListener(new PetListener(petLayout, 0.20f, 8));
+		petLayout = (RelativeLayout) findViewById(R.id.layoutMain);
+		enablePetLayout();
 	}
 	
 	@Override
@@ -104,11 +105,10 @@ public class MainActivity extends Activity {
         Init.simulation.start();
         Init.cat.updateStateText();
 		
-		Button foodButton = (Button) findViewById(R.id.button1);
-		Button waterButton = (Button) findViewById(R.id.button2);
+		//Button foodButton = (Button) findViewById(R.id.button1);
+		//Button waterButton = (Button) findViewById(R.id.button2);
 		TextView moneyText = (TextView) findViewById(R.id.textMoney);
-		Init.player.startTracking(foodButton, waterButton, moneyText);
-		Init.player.updateButtonText();
+		Init.player.startTracking(moneyText);
 		Init.player.updateMoneyText();
 		
 		// If the preferences are not set up yet, we need to resume showing the dialogs for the setup
@@ -167,55 +167,19 @@ public class MainActivity extends Activity {
 		}
 	}
 	
-	public void onGiveFoodClick(View v) {
-		if(Init.player.food > 0) {
-			Init.player.food--;
-			Init.player.updateButtonText();
-			final Button foodButton = (Button) findViewById(R.id.button1);
-			Runnable makeFoodButtonEnabled = new Runnable() {
-				public void run() {
-					foodButton.setEnabled(true);
-				}
-			};
-			foodButton.setEnabled(false);
-			new BackgroundSleepThread(this, makeFoodButtonEnabled, 3000);
-			
-			double x = Init.cat.hunger.getValue();
-			if (x < 100.0) {
-				double heartsInc = 0.00114286*x*x - 0.254286*x + 14.4286;
-				
-				Init.cat.hearts.increment(heartsInc);
-				Init.cat.updateHearts();
-				
-				Init.cat.hunger.increment(5.0);
-				Init.cat.updateHunger();
+	public void killPetListener() {
+		petLayout.setOnTouchListener(new OnTouchListener() {
+
+			public boolean onTouch(View v, MotionEvent event) {
+				return false;
 			}
-		}
+			
+		});
+	}
+
+	public void enablePetLayout() {
+		petLayout.setOnTouchListener(new PetListener(petLayout, 0.20f, 8));
+		return;
 	}
 	
-	public void onGiveWaterClick(View v) {
-		if(Init.player.water > 0) {
-			Init.player.water--;
-			Init.player.updateButtonText();
-			final Button waterButton = (Button) findViewById(R.id.button2);
-			Runnable makeWaterButtonEnabled = new Runnable() {
-				public void run() {
-					waterButton.setEnabled(true);
-				}
-			};
-			waterButton.setEnabled(false);
-			new BackgroundSleepThread(this, makeWaterButtonEnabled, 3000);
-			
-			double x = Init.cat.thirst.getValue();
-			if (x < 100.0) {
-				double heartsInc = 0.002*x*x - 0.39*x + 19.5;
-				
-				Init.cat.hearts.increment(heartsInc);
-				Init.cat.updateHearts();
-				
-				Init.cat.thirst.increment(10.0);
-				Init.cat.updateThirst();
-			}
-		}
-	}
 }

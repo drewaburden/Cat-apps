@@ -24,6 +24,7 @@ import java.util.List;
 import com.hogg.catapps.Init;
 import com.hogg.catapps.R;
 import com.hogg.catapps.background.BackgroundSleepThread;
+import com.hogg.catapps.cat.Mood;
 import com.hogg.catapps.cat.States;
 import com.hogg.catapps.cat.simulation.Simulation;
 
@@ -73,76 +74,79 @@ public class PetListener implements OnTouchListener {
 	}
 	
 	private boolean checkPet(MotionEvent event) {
-		final int action = event.getAction();
+		if(Init.cat.getMood() != Mood.DEAD) {
+			final int action = event.getAction();
+					
+			if(action == MotionEvent.ACTION_DOWN) {
+				downX = event.getX();
+				downY = event.getY();
+			} else
+			if (action == MotionEvent.ACTION_MOVE){
+				float tempX = event.getX();
+				float tempY = event.getY();
 				
-		if(action == MotionEvent.ACTION_DOWN) {
-			downX = event.getX();
-			downY = event.getY();
-		} else
-		if (action == MotionEvent.ACTION_MOVE){
-			float tempX = event.getX();
-			float tempY = event.getY();
-			
-			if(isWithinRect(tempX, tempY)) {
-				move.add(true);
-				moveX.add(tempX);
-			} else {
-				move.add(false);
-			}
-			
-		} else
-		if(action == MotionEvent.ACTION_UP){
-			upX = event.getX();
-			upY = event.getY();
-			
-			//Need to check to see if they have pet the cat!
-			//First, calculate the % of ACTION_MOVE's that registered within rectangle
-			int totalMoves = move.size();
-			int movesInRect = 0;
-			for(int loopIter = 0; loopIter < totalMoves; loopIter++) {
-				if(move.get(loopIter) == true)
-					movesInRect++;
-			}
-			float currentPercent = 0.0f;
-			if(!move.isEmpty()) {
-				currentPercent = ((float) movesInRect)/totalMoves;
-			}
-			if(isWithinRect(downX, downY) && isWithinRect(upX, upY) && totalMoves < petPokeThreshold && isAsleep()) {
-				onCatButtonClickAsleep();
-			} else if(isWithinRect(downX, downY) && isWithinRect(upX, upY) && totalMoves < petPokeThreshold) {
-				onCatButtonClick();
-			} else if(isAsleep() && currentPercent >= petPercentThreshold) {
-				onPetAsleep();
-			} else if(isHardcore() && moveX.size() > 0 && isAgainstGrain(moveX)) {
-				onBackwardsPet();
-			} else if(currentPercent >= petPercentThreshold) {
-				//is a pet!
-				Init.cat.hearts.increment(10);
-				Init.cat.updateHearts();
-				Init.cat.mood.increment();
-				Init.cat.updateMood();
-								
-				imageCat.setImageDrawable(layout.getResources().getDrawable(R.drawable.ic_cat_happy));
-
-				// Wait for .5 seconds (using threads so we don't freeze the UI)
-				// and then make the text invisible again.
-				Runnable makeCatImageContent = new Runnable() {
-					public void run() {
-						imageCat.setImageDrawable(layout.getResources().getDrawable(R.drawable.ic_cat_content));
-					}
-				};
-				if (catBackgroundImageModifier != null) {
-					catBackgroundImageModifier.interrupt();
+				if(isWithinRect(tempX, tempY)) {
+					move.add(true);
+					moveX.add(tempX);
+				} else {
+					move.add(false);
 				}
-				catBackgroundImageModifier = new BackgroundSleepThread(activity, makeCatImageContent, 750);
+				
+			} else
+			if(action == MotionEvent.ACTION_UP){
+				upX = event.getX();
+				upY = event.getY();
+				
+				//Need to check to see if they have pet the cat!
+				//First, calculate the % of ACTION_MOVE's that registered within rectangle
+				int totalMoves = move.size();
+				int movesInRect = 0;
+				for(int loopIter = 0; loopIter < totalMoves; loopIter++) {
+					if(move.get(loopIter) == true)
+						movesInRect++;
+				}
+				float currentPercent = 0.0f;
+				if(!move.isEmpty()) {
+					currentPercent = ((float) movesInRect)/totalMoves;
+				}
+				if(isWithinRect(downX, downY) && isWithinRect(upX, upY) && totalMoves < petPokeThreshold && isAsleep()) {
+					onCatButtonClickAsleep();
+				} else if(isWithinRect(downX, downY) && isWithinRect(upX, upY) && totalMoves < petPokeThreshold) {
+					onCatButtonClick();
+				} else if(isAsleep() && currentPercent >= petPercentThreshold) {
+					onPetAsleep();
+				} else if(isHardcore() && moveX.size() > 0 && isAgainstGrain(moveX)) {
+					onBackwardsPet();
+				} else if(currentPercent >= petPercentThreshold) {
+					//is a pet!
+					Init.cat.hearts.increment(10);
+					Init.cat.updateHearts();
+					Init.cat.mood.increment();
+					Init.cat.updateMood();
+									
+					imageCat.setImageDrawable(layout.getResources().getDrawable(R.drawable.ic_cat_happy));
+	
+					// Wait for .5 seconds (using threads so we don't freeze the UI)
+					// and then make the text invisible again.
+					Runnable makeCatImageContent = new Runnable() {
+						public void run() {
+							imageCat.setImageDrawable(layout.getResources().getDrawable(R.drawable.ic_cat_content));
+						}
+					};
+					if (catBackgroundImageModifier != null) {
+						catBackgroundImageModifier.interrupt();
+					}
+					catBackgroundImageModifier = new BackgroundSleepThread(activity, makeCatImageContent, 750);
+				}
+	
+				downX = 0;
+				downY = 0;
+				upX = 0;
+				upY = 0;
+				move.clear();
+				moveX.clear();
 			}
-
-			downX = 0;
-			downY = 0;
-			upX = 0;
-			upY = 0;
-			move.clear();
-			moveX.clear();
+			return true;
 		}
 		return true;
 	}

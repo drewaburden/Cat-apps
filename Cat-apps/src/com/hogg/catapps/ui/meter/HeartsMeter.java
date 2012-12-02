@@ -71,7 +71,7 @@ public class HeartsMeter extends Meter {
 			Init.player.updateMoneyText();
 			Init.player.food += 5;
 			Init.player.water += 5;
-			Init.player.updateButtonText();
+			//Init.player.updateButtonText();
 		}
 	}
 
@@ -84,7 +84,7 @@ public class HeartsMeter extends Meter {
 			Init.player.updateMoneyText();
 			Init.player.food += 5;
 			Init.player.water += 5;
-			Init.player.updateButtonText();
+			//Init.player.updateButtonText();
 		}
 	}
 }
