@@ -5,8 +5,6 @@ import java.util.TreeMap;
 
 import android.content.Context;
 import android.content.SharedPreferences.Editor;
-import android.preference.PreferenceManager;
-import android.util.Log;
 
 import com.hogg.catapps.Init;
 import com.hogg.catapps.items.Item;
@@ -63,23 +61,18 @@ public class Inventory {
 	
 	public void updateInventory(Item i) {
 		Editor prefEditor = Init.getAppContext()
-		.getSharedPreferences("inventory", Context.MODE_PRIVATE).edit();
+		.getSharedPreferences("cat", Context.MODE_PRIVATE).edit();
 		
 		//Need to dynamically store the preferences based on the item's name.
 		String prefName = "inv_" + i.getIdentifier();
 		int l = itemCount(i);
 		prefEditor.putInt(prefName, l);
 		prefEditor.apply();
-		Log.d("Debug", "Just stored " + Integer.toString(itemCount(i)) + " of " + i.getName() + " in the inventory on file in key " + prefName);
-		int x =	PreferenceManager.getDefaultSharedPreferences(Init.getAppContext()).getInt(prefName, 0);
-		Log.d("Debug", "On file we have number: " + Integer.toString(x));
 	}
 	
 	public void getStoredInventoryData(Item i) {
-		Log.d("Debug", "Retrieving stored value for item: " + i.getName());
 		String prefName = "inv_" + i.getIdentifier();		
-		int x =	PreferenceManager.getDefaultSharedPreferences(Init.getAppContext()).getInt(prefName, 0);
-		Log.d("Debug", "From shared preferences, there are: " + Integer.toString(x) + " of this item in the inventory on file under key" + prefName);
+		int x =	Init.getAppContext().getSharedPreferences("cat", Context.MODE_PRIVATE).getInt(prefName, 0);
 		ownedItems.remove(i);
 		ownedItems.put(i,  x);
 	}
