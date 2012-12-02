@@ -32,9 +32,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -92,11 +89,15 @@ public class MainActivity extends Activity {
 	public void onResume() {
 		super.onResume();
 		
+		TextView moneyText = (TextView) findViewById(R.id.textMoney);
+		Init.player.startTracking(moneyText);
+		Init.player.updateMoneyText();
+		
 		// Start tracking all the meters and update their displays.
 		Init.cat.startHearts(this, R.id.progressHearts, R.id.textHeartsPercentage);
-		Init.cat.startMood(this, R.id.progressMood, R.id.textMoodStatus);
 		Init.cat.startHunger(this, R.id.progressHunger, R.id.textHungerPercentage);
 		Init.cat.startThirst(this, R.id.progressThirst, R.id.textThirstPercentage);
+		Init.cat.startMood(this, R.id.progressMood, R.id.textMoodStatus);
 		Init.cat.simulation.startTracking(this, R.id.textMeow);
 		Init.cat.setActivity(this);
 		Init.cat.update();
@@ -106,11 +107,8 @@ public class MainActivity extends Activity {
         Init.simulation.start();
         Init.cat.updateStateText();
 		
-		//Button foodButton = (Button) findViewById(R.id.button1);
-		//Button waterButton = (Button) findViewById(R.id.button2);
-		TextView moneyText = (TextView) findViewById(R.id.textMoney);
-		Init.player.startTracking(moneyText);
-		Init.player.updateMoneyText();
+		//Need to make sure inventory is in sync
+		Init.player.updateInv();
 		
 		// If the preferences are not set up yet, we need to resume showing the dialogs for the setup
 		if (!prefs.getBoolean("setup", false)) {
@@ -172,16 +170,6 @@ public class MainActivity extends Activity {
 			default:
 				break;
 		}
-	}
-	
-	public void killPetListener() {
-		petLayout.setOnTouchListener(new OnTouchListener() {
-
-			public boolean onTouch(View v, MotionEvent event) {
-				return false;
-			}
-			
-		});
 	}
 
 	public void enablePetLayout() {

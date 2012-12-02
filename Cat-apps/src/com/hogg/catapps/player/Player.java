@@ -15,14 +15,23 @@
 
 package com.hogg.catapps.player;
 
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
+
+import org.xmlpull.v1.XmlPullParser;
+import org.xmlpull.v1.XmlPullParserException;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.util.Log;
 import android.widget.TextView;
 
 import com.hogg.catapps.Init;
+import com.hogg.catapps.R;
 import com.hogg.catapps.cat.Cat;
+import com.hogg.catapps.items.Item;
+import com.hogg.catapps.items.ItemXMLParser;
 
 public class Player {
 	String name = "";
@@ -37,6 +46,7 @@ public class Player {
 	public Player(String _name) {
 		name = _name;
 		inv = new Inventory();
+		updateInv();
 		money = Init.getAppContext().getSharedPreferences("cat", Context.MODE_PRIVATE).getInt("money", 0);
 	}
 	
@@ -82,5 +92,22 @@ public class Player {
 	}
 	public Inventory getInv() {
 		return inv;
+	}
+	
+	public void updateInv() {
+		List<Item> items = null;
+	    XmlPullParser parser = Init.getAppContext().getResources().getXml(R.xml.items);
+	    ItemXMLParser itemParser = new ItemXMLParser();
+	    try {
+			items = itemParser.readFeed(parser);
+		} catch (XmlPullParserException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	    for (Item item : items) {
+	    	Log.d("Debug", "Item: " + item.getName());
+	    	inv.getStoredInventoryData(item);
+	    }
 	}
 }

@@ -16,6 +16,7 @@ public class ItemXMLParser {
 		List<Item> items = new ArrayList<Item>();
 		
 		String name = null;
+		String identifier = null;
 		String type = null;
 		int price = 0;
 		int value = 0;
@@ -61,6 +62,10 @@ public class ItemXMLParser {
 								parser.next();
 								name = parser.getText();
 							}
+							else if (tag.equals("identifier")) {
+								parser.next();
+								identifier = parser.getText();
+							}
 							else if (tag.equals("type")) {
 								parser.next();
 								type = parser.getText();
@@ -80,7 +85,7 @@ public class ItemXMLParser {
 						}
 					}
 					Log.d("Debug", "Added " + name);
-					items.add(new Item(type, name, price, value, description));
+					items.add(new Item(type, identifier, name, price, value, description));
 				}
 			}
 			

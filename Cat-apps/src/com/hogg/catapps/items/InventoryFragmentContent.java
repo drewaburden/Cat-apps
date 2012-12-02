@@ -1,19 +1,14 @@
 package com.hogg.catapps.items;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.SortedMap;
 
-import org.xmlpull.v1.XmlPullParser;
-import org.xmlpull.v1.XmlPullParserException;
-
 import android.util.Log;
 
 import com.hogg.catapps.Init;
-import com.hogg.catapps.R;
 
 /**
  * Helper class for providing sample content for user interfaces created by

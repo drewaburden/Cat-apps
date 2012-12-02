@@ -21,14 +21,16 @@ import android.graphics.drawable.Drawable;
 
 public class Item implements Comparable<Item>{
 	String type = "";
+	String identifier = "";
 	String name = "";
 	String description = "";
 	int price = 0;
 	int value = 0;
 	Drawable drawable;
 	
-	public Item(String _type, String _name, int _price, int _value, String _description) {
+	public Item(String _type, String _identifier, String _name, int _price, int _value, String _description) {
 		type = _type;
+		identifier = _identifier;
 		name = _name;
 		price = _price;
 		value = _value;
@@ -53,6 +55,10 @@ public class Item implements Comparable<Item>{
 	
 	public String getDescription() {
 		return description;
+	}
+	
+	public String getIdentifier() {
+		return identifier;
 	}
 	
 	public void setDrawable(Drawable _drawable) {
@@ -81,7 +87,7 @@ public class Item implements Comparable<Item>{
 		} else if(type.equals("catnip") == true) {
 				Init.cat.hearts.increment(value);
 		} else if(type.equals("toy") == true) {
-				//TODO: Implement custom methods for items!
+				//TODO: Implement custom methods for items.
 		}
 		Init.player.getInv().removeItem(this, 1);
 	}

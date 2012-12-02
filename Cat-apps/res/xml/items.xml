@@ -1,6 +1,7 @@
 <resources>
 	<item>
 	    <name>Dry cat food (Off-brand)</name>
+	    <identifier>dryFoodOffBrand</identifier>
 	    <type>food</type>
 	    <price>100</price>
 		<value>5</value>
@@ -8,6 +9,7 @@
 	</item>
 	<item>
 		<name>Dry cat food (Brand name)</name>
+		<identifier>dryFoodBrandName</identifier>
 		<type>food</type>
 		<price>175</price>
 		<value>10</value>
@@ -15,6 +17,7 @@
 	</item>
 	<item>
 	    <name>Wet cat food (Off-brand)</name>
+	    <identifier>wetFoodOffBrand</identifier>
 	    <type>food</type>
 	    <price>250</price>
 		<value>20</value>
@@ -22,6 +25,7 @@
 	</item>
 	<item>
 	    <name>Wet cat food (Brand name)</name>
+	    <identifier>wetFoodBrandName</identifier>
 	    <type>food</type>
 	    <price>350</price>
 		<value>35</value>
@@ -30,6 +34,7 @@
 
 	<item>
 	    <name>Tap water</name>
+	    <identifier>tapWater</identifier>
 	    <type>drink</type>
 	    <price>50</price>
 		<value>10</value>
@@ -37,6 +42,7 @@
 	</item>
 	<item>
 	    <name>Filtered tap water</name>
+	    <identifier>tapWaterFiltered</identifier>
 	    <type>drink</type>
 	    <price>100</price>
 		<value>25</value>
@@ -44,6 +50,7 @@
 	</item>
 	<item>
 	    <name>Bottled water</name>
+	    <identifier>bottledWater</identifier>
 	    <type>drink</type>
 	    <price>175</price>
 		<value>50</value>
@@ -51,6 +58,7 @@
 	</item>
 	<item>
 	    <name>Enriched mineral water</name>
+	    <identifier>enrichedMineralWater</identifier>
 	    <type>drink</type>
 	    <price>250</price>
 		<value>75</value>
@@ -58,6 +66,7 @@
 	</item>
 	<item>
 	    <name>Automatic cat water fountain</name>
+	    <identifier>waterFountain</identifier>
 	    <type>drink</type>
 	    <price>325</price>
 		<value>100</value>
@@ -65,6 +74,7 @@
 	</item>
 	<item>
 		<name>Cat nip</name>
+		<identifier>catNip</identifier>
 		<type>catnip</type>
 		<price>1000</price>
 		<value>100</value>

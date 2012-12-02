@@ -102,7 +102,7 @@ public class InventoryDetailFragment extends Fragment {
 					.setText(mItem.getName());
 			
 			((TextView) rootView.findViewById(R.id.textQuantity))
-			.setText(Init.player.getInv().itemCount(mItem));
+			.setText(Integer.toString(Init.player.getInv().itemCount(mItem)));
 			
 			((TextView) rootView.findViewById(R.id.textDescription))
 			.setText(mItem.getDescription());
