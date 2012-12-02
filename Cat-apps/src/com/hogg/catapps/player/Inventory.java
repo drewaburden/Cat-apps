@@ -5,7 +5,6 @@ import java.util.TreeMap;
 
 import android.content.Context;
 import android.content.SharedPreferences.Editor;
-import android.util.Log;
 
 import com.hogg.catapps.Init;
 import com.hogg.catapps.items.Item;
@@ -26,7 +25,7 @@ public class Inventory {
 		return ownedItems;
 	}
 	
-	public void addItem(Item item, int quantity) {
+	public void addItem(Item item, Integer quantity) {
 		Integer previousQuantity = ownedItems.remove(item);
 		if(previousQuantity == null) {
 			ownedItems.put(item, quantity);
@@ -36,7 +35,7 @@ public class Inventory {
 		updateInventory(item);
 	}
 	
-	public boolean removeItem(Item item, int quantity) {
+	public boolean removeItem(Item item, Integer quantity) {
 		Integer previousQuantity = ownedItems.get(item);
 		if(previousQuantity == null || previousQuantity < quantity) {
 			return false;
@@ -72,7 +71,6 @@ public class Inventory {
 	}
 	
 	public void getStoredInventoryData(Item i) {
-		Log.d("Debug", "TEST");
 		String prefName = "inv_" + i.getIdentifier();		
 		int x =	Init.getAppContext().getSharedPreferences("cat", Context.MODE_PRIVATE).getInt(prefName, 0);
 		ownedItems.remove(i);

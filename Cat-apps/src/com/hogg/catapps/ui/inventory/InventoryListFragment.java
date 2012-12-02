@@ -20,6 +20,8 @@ import com.hogg.catapps.items.Item;
  * interface.
  */
 public class InventoryListFragment extends ListFragment {
+	
+	InventoryFragmentContent content;
 
 	/**
 	 * The serialization (saved instance state) Bundle key representing the
@@ -69,11 +71,13 @@ public class InventoryListFragment extends ListFragment {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		
+		content = new InventoryFragmentContent();
 
 		// TODO: replace with a real list adapter.
 		setListAdapter(new ArrayAdapter<Item>(getActivity(),
 				android.R.layout.simple_list_item_activated_1,
-				android.R.id.text1, InventoryFragmentContent.ITEMS));
+				android.R.id.text1, content.ITEMS));
 	}
 
 	@Override
@@ -85,7 +89,7 @@ public class InventoryListFragment extends ListFragment {
 				&& savedInstanceState.containsKey(STATE_ACTIVATED_POSITION)) {
 			setActivatedPosition(savedInstanceState
 					.getInt(STATE_ACTIVATED_POSITION));
-			mCallbacks.onItemSelected(InventoryFragmentContent.ITEMS.get(savedInstanceState
+			mCallbacks.onItemSelected(content.ITEMS.get(savedInstanceState
 					.getInt(STATE_ACTIVATED_POSITION)).getName());
 		}
 	}
@@ -118,7 +122,7 @@ public class InventoryListFragment extends ListFragment {
 
 		// Notify the active callbacks interface (the activity, if the
 		// fragment is attached to one) that an item has been selected.
-		mCallbacks.onItemSelected(InventoryFragmentContent.ITEMS.get(position).getName());
+		mCallbacks.onItemSelected(content.ITEMS.get(position).getName());
 	}
 
 	@Override

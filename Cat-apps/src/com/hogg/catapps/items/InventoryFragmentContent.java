@@ -6,8 +6,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.SortedMap;
 
-import android.util.Log;
-
 import com.hogg.catapps.Init;
 
 /**
@@ -21,21 +19,26 @@ public class InventoryFragmentContent {
 	/**
 	 * An array of sample (dummy) items.
 	 */
-	public static List<Item> ITEMS = new ArrayList<Item>();
+	public List<Item> ITEMS = new ArrayList<Item>();
 
 	/**
 	 * A map of sample (dummy) items, by ID.
 	 */
-	public static Map<String, Item> ITEM_MAP = new HashMap<String, Item>();
+	public Map<String, Item> ITEM_MAP = new HashMap<String, Item>();
 
-	static {
+	public InventoryFragmentContent() {
+		loadItems();
+	}
+	
+	public void loadItems() {
 		for (SortedMap.Entry<Item, Integer> item : Init.player.getInv().getItems().entrySet()) {
-			Log.d("Debug", "Item name: " + item.getKey().getName());
-			addItem(item.getKey());
+			if (item.getValue() > 0) {
+				addItem(item.getKey());
+			}
 		}
 	}
 
-	private static void addItem(Item item) {
+	private void addItem(Item item) {
 		ITEMS.add(item);
 		ITEM_MAP.put(item.getName(), item);
 	}

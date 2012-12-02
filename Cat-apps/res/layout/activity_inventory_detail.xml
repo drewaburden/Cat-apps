@@ -33,7 +33,6 @@
         android:id="@+id/textDescription"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/layoutBuy"
         android:layout_below="@+id/textDescriptionLabel"
         android:paddingBottom="12dp"
         android:paddingLeft="16dp"

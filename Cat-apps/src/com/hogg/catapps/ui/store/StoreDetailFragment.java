@@ -119,8 +119,8 @@ public class StoreDetailFragment extends Fragment {
 				((ImageButton) rootView.findViewById(R.id.buttonBuy)).setImageResource(R.drawable.ic_buy_disabled);
 			}
 			else {
-				((ImageButton) rootView.findViewById(R.id.buttonBuy)).setImageResource(R.drawable.ic_buy);
 				ImageButton buyButton = (ImageButton) rootView.findViewById(R.id.buttonBuy);
+				buyButton.setImageResource(R.drawable.ic_buy);
 				buyButton.setOnClickListener(new View.OnClickListener() {
 					public void onClick(View v) {
 						onBuyButtonPress(v);

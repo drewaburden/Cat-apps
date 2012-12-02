@@ -21,6 +21,8 @@ import com.hogg.catapps.items.Item;
  * {@link InventoryDetailActivity} on handsets.
  */
 public class InventoryDetailFragment extends Fragment {
+	
+	InventoryFragmentContent content;
 	/**
 	 * The fragment argument representing the item ID that this fragment
 	 * represents.
@@ -80,12 +82,14 @@ public class InventoryDetailFragment extends Fragment {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		
+		content = new InventoryFragmentContent();
 
 		if (getArguments().containsKey(ARG_ITEM_ID)) {
 			// Load the dummy content specified by the fragment
 			// arguments. In a real-world scenario, use a Loader
 			// to load content from a content provider.
-			mItem = InventoryFragmentContent.ITEM_MAP.get(getArguments().getString(
+			mItem = content.ITEM_MAP.get(getArguments().getString(
 					ARG_ITEM_ID));
 		}
 	}
@@ -111,9 +115,9 @@ public class InventoryDetailFragment extends Fragment {
 			TextView textView = (TextView) rootView.findViewById(R.id.textDescription);
 			textView.setMovementMethod(ScrollingMovementMethod.getInstance());
 			
-			((ImageButton) rootView.findViewById(R.id.buttonUse)).setImageResource(R.drawable.ic_buy);
-			ImageButton buyButton = (ImageButton) rootView.findViewById(R.id.buttonBuy);
-			buyButton.setOnClickListener(new View.OnClickListener() {
+			ImageButton useButton = (ImageButton) rootView.findViewById(R.id.buttonUse);
+			useButton.setImageResource(R.drawable.ic_use);
+			useButton.setOnClickListener(new View.OnClickListener() {
 				public void onClick(View v) {
 					mItem.useItem();
 					mCallbacks.onUseButtonSelected();

@@ -82,10 +82,13 @@ public class Item implements Comparable<Item>{
 	public void useItem() {
 		if(type.equals("food") == true) {
 			Init.cat.hunger.increment(value);
+			Init.cat.hunger.stopTracking();
 		} else if(type.equals("drink") == true) {
 			Init.cat.thirst.increment(value);
+			Init.cat.thirst.stopTracking();
 		} else if(type.equals("catnip") == true) {
 				Init.cat.hearts.increment(value);
+				Init.cat.hearts.stopTracking();
 		} else if(type.equals("toy") == true) {
 				//TODO: Implement custom methods for items.
 		}

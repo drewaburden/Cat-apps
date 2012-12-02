@@ -24,7 +24,6 @@ import org.xmlpull.v1.XmlPullParserException;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.util.Log;
 import android.widget.TextView;
 
 import com.hogg.catapps.Init;
@@ -106,7 +105,6 @@ public class Player {
 			e.printStackTrace();
 		}
 	    for (Item item : items) {
-	    	Log.d("Debug", "Item: " + item.getName());
 	    	inv.getStoredInventoryData(item);
 	    }
 	}

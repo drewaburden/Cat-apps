@@ -31,7 +31,6 @@ import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
 import android.content.res.Configuration;
-import android.util.Log;
 import android.view.MenuItem;
 import android.support.v4.app.NavUtils;
 
@@ -187,10 +186,8 @@ public class SettingsActivity extends PreferenceActivity {
 		if ((config.screenLayout & Configuration.SCREENLAYOUT_SIZE_MASK) == Configuration.SCREENLAYOUT_SIZE_LARGE
 				|| (config.screenLayout & Configuration.SCREENLAYOUT_SIZE_MASK) == Configuration.SCREENLAYOUT_SIZE_XLARGE
 				|| config.smallestScreenWidthDp >= 600) {
-			Log.d("Debug", "Two pane mode");
 			return true;
 		}
-		Log.d("Debug", "NOT Two pane mode");
 		return false;
 	}
 }

@@ -9,8 +9,6 @@ import java.util.Map;
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
 
-import android.util.Log;
-
 import com.hogg.catapps.Init;
 import com.hogg.catapps.R;
 
@@ -48,7 +46,6 @@ public class StoreFragmentContent {
 		}
 
 		for (Item item : items) {
-			Log.d("Debug", "Item name: " + item.getName());
 			addItem(item);
 		}
 	}

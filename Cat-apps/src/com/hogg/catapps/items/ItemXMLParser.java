@@ -8,8 +8,6 @@ import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
 import org.xmlpull.v1.XmlPullParserFactory;
 
-import android.util.Log;
-
 public class ItemXMLParser {
 	
 	public List<Item> readFeed(XmlPullParser parser) throws XmlPullParserException, IOException {
@@ -49,12 +47,10 @@ public class ItemXMLParser {
 						eventType = parser.next();
 						if (eventType == XmlPullParser.END_TAG) {
 							depth--;
-							Log.d("Debug", "Depth decreased: " + depth);
 							continue;
 						}
 						else if (eventType == XmlPullParser.START_TAG) {
 							depth++;
-							Log.d("Debug", "Depth increased: " + depth);
 							
 							tag = parser.getName();
 
@@ -84,7 +80,6 @@ public class ItemXMLParser {
 							}
 						}
 					}
-					Log.d("Debug", "Added " + name);
 					items.add(new Item(type, identifier, name, price, value, description));
 				}
 			}
