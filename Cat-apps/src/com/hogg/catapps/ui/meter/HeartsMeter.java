@@ -65,26 +65,20 @@ public class HeartsMeter extends Meter {
 	@Override
 	public void increment(double amount) {
 		super.increment(amount);
-		if (value + amount >= getMaxValue()) {
+		if (value >= getMaxValue()) {
 			setValue(minValue);
 			Init.player.incrementMoney(100);
 			Init.player.updateMoneyText();
-			Init.player.food += 5;
-			Init.player.water += 5;
-			//Init.player.updateButtonText();
 		}
 	}
 
 	@Override
 	public void increment() {
 		super.increment();
-		if (value + getIncrementAmount() >= getMaxValue()) {
+		if (value >= getMaxValue()) {
 			setValue(minValue);
 			Init.player.incrementMoney(100);
 			Init.player.updateMoneyText();
-			Init.player.food += 5;
-			Init.player.water += 5;
-			//Init.player.updateButtonText();
 		}
 	}
 }

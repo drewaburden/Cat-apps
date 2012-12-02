@@ -16,6 +16,7 @@ package com.hogg.catapps.ui;
 
 import com.hogg.catapps.Init;
 import com.hogg.catapps.R;
+import com.hogg.catapps.cat.Mood;
 import com.hogg.catapps.cat.Setup;
 import com.hogg.catapps.cat.petting.PetListener;
 import com.hogg.catapps.cat.simulation.Simulation;
@@ -108,7 +109,8 @@ public class MainActivity extends Activity {
         Init.cat.updateStateText();
 		
 		//Need to make sure inventory is in sync
-		Init.player.updateInv();
+        if(Init.cat.getMood() != Mood.DEAD)
+        	Init.player.updateInv();
 		
 		// If the preferences are not set up yet, we need to resume showing the dialogs for the setup
 		if (!prefs.getBoolean("setup", false)) {
