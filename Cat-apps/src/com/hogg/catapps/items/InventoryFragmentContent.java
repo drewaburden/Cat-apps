@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.SortedMap;
 
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
@@ -20,7 +21,7 @@ import com.hogg.catapps.R;
  * <p>
  * TODO: Replace all uses of this class before publishing your app.
  */
-public class StoreFragmentContent {
+public class InventoryFragmentContent {
 
 	/**
 	 * An array of sample (dummy) items.
@@ -33,23 +34,9 @@ public class StoreFragmentContent {
 	public static Map<String, Item> ITEM_MAP = new HashMap<String, Item>();
 
 	static {
-		List<Item> items = null;
-		
-	    XmlPullParser parser = Init.getAppContext().getResources().getXml(R.xml.items);
-	    ItemXMLParser itemParser = new ItemXMLParser();
-	    try {
-			items = itemParser.readFeed(parser);
-		} catch (XmlPullParserException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
-		for (Item item : items) {
-			Log.d("Debug", "Item name: " + item.getName());
-			addItem(item);
+		for (SortedMap.Entry<Item, Integer> item : Init.player.getInv().getItems().entrySet()) {
+			Log.d("Debug", "Item name: " + item.getKey().getName());
+			addItem(item.getKey());
 		}
 	}
 

@@ -61,7 +61,7 @@
 	    android:divider="?android:attr/dividerHorizontal"
 	    android:orientation="horizontal"
 	    android:showDividers="middle"
-	    tools:context=".ItemListActivity" >
+	    tools:context=".StoreActivity" >
 	
 	    <!--
 	    This layout is a two-pane layout for the Items
@@ -76,7 +76,7 @@
 	
 	    <fragment
 	        android:id="@+id/item_list"
-	        android:name="com.hogg.catapps.ui.ItemListFragment"
+	        android:name="com.hogg.catapps.ui.store.StoreFragment"
 	        android:layout_width="0dp"
 	        android:layout_height="match_parent"
 	        android:layout_weight="2"

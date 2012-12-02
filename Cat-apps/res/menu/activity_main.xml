@@ -27,5 +27,11 @@
         android:showAsAction="never"
         android:title="Store"
         android:visible="true"/>
+    <item
+        android:id="@+id/menu_inventory"
+        android:onClick="onOptionsItemSelect"
+        android:showAsAction="never"
+        android:title="Inventory"
+        android:visible="true"/>
 
 </menu>

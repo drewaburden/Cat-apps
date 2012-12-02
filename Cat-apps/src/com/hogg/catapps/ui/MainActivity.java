@@ -19,6 +19,7 @@ import com.hogg.catapps.R;
 import com.hogg.catapps.cat.Setup;
 import com.hogg.catapps.cat.petting.PetListener;
 import com.hogg.catapps.cat.simulation.Simulation;
+import com.hogg.catapps.ui.inventory.InventoryActivity;
 import com.hogg.catapps.ui.store.StoreActivity;
 
 import android.os.Bundle;
@@ -137,12 +138,18 @@ public class MainActivity extends Activity {
 				intent.putExtra(PreferenceActivity.EXTRA_SHOW_FRAGMENT, SettingsActivity.MainFragment.class.getName());
 				startActivity(intent);
 				break;
-			// Settings option
+			// Store option
 			case R.id.menu_store:
-				// Start the settings activity
+				// Start the store activity
 				Intent intent1 = new Intent(this, StoreActivity.class);
 				startActivity(intent1);
 				break;
+			// Inventory option
+				case R.id.menu_inventory:
+					// Start the inventory activity
+					Intent intent2 = new Intent(this, InventoryActivity.class);
+					startActivity(intent2);
+					break;
 			// Exit option
 			case R.id.menu_exit:
 				// Create and show a confirmation asking whether the user wants to exit the application

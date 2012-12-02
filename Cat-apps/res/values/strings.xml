@@ -36,11 +36,11 @@
     <string name="pref_store_twopane">Two-paned Store</string>
     <string name="pref_report_bug">Report bug</string>
     <string name="pref_report_bug_body">Please describe the bug in detail: </string>
-    <string name="pref_clear_data">Clear cat data</string>
+    <string name="pref_clear_data">Clear data</string>
     <string name="pref_hogg_mode">Hogg mode</string>
     <string name="pref_schrodinger_mode">Schrodinger\'s cat mode</string>
     <string name="pref_morse_mode">Morse mode</string>
-    <string name="diag_clear_data">Are you sure you want to delete your currently loaded cat\'s data? You will also lose all hearts associated with this cat. This cannot be undone.</string>
+    <string name="diag_clear_data">Are you sure you want to delete your currently loaded data? You will also lose your current cat and all hearts and items associated with this cat. This cannot be undone.</string>
     <string name="diag_enter_name">Enter a name for your cat</string>
     <string name="diag_buy_head">Quantity</string>
     <string name="toast_name_empty">You didn\'t enter a name for your cat</string>
@@ -60,11 +60,9 @@
     <string name="cat_mood_sad">Sad</string>
     <string name="cat_mood_mad">Mad</string>
     <string name="cat_mood_dead">Dead</string>
-    <string name="button_feed">Give Food\nFood left: </string>
-    <string name="button_water">Give Water\nWater left: </string>
-    <string name="title_item_detail">Item Details</string>
-    <string name="title_item_list">Store</string>
-    <string name="hello_world">Hello world!</string>
-    <string name="title_activity_store_list">StoreListActivity</string>
+    <string name="title_store">Store</string>
+    <string name="title_store_detail">Item Details</string>
+    <string name="title_inventory">Inventory</string>
+    <string name="title_inventory_detail">Item Details</string>
 
 </resources>

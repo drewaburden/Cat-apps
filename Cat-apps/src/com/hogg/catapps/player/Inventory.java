@@ -17,6 +17,10 @@ public class Inventory {
 		ownedItems = _ownedItems;
 	}
 	
+	public SortedMap<Item, Integer> getItems() {
+		return ownedItems;
+	}
+	
 	public void addItem(Item item, int quantity) {
 		Integer previousQuantity = ownedItems.remove(item);
 		if(previousQuantity == null) {
